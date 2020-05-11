@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2020-02-11T06:48:08Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.5.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "ENC_BOARD_V01"
+        },
+        "Owner": "Lutz Niggl <lutz@niggl-schlagbauer.de>",
+        "Size": {
+            "X": 79,
+            "Y": 56
+        }
+    }
+}

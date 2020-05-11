@@ -1,0 +1,69 @@
+{
+  "tasks": [
+    {
+      "label": "Build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/VisualTeensy/make.exe",
+      "args": [
+        "all",
+        "-j",
+        "-Otarget",
+        "cfg=${command:cpptools.activeConfigName}",
+      ]
+    },
+    {
+      "label": "Clean",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/VisualTeensy/make.exe",
+      "args": [
+        "clean",
+        "cfg=${command:cpptools.activeConfigName}"
+      ]
+    },
+    {
+      "label": "Upload (teensy.exe)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/VisualTeensy/make.exe",
+      "args": [
+        "upload",
+        "-j",
+        "-Otarget",
+        "cfg=${command:cpptools.activeConfigName}"
+      ]
+    },
+    {
+      "label": "Upload (TyCommander)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/VisualTeensy/make.exe",
+      "args": [
+        "uploadTy",
+        "-j",
+        "-Otarget",
+        "cfg=${command:cpptools.activeConfigName}"                
+      ]
+    }
+  ],
+  "version": "2.0.0",
+  "type": "shell",
+  "problemMatcher": "$gcc",
+  "presentation": {
+    "echo": true,
+    "clear": true,
+    "reveal": "always",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": false
+  }
+}

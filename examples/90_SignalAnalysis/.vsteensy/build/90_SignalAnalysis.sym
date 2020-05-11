@@ -1,0 +1,245 @@
+00000000 T _stext
+00000001 A _itcm_block_count
+00000020 t __do_global_dtors_aux
+00000024 A _teensy_model_identifier
+00000031 A __rtc_localtime
+00000044 t frame_dummy
+00000080 00000158 T setup
+000001d8 00000048 T loop
+00000220 0000006c t rx_queue_transfer
+0000028c 000000b4 t rx_event
+00000340 00000098 t usb_serial_flush_callback
+000003d8 0000017c t usb_serial_write.part.1
+00000554 00000002 T usb_serial_reset
+00000558 00000108 T usb_serial_configure
+00000660 000000ec T usb_serial_read
+0000074c 00000044 T usb_serial_peekchar
+00000790 0000000c T usb_serial_available
+0000079c 00000074 T usb_serial_flush_input
+00000810 00000020 T usb_serial_getchar
+00000830 0000002c T usb_serial_putchar
+0000085c 00000018 T usb_serial_write
+00000874 0000004c T usb_serial_write_buffer_free
+000008c0 000000a0 T usb_serial_flush_output
+00000960 000002c4 T set_arm_clock
+00000c24 0000005c t schedule_transfer
+00000c80 00000036 t run_callbacks
+00000cb8 000000a4 t endpoint0_transmit.constprop.1
+00000d5c 00000698 t isr
+000013f4 00000064 T usb_config_rx
+00001458 00000068 T usb_config_tx
+000014c0 0000002e T usb_prepare_transfer
+000014f0 00000028 T usb_transmit
+00001518 00000024 T usb_receive
+0000153c 00000004 T usb_transfer_status
+00001540 000000cc T delay
+0000160c 00000080 T pinMode
+0000168c 00000058 T usb_init_serialnumber
+000016e4 00000010 T main
+000016f4 000000a0 W yield
+00001794 00000080 T EventResponder::triggerEventNotImmediate()
+00001814 0000001c W EventResponder::triggerEvent(int, void*)
+00001830 00000044 T EventResponder::runFromInterrupt()
+00001874 00000004 T pendablesrvreq_isr
+00001878 00000068 T MillisTimer::addToActiveList()
+000018e0 00000098 T MillisTimer::runFromTimer()
+00001978 00000020 T systick_isr
+00001998 00000004 W usb_serial_class::clear()
+0000199c 00000004 W usb_serial_class::peek()
+000019a0 00000004 W usb_serial_class::read()
+000019a4 00000004 W usb_serial_class::available()
+000019a8 00000004 W usb_serial_class::flush()
+000019ac 00000004 W usb_serial_class::availableForWrite()
+000019b0 00000008 W usb_serial_class::write(unsigned char const*, unsigned int)
+000019b8 00000006 W usb_serial_class::write(unsigned char)
+000019c0 0000000c W serialEvent()
+000019cc 00000020 T Print::println()
+000019ec 0000000e W _write
+000019fc 0000001e T Print::printf(char const*, ...)
+00001a1c 00000134 T memcpy
+00001b50 00000018 T unused_interrupt_vector
+00001b60 t _MSP
+00001b68 00000002 T startup_default_early_hook
+00001b68 00000002 W startup_early_hook
+00001b6c 00000002 T startup_default_late_hook
+00001b6c 00000002 W startup_late_hook
+00001b70 0000008c W HardFault_HandlerC
+00001bfc 00000030 T _sbrk
+00001c2c 0000004e T ultoa
+00001c7c 000002b8 T pwm_init
+00001f34 00000028 T HardwareSerial::processSerialEvents()
+00001f5c 0000000c T __errno
+00001f68 00000050 T __libc_init_array
+00001fb8 00000570 T _malloc_r
+00002528 0000002a T __ascii_mbtowc
+00002554 000000c6 T memmove
+0000261c 0000009a T memset
+000026b8 00000002 T __malloc_lock
+000026bc 00000002 T __malloc_unlock
+000026c0 000003de T _realloc_r
+00002aa0 00000024 T _sbrk_r
+00002b00 000000dc T strlen
+00002bdc 0000004a T _vdprintf_r
+00002c28 00000018 T vdprintf
+00002c40 0000001a T __ascii_wctomb
+00002c5c 0000002c T _write_r
+00002c88 0000009c T _malloc_trim_r
+00002d24 000001d0 T _free_r
+00002ef4 0000001c T _localeconv_r
+00002f10 T memchr
+00002fb0 0000004c T _Balloc
+00002ffc 00000012 T _Bfree
+00003010 00000080 T __multadd
+00003090 00000040 T __hi0bits
+000030d0 0000005a T __lo0bits
+0000312c 00000012 T __i2b
+00003140 00000130 T __multiply
+00003270 000000a0 T __pow5mult
+00003310 000000ae T __lshift
+000033c0 00000042 T __mcmp
+00003404 00000114 T __mdiff
+00003518 000000ba T __d2b
+000035d4 0000005e T _vasnprintf_r
+00003634 0000005e T _calloc_r
+00003694 00000128 t quorem
+000037c0 00000c84 T _dtoa_r
+00004448 00001570 T _svfprintf_r
+000059b8 00000100 T __ssprint_r
+00005ab8 T __aeabi_uldivmod
+00005ae8 000002e2 T __udivmoddi4
+00005dcc 00000002 W __aeabi_idiv0
+00005dcc 00000002 W __aeabi_ldiv0
+00005dd0 00000008 t ___init_veneer
+00005de0 T _etext
+00005de0 T _fini
+00008490 A _flashimagelen
+20000000 D _sdata
+20000020 00000280 D digital_pin_to_info_PGM
+200002a0 0000006c D usb_descriptor_list
+2000030c 00000028 V vtable for usb_serial_class
+20000348 00000101 D _ctype_
+20000450 000000c8 D __mprec_tens
+20000518 00000028 D __mprec_bigtens
+20000540 0000000c d p05.6087
+20000560 00000010 d zeroes.7258
+200005b0 00000010 d blanks.7257
+200005c0 00000004 D F_BUS_ACTUAL
+200005c4 00000004 D F_CPU_ACTUAL
+200005c8 00000012 d device_descriptor
+200005dc 00000016 V usb_string_serial_number
+200005dc 00000016 D usb_string_serial_number_default
+200005f2 00000001 D usb_enable_serial_event_processing
+200005f4 00000010 D Serial
+20000604 00000004 D __brkval
+20000608 00000428 d impure_data
+20000a30 00000004 D _impure_ptr
+20000a34 0000016c D __global_locale
+20000ba0 00000408 D __malloc_av_
+20000fa8 00000004 D __malloc_trim_threshold
+20000fac 00000004 D __malloc_sbrk_base
+20000fb0 D _edata
+20000fb0 B _sbss
+20000fb0 b completed.8605
+20000fb4 b object.8610
+20000fcc 00000004 B olda
+20000fd0 00000004 B oldb
+20000fd4 00000078 b data
+2000104c 00000010 b rx_index
+2000105c 00000002 b tx_packet_size
+2000105e 00000001 b tx_noautoflush
+2000105f 00000001 b tx_head
+20001060 00000100 b rx_transfer
+20001160 00000001 b rx_tail
+20001164 00000009 b rx_list
+2000116e 00000002 b rx_packet_size
+20001170 00000010 b rx_count
+20001180 00000004 b rx_available
+20001184 00000001 b rx_head
+20001185 00000001 b transmit_previous_timeout
+20001186 00000002 b tx_available
+20001188 00000001 B usb_cdc_line_rtsdtr
+200011a0 00000080 b tx_transfer
+20001220 00000004 B usb_timer0_callback
+20001224 00000004 b endpointN_notify_mask
+20001228 00000001 b sof_usage
+2000122c 00000004 B usb_timer1_callback
+20001230 00000001 B usb_high_speed
+20001234 00000004 b endpoint0_notify_mask
+20001238 00000001 b usb_reboot_timer
+20001240 00000008 b endpoint0_setupdata
+20001248 00000008 b reply_buffer
+20001250 00000008 b endpoint0_buffer
+20001258 00000001 B usb_configuration
+2000125c 00000004 B systick_cycle_count
+20001260 00000004 B scale_cpu_cycles_to_microseconds
+20001264 00000004 B systick_millis_count
+20001268 00000001 b yield::running
+2000126c 00000004 B EventResponder::firstInterrupt
+20001270 00000004 B EventResponder::lastInterrupt
+20001274 00000004 B MillisTimer::listActive
+20001278 00000004 B EventResponder::lastYield
+2000127c 00000004 B EventResponder::firstYield
+20001280 00000001 B EventResponder::runningFromYield
+20001284 00000004 B MillisTimer::listWaiting
+20001288 00000001 b calibrating
+2000128c 00000004 b s_hotTemp
+20001290 00000004 b s_hot_ROOM
+20001294 00000004 b s_roomC_hotC
+20001298 00000004 b s_hotCount
+2000129c 0000001c B HardwareSerial::serial_event_handler_checks
+200012b8 00000001 B HardwareSerial::serial_event_handlers_active
+200012bc 00000004 B __malloc_max_total_mem
+200012c0 00000004 B __malloc_max_sbrked_mem
+200012c4 00000004 B __malloc_top_pad
+200012c8 00000028 B __malloc_current_mallinfo
+200012f0 00000008 B usb_cdc_line_coding
+200012f8 00000004 B usb_cdc_line_rtsdtr_millis
+20002000 00000020 B endpoint0_transfer_data
+20002020 00000020 B endpoint0_transfer_ack
+20003000 00000280 B endpoint_queue_head
+20003280 00000004 B systick_safe_read
+20003400 000002c0 B _VectorsRam
+200036c0 00000004 B errno
+20003700 B _ebss
+20078000 B _estack
+20200000 00001000 b rx_buffer
+20201000 00002000 b txbuffer
+20203000 00000043 B usb_descriptor_buffer
+20203050 B _heap_start
+20280000 B _heap_end
+60000000 00000200 T FlexSPI_NOR_Config
+60001000 00000020 T ImageVectorTable
+60001020 0000000c T BootData
+6000102c 00000008 T vector_table
+60001034 00000268 T ResetHandler
+6000129c 000000ec T usb_init
+60001388 000000a0 T configure_cache
+60001428 00000064 T usb_pll_start
+6000148c 00000058 T analog_init
+600014e4 000000f8 T tempmon_init
+600015dc 00000016 V usb_string_product_name
+600015dc 00000016 T usb_string_product_name_default
+600015f4 00000018 V usb_string_manufacturer_name
+600015f4 00000018 T usb_string_manufacturer_name_default
+6000160c 00000004 T string0
+60001610 00000043 T usb_config_descriptor_12
+60001654 00000043 T usb_config_descriptor_480
+60001698 0000000a t qualifier_descriptor
+600016a4 T _init
+600016b0 00000008 t __pwm_init_veneer
+600016b8 00000008 t __main_veneer
+600016c0 00000008 t __startup_early_hook_veneer
+600016c8 00000008 t __set_arm_clock_veneer
+600016d0 00000008 t __delay_veneer
+600016d8 00000008 t __usb_init_serialnumber_veneer
+600016e0 00000008 t __startup_late_hook_veneer
+600016e8 00000008 t ____libc_init_array_veneer
+600016f0 00000008 t __memset_veneer
+600016f8 t __frame_dummy_init_array_entry
+600016f8 T __init_array_start
+600016f8 T __preinit_array_end
+600016f8 T __preinit_array_start
+600016fc T __init_array_end
+60001700 A _stextload
+600074ec A _sdataload
+aaaaaaab A _flexram_bank_config

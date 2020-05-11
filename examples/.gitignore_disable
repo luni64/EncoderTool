@@ -1,0 +1,8 @@
+# rename this file to .gitignore in non debug branches
+# vsTeensy Stuff
+**/.vsteensy
+**/.vscode
+**/makefile
+.clang-format
+
+

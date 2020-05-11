@@ -1,0 +1,5 @@
+Stückliste exportiert aus C:/Users/lutz/source/Teensy/PollEncoder/Eagle/ENC_BOARD_V01/ENC_BOARD_V01.sch am 11.02.2020 07:48
+
+Qty Value     Device    Package   Parts                                  Description MF MPN OC_FARNELL OC_NEWARK POPULARITY
+1   057-026-1 057-026-1 057-026-1 X1                                     CONNECTOR          unknown    unknown   0         
+8   ENCODER   ENCODER   ENCODER   EN1, EN2, EN3, EN4, EN5, EN6, EN7, EN8                                                   
