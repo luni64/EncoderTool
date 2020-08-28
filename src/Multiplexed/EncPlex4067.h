@@ -48,9 +48,6 @@ namespace EncoderTool
          digitalWriteFast(S3, i & 0b1000);
          delayMicroseconds(1);
 
-         // Serial.print(digitalReadFast(A));
-         // Serial.print(" ");
-
          if (encoders[i].update(digitalReadFast(A), digitalReadFast(B)) && callback != nullptr)
          {
             callback(0, encoders[i].getValue());
