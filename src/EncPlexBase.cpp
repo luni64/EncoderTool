@@ -17,12 +17,12 @@ namespace EncoderTool
         delete[] encoders;
     }
 
-    EncoderBase& EncPlexBase::operator[](std::size_t idx)
+    EncoderBase &EncPlexBase::operator[](std::size_t idx)
     {
         return idx < encoderCount ? encoders[idx] : encoders[encoderCount - 1];
     }
 
-    void EncPlexBase::setCallback(allCallback_t _callback)
+    void EncPlexBase::attachCallback(allCallback_t _callback)
     {
         callback = _callback;
     }

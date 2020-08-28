@@ -8,7 +8,7 @@ namespace EncoderTool
     class EncPlexBase
     {
      public:
-        void setCallback(allCallback_t callback);
+        void attachCallback(allCallback_t callback);
         EncoderBase& operator[](std::size_t idx);
 
      protected:
@@ -19,6 +19,4 @@ namespace EncoderTool
 
         allCallback_t callback = nullptr;
     };
-
-
 }
