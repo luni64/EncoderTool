@@ -14,7 +14,7 @@
 
 #if not defined(PLAIN_ENC_CALLBACK)
     #include <functional>
-    inline void std::__throw_bad_function_call(){while (1) {}}  // do whatever you want to do instead of an exception
+   // inline void std::__throw_bad_function_call(){while (1) {}}  // do whatever you want to do instead of an exception
 #endif
 
 namespace EncoderTool
