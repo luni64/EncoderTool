@@ -1,30 +1,23 @@
-#include "EncPlex.h"
-//#include "pins.h"
+#include "EncoderTool.h"
+using namespace EncoderTool;
 
-//using namespace pins;
-
-EncPlex::Encoder enc1(0, 1, INPUT_PULLUP);
+Encoder encoder;
 
 void setup()
 {
     pinMode(LED_BUILTIN, OUTPUT);
-    pinMode(14, OUTPUT);
-    enc1.begin();
-
-    // pin<0>().slowSlewRateEnable(true);
-    // pin<1>().slowSlewRateEnable(true);
+    encoder.begin(0, 1);
 }
 
 elapsedMillis stopwatch;
 
 void loop()
 {
-    enc1.tick();
+    encoder.tick();
 
-    if(stopwatch > 50)
+    if (stopwatch > 50)
     {
-        Serial.println(enc1.read());
+        Serial.println(encoder.getValue());
         stopwatch = 0;
     }
-    delayMicroseconds(100);
 }

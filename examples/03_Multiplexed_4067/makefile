@@ -7,12 +7,12 @@
 # Optimize           Faster
 # Keyboard Layout    US English
 #
-# 23.04.2020 10:37
+# 23.04.2020 08:31
 #******************************************************************************
 SHELL            := cmd.exe
 export SHELL
 
-TARGET_NAME      := 01_HelloEncoder
+TARGET_NAME      := 03_Multiplexed_4067
 BOARD_ID         := TEENSY40
 
 MCU              := imxrt1062
@@ -20,14 +20,13 @@ MCU              := imxrt1062
 LIBS_SHARED_BASE := C:\Users\lutz\Documents\Arduino\libraries
 LIBS_SHARED      :=
 
-LIBS_LOCAL_BASE  :=../../../../lib
+LIBS_LOCAL_BASE  := ../../../../lib
 LIBS_LOCAL       := EncoderTool
 
 CORE_BASE        := C:\PROGRA~1\Arduino\ARDUIN~1.9\hardware\teensy\avr\cores\teensy4
 GCC_BASE         := C:\PROGRA~1\Arduino\ARDUIN~1.9\hardware\tools\arm\bin
 UPL_PJRC_B       := C:\PROGRA~1\Arduino\ARDUIN~1.9\hardware\tools
 UPL_TYCMD_B      := C:\toolchain\TyTools
-UPL_JLINK_B      := C:\PROGRA~2\SEGGER\JLINK_~1
 
 #******************************************************************************
 # Flags and Defines

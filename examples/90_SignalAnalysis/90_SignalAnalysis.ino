@@ -1,6 +1,3 @@
-#include "Arduino.h"
-
-
 constexpr size_t bufSize = 10;
 
 struct
@@ -41,7 +38,6 @@ void setup()
     }
 
 
-
     float time = 0;
 
     for (unsigned i = 1; i < bufSize; i++)
@@ -62,7 +58,7 @@ void loop()
 
     int a = digitalReadFast(0);
     int b = digitalReadFast(1);
-    int val = a & (b << 1);
+    //int val = a & (b << 1);
 
     if(a != olda || b!= oldb)
     {

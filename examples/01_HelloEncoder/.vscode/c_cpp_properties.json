@@ -3,11 +3,11 @@
     {
       "name": "VisualTeensy",
       "includePath": [
-        "../../../../lib/EncPlex/src/**",
+        "../../src/**",
         "C:\\Program Files\\Arduino\\arduino-1.8.9\\hardware\\teensy\\avr\\cores\\teensy4"
       ],
       "forcedInclude": [
-        "C:\\Program Files\\Arduino\\arduino-1.8.9\\hardware\\teensy\\avr\\cores\\teensy4\\Arduino.h"
+        "C:\\Program Files\\Arduino\\arduino-1.8.12\\hardware\\teensy\\avr\\cores\\teensy4\\Arduino.h"
       ],
       "defines": [
         "__IMXRT1062__",

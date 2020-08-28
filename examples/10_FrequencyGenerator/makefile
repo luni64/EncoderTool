@@ -7,26 +7,51 @@
 # Optimize           Faster
 # Keyboard Layout    US English
 #
-# 07.05.2020 07:20
+# 23.04.2020 08:31
 #******************************************************************************
-
 SHELL            := cmd.exe
 export SHELL
 
+TARGET_NAME      := 10_FrequencyGenerator
+BOARD_ID         := TEENSY40
 
+MCU              := imxrt1062
 
 LIBS_SHARED_BASE := C:\Users\lutz\Documents\Arduino\libraries
-LIBS_SHARED      := 
+LIBS_SHARED      :=
 
 LIBS_LOCAL_BASE  := ../../../../lib
-LIBS_LOCAL       := EncPlex
+LIBS_LOCAL       := EncoderTool
 
-
-GCC_BASE         := C:\Arduino\arduino-1.8.12\hardware\tools\arm\bin
-UPL_PJRC_B       := C:\Arduino\arduino-1.8.12\hardware\tools
+CORE_BASE        := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\teensy\avr\cores\teensy4
+GCC_BASE         := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\tools\arm\bin
+UPL_PJRC_B       := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\tools
 UPL_TYCMD_B      := C:\toolchain\TyTools
 
-include $(cfg).mk
+#******************************************************************************
+# Flags and Defines
+#******************************************************************************
+FLAGS_CPU   := -mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
+FLAGS_OPT   := -O2
+FLAGS_COM   := -g -Wall -ffunction-sections -fdata-sections -nostdlib -MMD
+FLAGS_LSP   :=
+
+FLAGS_CPP   := -std=gnu++14 -fno-exceptions -fpermissive -fno-rtti -fno-threadsafe-statics -felide-constructors -Wno-error=narrowing
+FLAGS_C     :=
+FLAGS_S     := -x assembler-with-cpp
+FLAGS_LD    := -Wl,--print-memory-usage,--gc-sections,--relax,--defsym=__rtc_localtime=$(shell powershell [int](Get-Date -UFormat +%s)[0]) -T$(CORE_BASE)/imxrt1062.ld
+
+LIBS        := -larm_cortexM7lfsp_math -lm -lstdc++
+
+DEFINES     := -D__IMXRT1062__ -DTEENSYDUINO=150 -DARDUINO_TEENSY40 -DARDUINO=10807
+DEFINES     += -DF_CPU=600000000 -DUSB_SERIAL -DLAYOUT_US_ENGLISH
+
+CPP_FLAGS   := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_COM) $(DEFINES) $(FLAGS_CPP)
+C_FLAGS     := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_COM) $(DEFINES) $(FLAGS_C)
+S_FLAGS     := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_COM) $(DEFINES) $(FLAGS_S)
+LD_FLAGS    := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_LSP) $(FLAGS_LD)
+AR_FLAGS    := rcs
+NM_FLAGS    := --numeric-sort --defined-only --demangle --print-size
 
 #******************************************************************************
 # Colors
@@ -46,7 +71,7 @@ USR_SRC         := .
 LIB_SRC         := lib
 CORE_SRC        := $(CORE_BASE)
 
-BIN             := .vsteensy/build/$(cfg)
+BIN             := .vsteensy/build
 USR_BIN         := $(BIN)/src
 CORE_BIN        := $(BIN)/core
 LIB_BIN         := $(BIN)/lib

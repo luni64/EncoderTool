@@ -3,7 +3,7 @@
     {
       "name": "VisualTeensy",
       "includePath": [
-        "../../../../lib/EncPlex/src/**",
+        "../../src/**",
         "C:\\Program Files\\Arduino\\arduino-1.8.9\\hardware\\teensy\\avr\\cores\\teensy4"
       ],
       "forcedInclude": [

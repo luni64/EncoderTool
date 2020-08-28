@@ -6,7 +6,7 @@
         "kind": "build",
         "isDefault": true
       },
-      "command": "C:/Users/lutz/source/VisualTeensy/VisualTeensy/bin/Debug/make.exe",
+      "command": "C:/toolchain/make/make.exe",
       "args": [
         "all",
         "-j",
@@ -19,9 +19,22 @@
         "kind": "build",
         "isDefault": true
       },
-      "command": "C:/Users/lutz/source/VisualTeensy/VisualTeensy/bin/Debug/make.exe",
+      "command": "C:/toolchain/make/make.exe",
       "args": [
         "clean"
+      ]
+    },
+    {
+      "label": "Upload (teensy.exe)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "upload",
+        "-j",
+        "-Otarget"
       ]
     },
     {
@@ -30,9 +43,22 @@
         "kind": "build",
         "isDefault": true
       },
-      "command": "C:/Users/lutz/source/VisualTeensy/VisualTeensy/bin/Debug/make.exe",
+      "command": "C:/toolchain/make/make.exe",
       "args": [
         "uploadTy",
+        "-j",
+        "-Otarget"
+      ]
+    },
+    {
+      "label": "Upload (JLink)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "uploadJLink",
         "-j",
         "-Otarget"
       ]

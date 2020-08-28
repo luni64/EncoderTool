@@ -1,7 +1,5 @@
 #include "Arduino.h"
 #include "EncoderTool.h"
-
-
 using namespace EncoderTool;
 
 constexpr unsigned encoderCount = 8; // number of attached  (daisy chain shift regesters for more than 8)

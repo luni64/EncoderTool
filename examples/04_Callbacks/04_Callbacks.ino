@@ -1,32 +1,39 @@
-// #include "Arduino.h"
+#include "Arduino.h"
+#include "EncoderTool.h"
 
-// void myIntCallback(int cnt)
-// {
-//   for (int i = 0; i < cnt; i++)
-//   {
-//     digitalWriteFast(LED_BUILTIN, HIGH);
-//     delay(50);
-//     digitalWriteFast(LED_BUILTIN, LOW);
-//     delay(500);
-//   }
-// }
+using namespace EncoderTool;
 
-// void setup()
-// {
-//   pinMode(LED_BUILTIN, OUTPUT);
+constexpr unsigned encoderCount = 8; // number of attached  (daisy chain shift regesters for more than 8)
 
-//   //button1.attachClick(myIntCallback);
-//   button1.attachClick([] { myIntCallback(18); });
-//   //button2.attachClick([] { myIntCallback(someInt); });
-// }
+constexpr unsigned QH_A = 0;   //output pin QH of shift register B
+constexpr unsigned QH_B = 1;   //output pin QH of shift register A
+constexpr unsigned pinLD = 3;  //load pin for all shift registers)
+constexpr unsigned pinCLK = 4; //clock pin for all shift registers
+                               //74165 datasheet: http://www.ti.com/product/SN74HC165
 
-// void loop()
-// {
-//   // keep watching the push button:
-//   button1.tick();
-//  // button2.tick();
+EncPlex74165 encoders(encoderCount, pinLD, pinCLK, QH_A, QH_B, CountMode::quarterInv);
 
-//   // You can implement other code in here or just wait a while
-//   delay(10);
-//   //myIntCallback();
-// } // loop
+void myCallback(int value, int delta)
+{
+    Serial.printf("Current value: %d, delta = %d\n", value, delta);
+}
+
+void setup()
+{
+    pinMode(13, OUTPUT);
+    encoders.begin();
+
+    encoders[0].attachCallback(myCallback); // standard callback
+    encoders[1].attachCallback([](int v, int d) { digitalToggleFast(13); }); // a simple lambda expression to toggle the LED on every change
+    encoders[2].attachCallback([](int v, int d) { Serial.printf("enc 2: %s\n", d > 0 ? "UP" : "DOWN"); });
+}
+
+elapsedMillis stopwatch = 0;
+
+void loop()
+{
+    encoders.tick();
+}
+
+
+

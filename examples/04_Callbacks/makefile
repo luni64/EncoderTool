@@ -7,12 +7,12 @@
 # Optimize           Faster
 # Keyboard Layout    US English
 #
-# 21.03.2020 14:46
+# 23.04.2020 08:31
 #******************************************************************************
 SHELL            := cmd.exe
 export SHELL
 
-TARGET_NAME      := 03_Multiplexed_74165
+TARGET_NAME      := 04_Callbacks
 BOARD_ID         := TEENSY40
 
 MCU              := imxrt1062
@@ -20,12 +20,12 @@ MCU              := imxrt1062
 LIBS_SHARED_BASE := C:\Users\lutz\Documents\Arduino\libraries
 LIBS_SHARED      :=
 
-LIBS_LOCAL_BASE  :=
-LIBS_LOCAL       := 
+LIBS_LOCAL_BASE  := ../../../../lib
+LIBS_LOCAL       := EncoderTool
 
-CORE_BASE        := C:\Arduino\arduino-1.8.5\hardware\teensy\avr\cores\teensy4
-GCC_BASE         := C:\Arduino\arduino-1.8.5\hardware\tools\arm\bin
-UPL_PJRC_B       := C:\Arduino\arduino-1.8.5\hardware\tools
+CORE_BASE        := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\teensy\avr\cores\teensy4
+GCC_BASE         := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\tools\arm\bin
+UPL_PJRC_B       := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\tools
 UPL_TYCMD_B      := C:\toolchain\TyTools
 
 #******************************************************************************
@@ -51,6 +51,7 @@ C_FLAGS     := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_COM) $(DEFINES) $(FLAGS_C)
 S_FLAGS     := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_COM) $(DEFINES) $(FLAGS_S)
 LD_FLAGS    := $(FLAGS_CPU) $(FLAGS_OPT) $(FLAGS_LSP) $(FLAGS_LD)
 AR_FLAGS    := rcs
+NM_FLAGS    := --numeric-sort --defined-only --demangle --print-size
 
 #******************************************************************************
 # Colors
@@ -66,32 +67,34 @@ COL_RESET   := [0m
 #******************************************************************************
 # Folders and Files
 #******************************************************************************
-USR_SRC     := .
-LIB_SRC     := lib
-CORE_SRC    := $(CORE_BASE)
+USR_SRC         := .
+LIB_SRC         := lib
+CORE_SRC        := $(CORE_BASE)
 
-BIN         := .vsteensy/build
-USR_BIN     := $(BIN)/src
-CORE_BIN    := $(BIN)/core
-LIB_BIN     := $(BIN)/lib
-CORE_LIB    := $(BIN)/core.a
-TARGET_HEX  := $(BIN)/$(TARGET_NAME).hex
-TARGET_ELF  := $(BIN)/$(TARGET_NAME).elf
-TARGET_LST  := $(BIN)/$(TARGET_NAME).lst
+BIN             := .vsteensy/build
+USR_BIN         := $(BIN)/src
+CORE_BIN        := $(BIN)/core
+LIB_BIN         := $(BIN)/lib
+CORE_LIB        := $(BIN)/core.a
+TARGET_HEX      := $(BIN)/$(TARGET_NAME).hex
+TARGET_ELF      := $(BIN)/$(TARGET_NAME).elf
+TARGET_LST      := $(BIN)/$(TARGET_NAME).lst
+TARGET_SYM      := $(BIN)/$(TARGET_NAME).sym
 
 #******************************************************************************
 # BINARIES
 #******************************************************************************
-CC          := $(GCC_BASE)/arm-none-eabi-gcc
-CXX         := $(GCC_BASE)/arm-none-eabi-g++
-AR          := $(GCC_BASE)/arm-none-eabi-gcc-ar
-OBJCOPY     := $(GCC_BASE)/arm-none-eabi-objcopy
-SIZE        := $(GCC_BASE)/arm-none-eabi-size
-OBJDUMP     := $(GCC_BASE)/arm-none-eabi-objdump
-UPL_PJRC    := "$(UPL_PJRC_B)/teensy_post_compile" -test -file=$(TARGET_NAME) -path=$(BIN) -tools="$(UPL_PJRC_B)" -board=$(BOARD_ID) -reboot
-UPL_TYCMD   := $(UPL_TYCMD_B)/tyCommanderC upload $(TARGET_HEX) --autostart --wait --multi
-UPL_CLICMD  := $(UPL_CLICMD_B)/teensy_loader_cli -mmcu=$(MCU) -v $(TARGET_HEX)
-UPL_JLINK   := $(UPL_JLINK_B)/jlink -commanderscript .vsteensy/flash.jlink
+CC              := $(GCC_BASE)/arm-none-eabi-gcc
+CXX             := $(GCC_BASE)/arm-none-eabi-g++
+AR              := $(GCC_BASE)/arm-none-eabi-gcc-ar
+NM              := $(GCC_BASE)/arm-none-eabi-gcc-nm
+SIZE            := $(GCC_BASE)/arm-none-eabi-size
+OBJDUMP         := $(GCC_BASE)/arm-none-eabi-objdump
+OBJCOPY         := $(GCC_BASE)/arm-none-eabi-objcopy
+UPL_PJRC        := "$(UPL_PJRC_B)/teensy_post_compile" -test -file=$(TARGET_NAME) -path=$(BIN) -tools="$(UPL_PJRC_B)" -board=$(BOARD_ID) -reboot
+UPL_TYCMD       := $(UPL_TYCMD_B)/tyCommanderC upload $(TARGET_HEX) --autostart --wait --multi
+UPL_CLICMD      := $(UPL_CLICMD_B)/teensy_loader_cli -mmcu=$(MCU) -v $(TARGET_HEX)
+UPL_JLINK       := $(UPL_JLINK_B)/jlink -commanderscript .vsteensy/flash.jlink
 
 #******************************************************************************
 # Source and Include Files
@@ -103,25 +106,25 @@ UPL_JLINK   := $(UPL_JLINK_B)/jlink -commanderscript .vsteensy/flash.jlink
 rwildcard =$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 
 #User Sources -----------------------------------------------------------------
-USR_C_FILES    := $(call rwildcard,$(USR_SRC)/,*.c)
-USR_CPP_FILES  := $(call rwildcard,$(USR_SRC)/,*.cpp)
-USR_S_FILES    := $(call rwildcard,$(USR_SRC)/,*.S)
-USR_INO_FILES  := $(call rwildcard,$(USR_SRC)/,*.ino)
-USR_OBJ        := $(USR_S_FILES:$(USR_SRC)/%.S=$(USR_BIN)/%.o) $(USR_C_FILES:$(USR_SRC)/%.c=$(USR_BIN)/%.o) $(USR_CPP_FILES:$(USR_SRC)/%.cpp=$(USR_BIN)/%.o)
-USR_OBJ        += $(USR_INO_FILES:$(USR_SRC)/%.ino=$(USR_BIN)/%.o)
+USR_INO_FILE    := $(USR_SRC)/$(TARGET_NAME).ino
+USR_C_FILES     := $(call rwildcard,$(USR_SRC)/,*.c)
+USR_CPP_FILES   := $(call rwildcard,$(USR_SRC)/,*.cpp)
+USR_S_FILES     := $(call rwildcard,$(USR_SRC)/,*.S)
+USR_OBJ         := $(USR_S_FILES:$(USR_SRC)/%.S=$(USR_BIN)/%.o) $(USR_C_FILES:$(USR_SRC)/%.c=$(USR_BIN)/%.o) $(USR_CPP_FILES:$(USR_SRC)/%.cpp=$(USR_BIN)/%.o)
+USR_OBJ         += $(USR_INO_FILE:$(USR_SRC)/%.ino=$(USR_BIN)/%.o)
+
 # Core library sources --------------------------------------------------------
-CORE_CPP_FILES := $(call rwildcard,$(CORE_SRC)/,*.cpp)
-CORE_C_FILES   := $(call rwildcard,$(CORE_SRC)/,*.c)
-CORE_S_FILES   := $(call rwildcard,$(CORE_SRC)/,*.S)
-CORE_OBJ       := $(CORE_S_FILES:$(CORE_SRC)/%.S=$(CORE_BIN)/%.o) $(CORE_C_FILES:$(CORE_SRC)/%.c=$(CORE_BIN)/%.o) $(CORE_CPP_FILES:$(CORE_SRC)/%.cpp=$(CORE_BIN)/%.o)
+CORE_CPP_FILES  := $(call rwildcard,$(CORE_SRC)/,*.cpp)
+CORE_C_FILES    := $(call rwildcard,$(CORE_SRC)/,*.c)
+CORE_S_FILES    := $(call rwildcard,$(CORE_SRC)/,*.S)
+CORE_OBJ        := $(CORE_S_FILES:$(CORE_SRC)/%.S=$(CORE_BIN)/%.o) $(CORE_C_FILES:$(CORE_SRC)/%.c=$(CORE_BIN)/%.o) $(CORE_CPP_FILES:$(CORE_SRC)/%.cpp=$(CORE_BIN)/%.o)
 
+# User library sources (see https://github.com/arduino/arduino/wiki/arduino-ide-1.5:-library-specification)
+LIB_DIRS_SHARED := $(foreach d, $(LIBS_SHARED), $(LIBS_SHARED_BASE)/$d/ $(LIBS_SHARED_BASE)/$d/utility/)      # base and /utility
+LIB_DIRS_SHARED += $(foreach d, $(LIBS_SHARED), $(LIBS_SHARED_BASE)/$d/src/ $(dir $(call rwildcard,$(LIBS_SHARED_BASE)/$d/src/,*/.)))                          # src and all subdirs of base
 
-# User library sources  (see) https://github.com/arduino/arduino/wiki/arduino-ide-1.5:-library-specification
-LIB_DIRS_SHARED  := $(foreach d, $(LIBS_SHARED), $(LIBS_SHARED_BASE)/$d/ $(LIBS_SHARED_BASE)/$d/utility/)  # base and /utility
-LIB_DIRS_SHARED  += $(foreach d, $(LIBS_SHARED), $(LIBS_SHARED_BASE)/$d/src/ $(dir $(call rwildcard,$(LIBS_SHARED_BASE)/$d/src/,*/.)))                           # src and all subdirs of base
-
-LIB_DIRS_LOCAL   := $(foreach d, $(LIBS_LOCAL), $(LIBS_LOCAL_BASE)/$d/ $(LIBS_LOCAL_BASE)/$d/utility/ )    # base and /utility
-LIB_DIRS_LOCAL   += $(foreach d, $(LIBS_LOCAL), $(LIBS_LOCAL_BASE)/$d/src/ $(dir $(call rwildcard,$(LIBS_LOCAL_BASE)/$d/src/,*/.)))                             # src and all subdirs of base
+LIB_DIRS_LOCAL  := $(foreach d, $(LIBS_LOCAL), $(LIBS_LOCAL_BASE)/$d/ $(LIBS_LOCAL_BASE)/$d/utility/ )        # base and /utility
+LIB_DIRS_LOCAL  += $(foreach d, $(LIBS_LOCAL), $(LIBS_LOCAL_BASE)/$d/src/ $(dir $(call rwildcard,$(LIBS_LOCAL_BASE)/$d/src/,*/.)))                          # src and all subdirs of base
 
 LIB_CPP_SHARED  := $(foreach d, $(LIB_DIRS_SHARED),$(call wildcard,$d*.cpp))
 LIB_C_SHARED    := $(foreach d, $(LIB_DIRS_SHARED),$(call wildcard,$d*.c))
@@ -136,17 +139,15 @@ LIB_OBJ         += $(LIB_C_SHARED:$(LIBS_SHARED_BASE)/%.c=$(LIB_BIN)/%.o)  $(LIB
 LIB_OBJ         += $(LIB_S_SHARED:$(LIBS_SHARED_BASE)/%.S=$(LIB_BIN)/%.o)  $(LIB_S_LOCAL:$(LIBS_LOCAL_BASE)/%.S=$(LIB_BIN)/%.o)
 
 # Includes -------------------------------------------------------------
-INCLUDE        := -I./$(USR_SRC) -I$(CORE_SRC)
-INCLUDE        += $(foreach d, $(LIB_DIRS_SHARED), -I$d)
-INCLUDE        += $(foreach d, $(LIB_DIRS_LOCAL), -I$d)
+INCLUDE         := -I./$(USR_SRC) -I$(CORE_SRC)
+INCLUDE         += $(foreach d, $(LIB_DIRS_SHARED), -I$d)
+INCLUDE         += $(foreach d, $(LIB_DIRS_LOCAL), -I$d)
 
 # Generate directories --------------------------------------------------------
-DIRECTORIES :=  $(sort $(dir $(CORE_OBJ) $(USR_OBJ) $(LIB_OBJ)))
-generateDirs := $(foreach d, $(DIRECTORIES), $(shell if not exist "$d" mkdir "$d"))
+DIRECTORIES     :=  $(sort $(dir $(CORE_OBJ) $(USR_OBJ) $(LIB_OBJ)))
+generateDirs    := $(foreach d, $(DIRECTORIES), $(shell if not exist "$d" mkdir "$d"))
 
 #$(info dirs: $(DIRECTORIES))
-
-$(info$(COL_RESET))
 
 #******************************************************************************
 # Rules:
@@ -154,12 +155,11 @@ $(info$(COL_RESET))
 
 .PHONY: directories all rebuild upload uploadTy uploadCLI clean cleanUser cleanCore
 
-
-all:  $(TARGET_LST) $(TARGET_HEX)
+all:  $(TARGET_LST) $(TARGET_SYM) $(TARGET_HEX)
 
 rebuild: cleanUser all
 
-clean:   cleanUser cleanCore cleanLib
+clean: cleanUser cleanCore cleanLib
 	@echo $(COL_OK)cleaning done$(COL_RESET)
 
 upload: all
@@ -173,7 +173,6 @@ uploadCLI: all
 
 uploadJLink: all
 	@$(UPL_JLINK)
-
 
 # Core library ----------------------------------------------------------------
 $(CORE_BIN)/%.o: $(CORE_SRC)/%.S
@@ -189,44 +188,44 @@ $(CORE_BIN)/%.o: $(CORE_SRC)/%.cpp
 	@"$(CXX)" $(CPP_FLAGS) $(INCLUDE) -o $@ -c $<
 
 $(CORE_LIB) : $(CORE_OBJ)
-	@echo $(COL_LINK)CORE [AR]  $@ $(COL_ERR)
+	@echo $(COL_LINK)CORE [AR] $@ $(COL_ERR)
 	@$(AR) $(AR_FLAGS) $@ $^
 	@echo $(COL_OK)Teensy core built successfully &&echo.
 
 # Shared Libraries ------------------------------------------------------------
 $(LIB_BIN)/%.o: $(LIBS_SHARED_BASE)/%.S
-	@echo $(COL_LIB)LIB  [ASM] $(notdir $<) $(COL_ERR)
+	@echo $(COL_LIB)LIB [ASM] $(notdir $<) $(COL_ERR)
 	@"$(CC)" $(S_FLAGS) $(INCLUDE) -o $@ -c $<
 
 $(LIB_BIN)/%.o: $(LIBS_SHARED_BASE)/%.cpp
-	@echo $(COL_LIB)LIB  [CPP] $(notdir $<) $(COL_ERR)
+	@echo $(COL_LIB)LIB [CPP] $(notdir $<) $(COL_ERR)
 	@"$(CXX)" $(CPP_FLAGS) $(INCLUDE) -o $@ -c $<
 
 $(LIB_BIN)/%.o: $(LIBS_SHARED_BASE)/%.c
-	@echo $(COL_LIB)LIB  [CC]  $(notdir $<) $(COL_ERR)
+	@echo $(COL_LIB)LIB [CC]  $(notdir $<) $(COL_ERR)
 	@"$(CC)" $(C_FLAGS) $(INCLUDE) -o $@ -c $<
 
 # Local Libraries -------------------------------------------------------------
 $(LIB_BIN)/%.o: $(LIBS_LOCAL_BASE)/%.S
-	@echo $(COL_LIB)LIB  [ASM] $(notdir $<) $(COL_ERR)
+	@echo $(COL_LIB)LIB [ASM] $(notdir $<) $(COL_ERR)
 	@"$(CC)" $(S_FLAGS) $(INCLUDE) -o $@ -c $<
 
 $(LIB_BIN)/%.o: $(LIBS_LOCAL_BASE)/%.cpp
-	@echo $(COL_LIB)LIB  [CPP] $(notdir $<) $(COL_ERR)
+	@echo $(COL_LIB)LIB [CPP] $(notdir $<) $(COL_ERR)
 	@"$(CXX)" $(CPP_FLAGS) $(INCLUDE) -o $@ -c $<
 
 $(LIB_BIN)/%.o: $(LIBS_LOCAL_BASE)/%.c
-	@echo $(COL_LIB)LIB  [CC]  $(notdir $<) $(COL_ERR)
+	@echo $(COL_LIB)LIB [CC]  $(notdir $<) $(COL_ERR)
 	@"$(CC)" $(C_FLAGS) $(INCLUDE) -o $@ -c $<
 
 # Handle user sources ---------------------------------------------------------
 $(USR_BIN)/%.o: $(USR_SRC)/%.ino
 	@echo $(COL_SRC)USER [INO] $< $(COL_ERR)
-	@"$(CC)" $(CPP_FLAGS) $(INCLUDE) -x c++ -o $@ -c $< -x none
+	@"$(CC)" $(CPP_FLAGS) $(INCLUDE) -include $(CORE_BASE)/Arduino.h -x c++ -o "$@" -c $< -x none
 
 $(USR_BIN)/%.o: $(USR_SRC)/%.S
 	@echo $(COL_SRC)USER [ASM] $< $(COL_ERR)
-	@"$(CC)" $(S_FLAGS) $(INCLUDE) -o $@ -c $<
+	@"$(CC)" $(S_FLAGS) $(INCLUDE) -o "$@" -c $<
 
 $(USR_BIN)/%.o: $(USR_SRC)/%.c
 	@echo $(COL_SRC)USER [CC]  $(notdir $<) $(COL_ERR)
@@ -244,16 +243,17 @@ $(TARGET_ELF): $(CORE_LIB) $(LIB_OBJ) $(USR_OBJ)
 	@echo $(COL_OK)User code built and linked to libraries &&echo.
 
 %.lst: %.elf
-	@echo $(COL_LINK)
-	@echo [LST] $@ $(COL_ERR)
-	@$(OBJDUMP) -d -S --demangle --no-show-raw-insn --syms "$<"  > "$@"
+	@echo [LST] $@
+	@$(OBJDUMP) -d -S --demangle --no-show-raw-insn "$<" > "$@"
 	@echo $(COL_OK)Sucessfully built project$(COL_RESET) &&echo.
+
+%.sym: %.elf
+	@echo [SYM] $@
+	@$(NM) $(NM_FLAGS) "$<" > "$@"
 
 %.hex: %.elf
 	@echo $(COL_LINK)[HEX] $@
-#	@$(SIZE) "$<"
 	@$(OBJCOPY) -O ihex -R.eeprom "$<" "$@"
-
 
 # Cleaning --------------------------------------------------------------------
 cleanUser:
