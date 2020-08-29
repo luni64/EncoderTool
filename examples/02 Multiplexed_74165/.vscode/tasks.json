@@ -1,0 +1,78 @@
+{
+  "tasks": [
+    {
+      "label": "Build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "all",
+        "-j",
+        "-Otarget"
+      ]
+    },
+    {
+      "label": "Clean",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "clean"
+      ]
+    },
+    {
+      "label": "Upload (teensy.exe)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "upload",
+        "-j",
+        "-Otarget"
+      ]
+    },
+    {
+      "label": "Upload (TyCommander)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "uploadTy",
+        "-j",
+        "-Otarget"
+      ]
+    },
+    {
+      "label": "Upload (JLink)",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "C:/toolchain/make/make.exe",
+      "args": [
+        "uploadJLink",
+        "-j",
+        "-Otarget"
+      ]
+    }
+  ],
+  "version": "2.0.0",
+  "type": "shell",
+  "problemMatcher": "$gcc",
+  "presentation": {
+    "echo": true,
+    "clear": true,
+    "reveal": "always",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": false
+  }
+}
