@@ -10,23 +10,23 @@ namespace EncoderTool
     class EncPlex74165 : public EncPlexBase
     {
     public:
-        inline EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB, CountMode = CountMode::quarter);
+        inline EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB);
         inline ~EncPlex74165();
 
-        inline void begin(); // optional, call in setup if other code grabed the pins after construction
-        inline void tick();  // call as often as possible
+        inline void begin(CountMode mode = CountMode::quarter);                      // optional, call in setup if other code grabed the pins after construction
+        inline void begin(allCallback_t callback, CountMode m = CountMode::quarter); // optional, call in setup if other code grabed the pins after construction
+        inline void tick();                                                          // call as often as possible
 
     protected:
         const unsigned A, B, LD, CLK;
     };
 
-
     // IMPLEMENTATION ============================================
 
-    EncPlex74165::EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB, CountMode mode)
-        : EncPlexBase(nrOfEncoders, mode), A(pinA), B(pinB), LD(pinLD), CLK(pinCLK)
+    EncPlex74165::EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB)
+        : EncPlexBase(nrOfEncoders), A(pinA), B(pinB), LD(pinLD), CLK(pinCLK)
     {
-        begin(); // usually calling begin from the constructor works... if not you can always call it in setup()
+        // begin(); // usually calling begin from the constructor works... if not you can always call it in setup()
     }
 
     EncPlex74165::~EncPlex74165()
@@ -37,8 +37,15 @@ namespace EncoderTool
         pinMode(CLK, INPUT_DISABLE);
     }
 
-    void EncPlex74165::begin()
+    void EncPlex74165::begin(allCallback_t cb, CountMode mode)
     {
+        begin(mode);
+        attachCallback(cb);
+    }
+
+    void EncPlex74165::begin(CountMode mode)
+    {
+        EncPlexBase::begin(mode);
         pinMode(A, INPUT);
         pinMode(B, INPUT);
         pinMode(LD, OUTPUT);
@@ -67,8 +74,6 @@ namespace EncoderTool
         }
     }
 
-
-
     void EncPlex74165::tick()
     {
         // load current values to shift register
@@ -79,17 +84,19 @@ namespace EncoderTool
         digitalWriteFast(LD, HIGH);
 
         // first values are available directly after loading
-        if (encoders[0].update(digitalReadFast(A), digitalReadFast(B)) && callback != nullptr)
+        int delta = encoders[0].update(digitalReadFast(A), digitalReadFast(B));
+        if (delta != 0 && callback != nullptr)
         {
-            callback(0, encoders[0].getValue());
+            callback(0, encoders[0].getValue(), delta);
         }
         for (unsigned i = 1; i < encoderCount; i++) // shift in the the rest of the encoders
         {
             digitalWriteFast(CLK, HIGH);
             delay50ns();
-            if (encoders[i].update(digitalReadFast(A), digitalReadFast(B)) && callback != nullptr)
+            delta = encoders[i].update(digitalReadFast(A), digitalReadFast(B));
+            if (delta != 0 && callback != nullptr)
             {
-                callback(i, encoders[i].getValue());
+                callback(i, encoders[i].getValue(), delta);
             }
             digitalWriteFast(CLK, LOW);
             delay50ns();

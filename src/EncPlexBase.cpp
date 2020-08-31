@@ -2,11 +2,15 @@
 
 namespace EncoderTool
 {
-    EncPlexBase::EncPlexBase(unsigned eCnt, CountMode mode)
+    EncPlexBase::EncPlexBase(unsigned eCnt)
         : encoderCount(eCnt)
     {
         encoders = new EncoderBase[eCnt];
-        for (unsigned i = 0; i < eCnt; i++)
+    }
+
+    void EncPlexBase::begin(CountMode mode)
+    {
+        for (unsigned i = 0; i < encoderCount; i++)
         {
             encoders[i].setCountMode(mode);
         }
@@ -26,4 +30,4 @@ namespace EncoderTool
     {
         callback = _callback;
     }
-}
+} // namespace EncoderTool
