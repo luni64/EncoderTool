@@ -24,6 +24,6 @@ namespace EncoderTool
         using allCallback_t = void (*)(uint32_t nr, int32_t value);
     #else
         using encCallback_t = std::function<void(int32_t value, int32_t delta)>;
-        using allCallback_t = std::function<void(uint32_t channel, int32_t value)>;
+        using allCallback_t = std::function<void(uint32_t channel, int32_t value, int32_t delta)>;
     #endif
 }

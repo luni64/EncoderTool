@@ -24,7 +24,7 @@ namespace EncoderTool
         int32_t getValue() const { return value; }
         void setValue(int32_t val) { value = val; }
 
-        bool update(uint32_t phaseA, uint32_t phaseB);
+        int update(uint32_t phaseA, uint32_t phaseB);
 
      protected:
         int32_t value = 0;
