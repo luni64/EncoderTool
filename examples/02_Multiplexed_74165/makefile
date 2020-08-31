@@ -23,9 +23,9 @@ LIBS_SHARED      :=
 LIBS_LOCAL_BASE  := ../../../../lib
 LIBS_LOCAL       := EncoderTool
 
-CORE_BASE        := C:\PROGRA~1\Arduino\ARDUIN~1.9\hardware\teensy\avr\cores\teensy4
-GCC_BASE         := C:\PROGRA~1\Arduino\ARDUIN~1.9\hardware\tools\arm\bin
-UPL_PJRC_B       := C:\PROGRA~1\Arduino\ARDUIN~1.9\hardware\tools
+CORE_BASE        := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\teensy\avr\cores\teensy4
+GCC_BASE         := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\tools\arm\bin
+UPL_PJRC_B       := C:\PROGRA~1\Arduino\ARDUIN~1.12\hardware\tools
 UPL_TYCMD_B      := C:\toolchain\TyTools
 
 #******************************************************************************

@@ -11,7 +11,7 @@ constexpr unsigned pinLD = 3;  //load pin for all shift registers)
 constexpr unsigned pinCLK = 4; //clock pin for all shift registers
                                //74165 datasheet: http://www.ti.com/product/SN74HC165
 
-EncPlex74165 encoders(encoderCount, pinLD, pinCLK, QH_A, QH_B, CountMode::quarterInv);
+EncPlex74165 encoders(encoderCount, pinLD, pinCLK, QH_A, QH_B);
 
 void myCallback(int value, int delta)
 {
@@ -21,7 +21,7 @@ void myCallback(int value, int delta)
 void setup()
 {
     pinMode(13, OUTPUT);
-    encoders.begin();
+    encoders.begin(CountMode::quarterInv);
 
     encoders[0].attachCallback(myCallback); // standard callback
     encoders[1].attachCallback([](int v, int d) { digitalToggleFast(13); }); // a simple lambda expression to toggle the LED on every change

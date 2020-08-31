@@ -1,3 +1,10 @@
+/*------------------------------------------------------------------------------------
+
+  This example uses the hardware shown here
+  https://github.com/luni64/EncoderTool/tree/master/extras#multiplexing-with-74hc165
+
+------------------------------------------------------------------------------------ */
+
 #include "Arduino.h"
 #include "EncoderTool.h"
 using namespace EncoderTool;
@@ -10,12 +17,12 @@ constexpr unsigned pinLD  = 3; //load pin for all shift registers)
 constexpr unsigned pinCLK = 4; //clock pin for all shift registers
                                //74165 datasheet: http://www.ti.com/product/SN74HC165
 
-EncPlex74165 encoders(encoderCount, pinLD, pinCLK, QH_A, QH_B, CountMode::quarterInv);
+EncPlex74165 encoders(encoderCount, pinLD, pinCLK, QH_A, QH_B);
 
 
 void setup()
 {
-    encoders.begin();
+    encoders.begin(CountMode::quarterInv);
 }
 
 elapsedMillis stopwatch = 0;
