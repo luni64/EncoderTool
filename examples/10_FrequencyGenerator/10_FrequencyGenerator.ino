@@ -27,9 +27,6 @@ void setup()
 
 void loop()
 {
-    frequencyEncoder.tick();
-    chnSelectEncoder.tick();
-    dutyCycleEncoder.tick();
 }
 
 // Helpers ===================================================

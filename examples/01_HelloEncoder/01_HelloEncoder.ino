@@ -13,8 +13,6 @@ elapsedMillis stopwatch;
 
 void loop()
 {
-    encoder.tick();
-
     if (stopwatch > 50)
     {
         Serial.println(encoder.getValue());
