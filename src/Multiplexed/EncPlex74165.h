@@ -1,40 +1,39 @@
 #pragma once
 
-#include "../EncPlexBase.h"
 #include "../delay.h"
+#include "Bounce2.h"
+#include "EncPlexBase.h"
 #include "core_pins.h"
-#include <initializer_list>
 
 namespace EncoderTool
 {
     class EncPlex74165 : public EncPlexBase
     {
-    public:
-        inline EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB);
+     public:
+        inline EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB, unsigned pinBtn = UINT32_MAX);
         inline ~EncPlex74165();
 
-        inline void begin(CountMode mode = CountMode::quarter);                      // optional, call in setup if other code grabed the pins after construction
-        inline void begin(allCallback_t callback, CountMode m = CountMode::quarter); // optional, call in setup if other code grabed the pins after construction
-        inline void tick();                                                          // call as often as possible
+        inline void begin(CountMode mode = CountMode::quarter);
+        inline void begin(allCallback_t callback, CountMode m = CountMode::quarter);
+        inline void tick(); // call as often as possible
 
-    protected:
-        const unsigned A, B, LD, CLK;
+     protected:
+        const unsigned A, B, Btn, LD, CLK;
     };
 
     // IMPLEMENTATION ============================================
 
-    EncPlex74165::EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB)
-        : EncPlexBase(nrOfEncoders), A(pinA), B(pinB), LD(pinLD), CLK(pinCLK)
+    EncPlex74165::EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB, unsigned pinBtn)
+        : EncPlexBase(nrOfEncoders), A(pinA), B(pinB), Btn(pinBtn), LD(pinLD), CLK(pinCLK)
     {
-        // begin(); // usually calling begin from the constructor works... if not you can always call it in setup()
     }
 
     EncPlex74165::~EncPlex74165()
     {
-        pinMode(A, INPUT_DISABLE);
-        pinMode(B, INPUT_DISABLE);
-        pinMode(LD, INPUT_DISABLE);
-        pinMode(CLK, INPUT_DISABLE);
+        for (unsigned pin : {A, B, Btn, LD, CLK})
+        {
+            pinMode(pin, INPUT_DISABLE);
+        };
     }
 
     void EncPlex74165::begin(allCallback_t cb, CountMode mode)
@@ -46,10 +45,9 @@ namespace EncoderTool
     void EncPlex74165::begin(CountMode mode)
     {
         EncPlexBase::begin(mode);
-        pinMode(A, INPUT);
-        pinMode(B, INPUT);
-        pinMode(LD, OUTPUT);
-        pinMode(CLK, OUTPUT);
+
+        for (uint8_t pin : {A, B, Btn}) { pinMode(pin, INPUT); }
+        for (uint8_t pin : {LD, CLK}) { pinMode(pin, OUTPUT); }
 
         digitalWriteFast(LD, HIGH); // active low
         delayMicroseconds(1);
@@ -84,7 +82,13 @@ namespace EncoderTool
         digitalWriteFast(LD, HIGH);
 
         // first values are available directly after loading
-        int delta = encoders[0].update(digitalReadFast(A), digitalReadFast(B));
+
+        int a = digitalReadFast(A);
+        int b = digitalReadFast(B);
+        int btn = Btn != UINT32_MAX ? digitalReadFast(Btn) : LOW;
+
+        int delta = encoders[0].update(a, b, btn);
+
         if (delta != 0 && callback != nullptr)
         {
             callback(0, encoders[0].getValue(), delta);
@@ -93,7 +97,7 @@ namespace EncoderTool
         {
             digitalWriteFast(CLK, HIGH);
             delay50ns();
-            delta = encoders[i].update(digitalReadFast(A), digitalReadFast(B));
+            int delta = encoders[i].update(digitalReadFast(A), digitalReadFast(B), Btn != UINT32_MAX ? digitalReadFast(Btn) : LOW);
             if (delta != 0 && callback != nullptr)
             {
                 callback(i, encoders[i].getValue(), delta);

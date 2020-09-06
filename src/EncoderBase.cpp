@@ -1,47 +1,57 @@
 #include "EncoderBase.h"
+#include "Arduino.h"
 #include "core_pins.h"
 #include <algorithm>
 
-#include "Arduino.h"
-
 namespace EncoderTool
 {
-    EncoderBase &EncoderBase::setCountMode(CountMode mode)
+    EncoderBase& EncoderBase::setCountMode(CountMode mode)
     {
         switch (mode)
         {
-        case CountMode::quarter:
-            stateMachine = &stateMachineQtr;
-            invert = 0b11;
-            break;
-        case CountMode::quarterInv:
-            stateMachine = &stateMachineQtr;
-            invert = 0b00;
-            break;
-        case CountMode::half:
-            stateMachine = &stateMachineHalf;
-            invert = 0b00;
-            break;
-        case CountMode::halfAlt:
-            stateMachine = &stateMachineHalf;
-            invert = 0b01;
-            break;
-        default:
-            stateMachine = &stateMachineFull;
-            invert = 0b00;
+            case CountMode::quarter:
+                stateMachine = &stateMachineQtr;
+                invert = 0b11;
+                break;
+            case CountMode::quarterInv:
+                stateMachine = &stateMachineQtr;
+                invert = 0b00;
+                break;
+            case CountMode::half:
+                stateMachine = &stateMachineHalf;
+                invert = 0b00;
+                break;
+            case CountMode::halfAlt:
+                stateMachine = &stateMachineHalf;
+                invert = 0b01;
+                break;
+            default:
+                stateMachine = &stateMachineFull;
+                invert = 0b00;
         }
         return *this;
     }
 
-    EncoderBase &EncoderBase::setLimits(int32_t min, int32_t max, bool periodic)
+    EncoderBase& EncoderBase::attachCallback(encCallback_t cb)
+    {
+        callback = cb;
+        return *this;
+    }
+
+    EncoderBase& EncoderBase::attachButtonCallback(encBtnCallback_t cb)
+    {
+        btnCallback = cb;
+        return *this;
+    }
+
+    EncoderBase& EncoderBase::setLimits(int32_t min, int32_t max, bool periodic)
     {
         if (min < max)
         {
             this->minVal = min;
             this->maxVal = max;
             this->periodic = periodic;
-        }
-        else
+        } else
         {
             this->minVal = INT32_MIN;
             this->maxVal = INT32_MAX;
@@ -49,8 +59,7 @@ namespace EncoderTool
         return *this;
     }
 
-    enum states : uint8_t
-    {
+    enum states : uint8_t {
         A = 0x00,
         B_cw = 0x01,
         C_cw = 0x03,
@@ -69,29 +78,36 @@ namespace EncoderTool
         curState = (phaseA << 1 | phaseB) ^ invert;
     }
 
-    int EncoderBase::update(uint32_t phaseA, uint32_t phaseB)
+    int EncoderBase::update(uint32_t phaseA, uint32_t phaseB, uint32_t btn)
     {
-        unsigned input = (phaseA << 1 | phaseB) ^ invert; // invert signals if necessary
+        if (button.update(btn))
+        {
+            btnChanged = true;
+            if (btnCallback != nullptr) { btnCallback(button.read()); }
+        }
 
-        if(stateMachine == nullptr) return false; // tick might get called from yield before class is initialized
+        unsigned input = (phaseA << 1 | phaseB) ^ invert;   // invert signals if necessary
+        if (stateMachine == nullptr) return 0;              // tick might get called from yield before class is initialized
 
-        curState = (*stateMachine)[curState][input]; // get next state depending on new input
-
-        uint8_t direction = curState & 0xF0; // direction is set if we need to count up / down or got an error
-        curState &= 0x0F;                    // remove the direction info from state
+        curState = (*stateMachine)[curState][input];        // get next state depending on new input
+        uint8_t direction = curState & 0xF0;                // direction is set if we need to count up / down or got an error
+        curState &= 0x0F;                                   // remove the direction info from state
 
         if (direction == UP)
         {
-            if (value < maxVal) // maxVal = INT_MAX if no limits set
+            if (value < maxVal)     	                    // maxVal = INT_MAX if no limits set
             {
                 value++;
+                valChanged = true;
                 if (callback != nullptr)
                     callback(value, +1);
                 return +1;
             }
-            if (periodic) // if periodic, wrap to minVal, else stop counting
+            if (periodic)                                   // if periodic, wrap to minVal, else stop counting
             {
                 value = minVal;
+                valChanged = true;
+
                 if (callback != nullptr)
                     callback(value, +1);
                 return +1;
@@ -102,15 +118,17 @@ namespace EncoderTool
 
         if (direction == DOWN)
         {
-            if (value > minVal) // minVal = INT_MIN if no limits set
+            if (value > minVal)                             // minVal = INT_MIN if no limits set
             {
                 value--;
+                valChanged = true;
                 if (callback != nullptr)
                     callback(value, -1);
                 return -1;
             }
-            if (periodic) // if periodic, wrap to maxVal, else stop counting
+            if (periodic)                                   // if periodic, wrap to maxVal, else stop counting
             {
+                valChanged = true;
                 value = maxVal;
                 if (callback != nullptr)
                     callback(value, -1);
