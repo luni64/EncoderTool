@@ -1,6 +1,11 @@
 #pragma once
-#include <functional>
 
-extern void attachInterruptEx(unsigned pin, std::function<void(void)>, int mode);
+namespace EncoderTool
+{
+    class Encoder;
 
-// to detach the intterrupt, the standard detachInterrupt can be used
+    using state_t = Encoder*;             // we directly use an Encoder* as state variable to avoid casts from void* to Encoder* in the ISR
+    using cb_t = void (*)(state_t state); // callback type
+
+    void attachInterruptEx(unsigned pin, cb_t callback, state_t state, int mode);
+}

@@ -6,6 +6,9 @@
 namespace EncoderTool
 {
     // Simple encoder implementation which reads phase A and B from two digital pins
+    // It uses attachInterruptEx to attach callbacks with type void(*)(Encoder*).
+    // We don't use std::function<> here to reduce memory footprint for small MCUs like the T-LC
+
     class Encoder : public EncoderBase
     {
      public:
@@ -34,8 +37,8 @@ namespace EncoderTool
         pinMode(pinA, inputMode);
         pinMode(pinB, inputMode);
 
-        attachInterruptEx(pinA, [this] { update(digitalReadFast(pinA), digitalReadFast(pinB)); }, CHANGE);
-        attachInterruptEx(pinB, [this] { update(digitalReadFast(pinA), digitalReadFast(pinB)); }, CHANGE);
+        attachInterruptEx(pinA,[](Encoder* THIS){THIS->update(digitalReadFast(THIS->pinA), digitalReadFast(THIS->pinB));}, this, CHANGE);
+        attachInterruptEx(pinB,[](Encoder* THIS){THIS->update(digitalReadFast(THIS->pinA), digitalReadFast(THIS->pinB));}, this, CHANGE);
 
         setCountMode(countMode);
         EncoderBase::begin(digitalReadFast(pinA), digitalReadFast(pinB)); // set start state
@@ -46,5 +49,4 @@ namespace EncoderTool
         detachInterrupt(pinA);
         detachInterrupt(pinB);
     }
-
 } // namespace EncoderTool
