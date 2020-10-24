@@ -7,6 +7,7 @@ EncoderTool is a library to manage and read out rotary encoders with Teensy ARM 
 * A callback mechanism allows for easy event based menu systems. Callbacks use std::function and can call non static member functions.
 * Fully bounce free without additional hardware
 * Provides hard and cyclic count limits
+* Supports and debounces encoder push buttons. Callback for notification of button events available
 * Currently 74165 and 4067 based multiplexers are supported but the class structure allows for easy extension to any other multiplexer.
 * Schematics and Eagle files for multiplexed encoders available in the Extras folder
 
