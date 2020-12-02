@@ -20,15 +20,19 @@ void setup()
     encoders.begin();
 }
 
+elapsedMillis stopwatch;
+
 void loop()
 {
     encoders.tick();
-    for (unsigned i = 0; i < encoderCount; i++)
+  
+    if (stopwatch > 100)  // display encoder values every 100 ms
     {
-        Serial.printf("%d:\t%d\r\n", i, encoders[i].getValue());
-    }
-    Serial.println("-----------------------");
-
-    digitalWriteFast(LED_BUILTIN, !digitalReadFast(LED_BUILTIN));
-    delay(100);
+        for (unsigned i = 0; i < encoderCount; i++)
+        {
+            Serial.printf("E%u:%3d ", i, encoders[i].getValue());
+        }
+        Serial.println();
+        stopwatch = 0;
+    } 
 }
