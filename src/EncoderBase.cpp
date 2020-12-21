@@ -86,16 +86,16 @@ namespace EncoderTool
             if (btnCallback != nullptr) { btnCallback(button.read()); }
         }
 
-        unsigned input = (phaseA << 1 | phaseB) ^ invert;   // invert signals if necessary
-        if (stateMachine == nullptr) return 0;              // tick might get called from yield before class is initialized
+        unsigned input = (phaseA << 1 | phaseB) ^ invert; // invert signals if necessary
+        if (stateMachine == nullptr) return 0;            // tick might get called from yield before class is initialized
 
-        curState = (*stateMachine)[curState][input];        // get next state depending on new input
-        uint8_t direction = curState & 0xF0;                // direction is set if we need to count up / down or got an error
-        curState &= 0x0F;                                   // remove the direction info from state
+        curState = (*stateMachine)[curState][input]; // get next state depending on new input
+        uint8_t direction = curState & 0xF0;         // direction is set if we need to count up / down or got an error
+        curState &= 0x0F;                            // remove the direction info from state
 
         if (direction == UP)
         {
-            if (value < maxVal)     	                    // maxVal = INT_MAX if no limits set
+            if (value < maxVal) // maxVal = INT_MAX if no limits set
             {
                 value++;
                 valChanged = true;
@@ -103,7 +103,7 @@ namespace EncoderTool
                     callback(value, +1);
                 return +1;
             }
-            if (periodic)                                   // if periodic, wrap to minVal, else stop counting
+            if (periodic) // if periodic, wrap to minVal, else stop counting
             {
                 value = minVal;
                 valChanged = true;
@@ -118,7 +118,7 @@ namespace EncoderTool
 
         if (direction == DOWN)
         {
-            if (value > minVal)                             // minVal = INT_MIN if no limits set
+            if (value > minVal) // minVal = INT_MIN if no limits set
             {
                 value--;
                 valChanged = true;
@@ -126,7 +126,7 @@ namespace EncoderTool
                     callback(value, -1);
                 return -1;
             }
-            if (periodic)                                   // if periodic, wrap to maxVal, else stop counting
+            if (periodic) // if periodic, wrap to maxVal, else stop counting
             {
                 valChanged = true;
                 value = maxVal;
@@ -180,3 +180,17 @@ namespace EncoderTool
         /*3 C_cw*/ {C_cw | ERR, B_cw | DOWN, D_cw | UP, C_cw},
     };
 } // namespace EncoderTool
+
+
+// the linker currently (<=td1.54) does not always link in _write
+// this is a ugly workaround to fix it for T3.x boards
+// T4.x don't show the issue.
+
+#if defined(KINETISK)
+extern "C" {
+int _write(int handle, char* buf, int count)
+{
+    return 0;  // just ignore the call
+}
+#endif
+}
