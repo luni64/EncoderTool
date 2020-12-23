@@ -181,7 +181,6 @@ namespace EncoderTool
     };
 } // namespace EncoderTool
 
-
 // the linker currently (<=td1.54) does not always link in _write
 // this is a ugly workaround to fix it for T3.x boards
 // T4.x don't show the issue.
@@ -190,7 +189,7 @@ namespace EncoderTool
 extern "C" {
 int _write(int handle, char* buf, int count)
 {
-    return 0;  // just ignore the call
+    return 0; // just ignore the call
+}
 }
 #endif
-}
