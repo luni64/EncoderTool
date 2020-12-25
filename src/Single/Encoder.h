@@ -13,7 +13,7 @@ namespace EncoderTool
     {
      public:
         Encoder() = default;
-        ~Encoder();
+        inline ~Encoder();
 
         inline void begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
         inline void begin(int pinA, int pinB, encCallback_t cb, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
