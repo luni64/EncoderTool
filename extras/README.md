@@ -47,6 +47,9 @@ The controller will use the common clock and load signals to read in the encoder
 
 The board can be daisy chained if you need more than 8 encoders.
 
+### Please note:
+The 74HC165 shifts the encoders in from H to A. Thus, if you have less than 8 encoders connect them to H,G...  instead of A,B...
+
 
 
 ![schematic](Boards/MPX_74165/Schematic_part.jpg)
