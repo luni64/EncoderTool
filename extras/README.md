@@ -90,3 +90,15 @@ If you use the breakout boards they can be assembled in the very compact way sho
 )
 
 Extending the assembly to a third board to connect the encoder pushbuttons is straight forward.
+
+## <a name='MultiplexerwithCD74HC4051'></a>Multiplexing with CD4051
+
+The [CD4051](http://www.ti.com/product/CD4051B) is an 8 channel analog/digital multiplexer, available in through-hole and SMD packages. Depending on the channel address which has to be supplied at the pins S0-S2, the multiplexer connects one of the 8 inputs to the common output.
+
+To multiplex rotary encoders we use two of the chips, one for the encoder phases A and one for phases B. If you want to use additional pushbuttons you can connect them to an additional multiplexer.
+
+The recommended through-hole component is the CD74HC4051. There's an older CD4051B available, but it is too slow to accurately read multiple encoders without significantly slowing down the scanning speed.
+
+The schematic below shows how to connect your encoders and multiplexers ([full PDF](Boards/MPX_4051/MPX_4051_Schematic.pdf)). 3.3V from the Teensy is used to supply VCC.
+
+![Schematic](Boards/MPX_4051/Schematic_part.png)
