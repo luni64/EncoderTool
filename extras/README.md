@@ -6,8 +6,9 @@ This folder contains proposals and information how to use a 74HC165 shift regist
 
 <!-- vscode-markdown-toc -->
 * [Encoder Board](#EncoderBoard)
-* [Multiplexer with 74HC165](#Multiplexerwith74HC165)
-* [Multiplexer with CD74HC4067](#MultiplexerwithCD74HC4067)
+* [Multiplexing with 74HC165](#Multiplexerwith74HC165)
+* [Multiplexing with CD74HC4067](#MultiplexerwithCD74HC4067)
+* [Multiplexing with CD74HC4051](#MultiplexerwithCD74HC4051)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
