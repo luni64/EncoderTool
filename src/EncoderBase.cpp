@@ -187,9 +187,10 @@ namespace EncoderTool
 
 #if defined(KINETISK)
 extern "C" {
-int _write(int handle, char* buf, int count)
+int _write(int file, char* ptr, int len)
 {
-    return 0; // just ignore the call
+    ((class Print*)file)->write((uint8_t*)ptr, len);
+    return len;
 }
 }
 #endif
