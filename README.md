@@ -1,15 +1,49 @@
-# EncoderTool
-EncoderTool is a library to manage and read out rotary encoders with Teensy ARM boards.
 
-## Key features
-* Supports directly connected and multiplexed encoders
-* Supports all common types of encoders, i.e., **full** (no detents, 4 counts per period), **half** (two detents and two counts per period)  and **quarter** (1 detent and one count per period) and some variants of those. 
-* A callback mechanism allows for easy event based menu systems. Callbacks use std::function and can call non static member functions.
-* Fully bounce free without additional hardware
-* Provides hard and cyclic count limits
-* Supports and debounces encoder push buttons. Callback for notification of button events available
-* Currently 74165, 4067 and 4051 based multiplexers are supported but the class structure allows for easy extension to any other multiplexer.
-* Schematics and Eagle files for multiplexed encoders available in the Extras folder
+# EncoderTool
+
+*Rotary Encoder + Teensy ARM readout / management library*
+
+<br>
+
+## Supports
+
+- Direct / Multiplexed Encoders
+
+- All Common Encoders:
+
+    | Type | Detents | Counts per Period
+    |:----:|:-------:|:----------------:
+    | ***Full***    | ` 0 ` | ` 4 `
+    | ***Half***    | ` 2 ` | ` 2 `
+    | ***Quarter*** | ` 1 ` | ` 1 `
+    
+    *+ Some variants of those*
+
+- Encoder Push Buttons
+
+    *Auto-debounces & makes callbacks available*
+    
+- Mutliplexed Encoders:
+
+    - `74165`
+    
+    - `4067`
+    
+    - `4051`
+
+<br>
+
+## Features
+
+- Class structure allows for easy extension of other multiplexer
+
+- Schematics and Eagle files available for multiplexed encoders
+
+- Fully bounce free without additional hardware
+
+- Provides hard and cyclic count limits
+
+
 
 ### -> [Documentation](https://github.com/luni64/EncoderTool/wiki)
 
