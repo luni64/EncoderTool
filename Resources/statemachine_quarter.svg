@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="statemachine_quarter.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename=".\statemachine_quarter.png"
+   inkscape:export-xdpi="400"
+   inkscape:export-ydpi="400">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker20307"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path20305" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker19055"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path19053"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker18829"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path18827"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker17857"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path17855" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker17643"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path17641" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker17211"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path17209"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker17009"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path17007"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker16145"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path16143" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker13163"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#ff0000;stroke-width:1pt;stroke-opacity:0.96078431;fill:#ff0000;fill-opacity:0.96078431"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path13161" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker12931"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path12929"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker12139"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path12137"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker11917"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path11915" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker11623"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path11621" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker11077"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path11075" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker10923"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path10921" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker10361"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path10359"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9989"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path9987" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9847"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path9845"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker9711"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path9709" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9575"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path9573"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9439"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path9437" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9321"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path9319"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9209"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path9207"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker7529"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path7527" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7423"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path7421" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7305"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path7303"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7205"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mstart"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path7203" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker7129"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path7127"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker7059"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill-rule:evenodd;stroke:#0000fc;stroke-width:1pt;stroke-opacity:1;fill:#0000fc;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path7057" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mstart"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path891"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path894"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#006c00;stroke-width:1pt;stroke-opacity:0.977591;fill:#006c00;fill-opacity:0.977591"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker2463"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#f80000;stroke-width:1pt;stroke-opacity:1;fill:#f80000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path2461" />
+    </marker>
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect2459"
+       effect="bspline" />
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible;"
+       id="marker2317"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path2315" />
+    </marker>
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect2313"
+       effect="bspline" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1957"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path1955"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect1953"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       only_selected="false"
+       apply_with_weight="true"
+       apply_no_weight="true"
+       helper_size="0"
+       steps="2"
+       weight="33.333333"
+       is_visible="true"
+       id="path-effect1179"
+       effect="bspline" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect883"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7071068"
+     inkscape:cx="925.4751"
+     inkscape:cy="791.38573"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     gridtolerance="10000"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-global="true"
+     inkscape:object-paths="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:snap-center="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3154"
+       units="mm"
+       spacingx="2.5"
+       spacingy="2.5"
+       dotted="false"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,0,0)"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-start:url(#marker7305)"
+       id="path9125"
+       sodipodi:type="arc"
+       sodipodi:cx="131.21355"
+       sodipodi:cy="16.720617"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 120.90138,-3.2771121 a 22.5,22.5 0 0 1 20.76643,0.073914"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <ellipse
+       ry="4.8790574"
+       rx="4.8790617"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="ellipse6910"
+       cx="60.587734"
+       cy="176.38429"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <ellipse
+       cy="176.38429"
+       cx="30.587736"
+       id="ellipse6894"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       rx="4.8790617"
+       ry="4.8790574"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <ellipse
+       ry="4.8790574"
+       rx="4.8790617"
+       style="fill:#87aade;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path3069"
+       cx="30.587736"
+       cy="146.38429"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="125.17221"
+       y="82.330833"
+       id="text867"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         x="125.17221"
+         y="82.330833"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.26458332"
+         id="tspan3057">A<tspan
+   style="font-size:3.52777767px;line-height:0.60000002;fill:#000000"
+   id="tspan3059" /></tspan><tspan
+         sodipodi:role="line"
+         x="126.04037"
+         y="85.294167"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.26458332"
+         id="tspan3063"><tspan
+   style="font-size:2.82222223px;line-height:0.60000002;fill:#000000"
+   id="tspan3065">00</tspan> </tspan></text>
+    <ellipse
+       cy="146.38429"
+       cx="60.587734"
+       id="ellipse6878"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       rx="4.8790617"
+       ry="4.8790574"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="22.649406"
+       y="36.039188"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         x="22.649406"
+         y="36.039188"
+         style="stroke-width:0.26458332">0 0</tspan><tspan
+         sodipodi:role="line"
+         x="22.649406"
+         y="42.212799"
+         style="stroke-width:0.26458332"
+         id="tspan14">0 1</tspan><tspan
+         sodipodi:role="line"
+         x="22.649406"
+         y="48.38641"
+         style="stroke-width:0.26458332"
+         id="tspan16">1 1</tspan><tspan
+         sodipodi:role="line"
+         x="22.649406"
+         y="54.56002"
+         style="stroke-width:0.26458332"
+         id="tspan18">1 0</tspan><tspan
+         sodipodi:role="line"
+         x="22.649406"
+         y="60.733635"
+         style="stroke-width:0.26458332"
+         id="tspan20" /></text>
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect22"
+       width="12.473214"
+       height="6.8035712"
+       x="18.680655"
+       y="30.369549" />
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.29761162;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect831"
+       width="13.433467"
+       height="6.3740463"
+       x="20.017044"
+       y="30.970238" />
+    <rect
+       y="43.064182"
+       x="20.017044"
+       height="6.3740463"
+       width="13.433467"
+       id="rect833"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.29761162;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <rect
+       y="30.369549"
+       x="57.702007"
+       height="6.8035712"
+       width="12.473214"
+       id="rect851"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       id="text6892"
+       y="103.2884"
+       x="145.84627"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         id="tspan6886"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="103.2884"
+         x="145.84627"
+         sodipodi:role="line">D</tspan><tspan
+         id="tspan6890"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="106.25173"
+         x="146.71443"
+         sodipodi:role="line"><tspan
+   id="tspan6888"
+   style="font-size:2.82222223px;line-height:0.60000002">10</tspan> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="166.89706"
+       y="82.017281"
+       id="text6908"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         x="166.89706"
+         y="82.017281"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan6902">C</tspan><tspan
+         sodipodi:role="line"
+         x="167.76523"
+         y="84.980614"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan6906"><tspan
+   style="font-size:2.82222223px;line-height:0.60000002"
+   id="tspan6904">11</tspan> </tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker11623)"
+       id="path6929"
+       sodipodi:type="arc"
+       sodipodi:cx="45.516491"
+       sodipodi:cy="162.57297"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 35.204323,142.57524 a 22.5,22.5 0 0 1 20.766429,0.0739"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       d="m 35.204323,-150.19333 a 22.5,22.5 0 0 1 20.766429,0.0739"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="-130.1956"
+       sodipodi:cx="45.516491"
+       sodipodi:type="arc"
+       id="path6931"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-start:url(#Arrow1Mstart)"
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       d="m 151.00088,-64.396773 a 22.5,22.5 0 0 1 20.76643,0.07391"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="-44.399044"
+       sodipodi:cx="161.31305"
+       sodipodi:type="arc"
+       id="path6933"
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker7059)"
+       transform="rotate(45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,0,0)"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-start:url(#marker7423)"
+       id="path6937"
+       sodipodi:type="arc"
+       sodipodi:cx="161.31305"
+       sodipodi:cy="76.776428"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 151.00088,56.778699 a 22.5,22.5 0 0 1 20.76643,0.07391"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       d="m 151.00088,26.778695 a 22.5,22.5 0 0 1 20.76643,0.07391"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="46.776424"
+       sodipodi:cx="161.31305"
+       sodipodi:type="arc"
+       id="path6939"
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker11917)"
+       transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,0,0)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       d="m 35.204323,172.57524 a 22.5,22.5 0 0 1 20.766429,0.0739"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="192.57297"
+       sodipodi:cx="45.516491"
+       sodipodi:type="arc"
+       id="path6941"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-end:url(#marker7129)"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker7205)"
+       id="path6943"
+       sodipodi:type="arc"
+       sodipodi:cx="45.516491"
+       sodipodi:cy="-160.1956"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 35.204323,-180.19333 a 22.5,22.5 0 0 1 20.766429,0.0739"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7729"
+       width="6.5657153"
+       height="7.4620981"
+       x="42.422985"
+       y="148.85394"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <rect
+       y="136.19174"
+       x="42.234005"
+       height="7.4620981"
+       width="6.5657153"
+       id="rect7751"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text7759"
+       y="68.018364"
+       x="131.26649"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;stroke-width:0.26458332;fill:#0000fc;fill-opacity:1;"
+         y="68.018364"
+         x="131.26649"
+         sodipodi:role="line"
+         id="tspan7755">01</tspan><tspan
+         style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;stroke-width:0.26458332;fill:#0000fc;fill-opacity:1;"
+         y="71.475578"
+         x="131.26649"
+         sodipodi:role="line"
+         id="tspan7757" /></text>
+    <g
+       transform="rotate(-45,143.78361,93.425056)"
+       id="g7800"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401">
+      <rect
+         y="83.268951"
+         x="171.71715"
+         height="7.4620981"
+         width="6.5657153"
+         id="rect7763"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g7867"
+       transform="rotate(-45,149.8076,107.96827)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect7802"
+         width="6.5657153"
+         height="7.4620981"
+         x="171.71715"
+         y="83.268951" />
+    </g>
+    <g
+       transform="translate(-44.161678,9.6291247)"
+       id="g7891"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect7881"
+         width="6.5657153"
+         height="7.4620981"
+         x="171.71715"
+         y="83.268951" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+         x="174.92076"
+         y="85.898155"
+         id="text7889"><tspan
+           sodipodi:role="line"
+           id="tspan7883"
+           x="174.92076"
+           y="85.898155"
+           style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;stroke-width:0.26458332;fill:#0000fc;fill-opacity:1;">00</tspan><tspan
+           id="tspan7885"
+           sodipodi:role="line"
+           x="174.92076"
+           y="89.355377"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.69999999;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#0000fc;stroke-width:0.26458332;fill-opacity:1;">val++</tspan><tspan
+           id="tspan7887"
+           sodipodi:role="line"
+           x="174.92076"
+           y="92.812599"
+           style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;stroke-width:0.26458332;fill:#0000fc;fill-opacity:1;" /></text>
+    </g>
+    <rect
+       y="166.1936"
+       x="42.422985"
+       height="7.4620981"
+       width="6.5657153"
+       id="rect7893"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7905"
+       width="6.5657153"
+       height="7.4620981"
+       x="42.422985"
+       y="178.76131"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text7705"
+       y="76.964439"
+       x="150.26508"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:3.52777767px;stroke-width:0.26458332;fill:#006b00;fill-opacity:0.98039216;"
+         y="76.964439"
+         x="150.26508"
+         id="tspan7703"
+         sodipodi:role="line">01</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="159.07445"
+       y="68.007278"
+       id="text8154"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan8152"
+         x="159.07445"
+         y="68.007278"
+         style="font-size:3.52777767px;stroke-width:0.26458332;fill:#0000fc;fill-opacity:1;">11</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;"
+       x="150.18773"
+       y="89.054771"
+       id="text8198"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan8196"
+         x="150.18773"
+         y="89.054771"
+         style="font-size:3.52777767px;stroke-width:0.26458332;fill:#006b00;fill-opacity:0.98039216;">11</tspan></text>
+    <text
+       id="text8204"
+       y="97.939941"
+       x="159.11508"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:3.52777767px;stroke-width:0.26458332;fill:#0000fc;fill-opacity:1;"
+         y="97.939941"
+         x="159.11508"
+         id="tspan8202"
+         sodipodi:role="line">10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;"
+       x="137.79851"
+       y="76.767616"
+       id="text9071"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan9069"
+         x="137.79851"
+         y="76.767616"
+         style="font-size:3.52777767px;stroke-width:0.26458332;fill:#006b00;fill-opacity:0.98039216;">00</tspan></text>
+    <ellipse
+       ry="4.8790574"
+       rx="4.8790617"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="ellipse9075"
+       cx="0.53192657"
+       cy="146.28479"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <ellipse
+       cy="116.28479"
+       cx="0.53192657"
+       id="ellipse9077"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       rx="4.8790617"
+       ry="4.8790574"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text9087"
+       y="82.017067"
+       x="81.607864"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         id="tspan9081"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.26458332"
+         y="82.017067"
+         x="81.607864"
+         sodipodi:role="line">C</tspan><tspan
+         id="tspan9085"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.26458332"
+         y="84.9804"
+         x="82.476028"
+         sodipodi:role="line"><tspan
+   id="tspan9083"
+   style="font-size:2.82222223px;line-height:0.60000002;fill:#000000">11</tspan> </tspan></text>
+    <ellipse
+       ry="4.8790574"
+       rx="4.8790617"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#000000;stroke-width:0.24188145;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="ellipse9089"
+       cx="30.531927"
+       cy="116.28479"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="103.07623"
+       y="60.867668"
+       id="text9097"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         x="103.07623"
+         y="60.867668"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9091">B</tspan><tspan
+         sodipodi:role="line"
+         x="103.9444"
+         y="63.831001"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9095"><tspan
+   style="font-size:2.82222223px;line-height:0.60000002"
+   id="tspan9093">01</tspan> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="102.85329"
+       y="103.30457"
+       id="text9105"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         x="102.85329"
+         y="103.30457"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9099">D</tspan><tspan
+         sodipodi:role="line"
+         x="103.72145"
+         y="106.26791"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan9103"><tspan
+   style="font-size:2.82222223px;line-height:0.60000002"
+   id="tspan9101">10</tspan> </tspan></text>
+    <path
+       d="m 5.1485297,112.47574 a 22.5,22.5 0 0 1 20.7664293,0.0739"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="132.47346"
+       sodipodi:cx="15.460698"
+       sodipodi:type="arc"
+       id="path9115"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-end:url(#Arrow1Mend)"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker9989)"
+       id="path9117"
+       sodipodi:type="arc"
+       sodipodi:cx="15.460698"
+       sodipodi:cy="-100.09611"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 5.1485297,-120.09384 a 22.5,22.5 0 0 1 20.7664293,0.0739"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       d="m 120.90138,-4.340973 a 22.5,22.5 0 0 1 20.76643,0.073914"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="15.656756"
+       sodipodi:cx="131.21355"
+       sodipodi:type="arc"
+       id="path9121"
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker7529)"
+       transform="rotate(45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#0000fc;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker9711)"
+       id="path9127"
+       sodipodi:type="arc"
+       sodipodi:cx="15.460698"
+       sodipodi:cy="162.47346"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 5.1485297,142.47574 a 22.5,22.5 0 0 1 20.7664293,0.0739"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <rect
+       y="118.75445"
+       x="12.367162"
+       height="7.4620981"
+       width="6.5657153"
+       id="rect9131"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9135"
+       width="6.5657153"
+       height="7.4620981"
+       x="12.178182"
+       y="106.09225"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;"
+       x="88.833931"
+       y="68.03038"
+       id="text9143"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         id="tspan9141"
+         sodipodi:role="line"
+         x="88.833931"
+         y="68.03038"
+         style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke-width:0.26458332;">01</tspan></text>
+    <g
+       transform="rotate(-45,128.5022,159.29859)"
+       id="g9153"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401">
+      <rect
+         y="83.268951"
+         x="171.71715"
+         height="7.4620981"
+         width="6.5657153"
+         id="rect9151"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       transform="rotate(-45,137.38464,180.7427)"
+       id="g9157"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect9155"
+         width="6.5657153"
+         height="7.4620981"
+         x="171.71715"
+         y="83.268951" />
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9171"
+       width="6.5657153"
+       height="7.4620981"
+       x="12.367162"
+       y="136.0941"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text9189"
+       y="89.057678"
+       x="107.66979"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:3.52777767px;fill:#0000fc;fill-opacity:1;stroke-width:0.26458332"
+         y="89.057678"
+         x="107.66979"
+         id="tspan9187"
+         sodipodi:role="line">00</tspan></text>
+    <text
+       id="text9205"
+       y="123.58533"
+       x="13.347844"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:3.52777767px;fill:#0000fc;fill-opacity:1;stroke-width:0.26458332"
+         y="123.58533"
+         x="13.347844"
+         id="tspan9203"
+         sodipodi:role="line">11</tspan></text>
+    <path
+       d="m 5.1485297,-149.80791 a 22.5,22.5 0 0 1 20.7664293,0.0739"
+       sodipodi:open="true"
+       sodipodi:end="5.19561"
+       sodipodi:start="4.2362865"
+       sodipodi:ry="22.5"
+       sodipodi:rx="22.5"
+       sodipodi:cy="-129.81018"
+       sodipodi:cx="15.460698"
+       sodipodi:type="arc"
+       id="path10351"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-start:url(#marker10361)"
+       transform="matrix(0.70710678,-0.70710678,-0.70710678,-0.70710678,0,0)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect10353"
+       width="6.5657153"
+       height="7.4620981"
+       x="12.367162"
+       y="148.46851"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;"
+       x="116.22882"
+       y="97.645584"
+       id="text10357"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan10355"
+         x="116.22882"
+         y="97.645584"
+         style="font-size:3.52777767px;fill:#006b00;fill-opacity:0.98039216;stroke-width:0.26458332;">10</tspan></text>
+    <path
+       transform="rotate(45)"
+       style="fill:none;fill-opacity:1;stroke:#006c00;stroke-width:0.26499999;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.97759098;marker-end:url(#marker12139)"
+       id="path12123"
+       sodipodi:type="arc"
+       sodipodi:cx="130.88463"
+       sodipodi:cy="-15.245687"
+       sodipodi:rx="22.5"
+       sodipodi:ry="22.5"
+       sodipodi:start="4.2362865"
+       sodipodi:end="5.19561"
+       sodipodi:open="true"
+       d="m 120.57246,-35.243416 a 22.5,22.5 0 0 1 20.76643,0.07391"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <g
+       id="g12127"
+       transform="rotate(-45,121.62991,143.83045)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect12125"
+         width="6.5657153"
+         height="7.4620981"
+         x="171.71715"
+         y="83.268951" />
+    </g>
+    <text
+       id="text12131"
+       y="65.01236"
+       x="119.63461"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;stroke-opacity:1;"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;stroke-opacity:1;"
+         y="65.01236"
+         x="119.63461"
+         id="tspan12129"
+         sodipodi:role="line">00</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222223px;line-height:0.69999999;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;stroke-opacity:1;"
+         y="68.469582"
+         x="119.63461"
+         sodipodi:role="line"
+         id="tspan12899">val--</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="129.8905"
+       y="67.758835"
+       id="text12135"><tspan
+         sodipodi:role="line"
+         id="tspan12133"
+         x="129.8905"
+         y="72.264732"
+         style="font-size:3.52777767px;stroke-width:0.26458332" /></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.30290172;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9159"
+       width="6.5657153"
+       height="7.4620981"
+       x="-9.0829649"
+       y="127.47625"
+       transform="rotate(-45)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke:none;stroke-width:0.26458332;"
+       x="88.703842"
+       y="98.057755"
+       id="text9167"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         id="tspan9163"
+         sodipodi:role="line"
+         x="88.703842"
+         y="98.057755"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;line-height:0.69999999;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke-width:0.26458332;">11</tspan><tspan
+         id="tspan9165"
+         sodipodi:role="line"
+         x="88.703842"
+         y="101.51497"
+         style="font-size:3.52777767px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#006b00;fill-opacity:0.98039216;stroke-width:0.26458332;" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000fc;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="95.009796"
+       y="89.36869"
+       id="text13109"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan13107"
+         x="95.009796"
+         y="89.36869"
+         style="font-size:3.52777767px;fill:#0000fc;fill-opacity:1;stroke-width:0.26458332">10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2148736"
+       x="-84.405792"
+       y="85.31131"
+       id="text13119"
+       transform="rotate(-90)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan13117"
+         x="-84.405792"
+         y="85.31131"
+         style="font-size:2.82222223px;stroke-width:0.2148736">ccw</tspan></text>
+    <text
+       transform="rotate(-90)"
+       id="text13127"
+       y="106.64153"
+       x="-105.59892"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2148736"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:2.82222223px;stroke-width:0.2148736"
+         y="106.64153"
+         x="-105.59892"
+         id="tspan13125"
+         sodipodi:role="line">ccw</tspan></text>
+    <text
+       transform="rotate(-90)"
+       id="text13131"
+       y="106.61771"
+       x="-63.074417"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2148736"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:2.82222223px;stroke-width:0.2148736"
+         y="106.61771"
+         x="-63.074417"
+         id="tspan13129"
+         sodipodi:role="line">ccw</tspan></text>
+    <text
+       id="text13139"
+       y="60.797504"
+       x="145.71547"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:0.60000002;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         id="tspan13133"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="60.797504"
+         x="145.71547"
+         sodipodi:role="line">B</tspan><tspan
+         id="tspan13137"
+         style="line-height:0.60000002;text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         y="63.760838"
+         x="146.58363"
+         sodipodi:role="line"><tspan
+   id="tspan13135"
+   style="font-size:2.82222223px;line-height:0.60000002">01</tspan> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2148736"
+       x="-62.475086"
+       y="149.25694"
+       id="text13143"
+       transform="rotate(-90)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan13141"
+         x="-62.475086"
+         y="149.25694"
+         style="font-size:2.82222223px;stroke-width:0.2148736">cw</tspan></text>
+    <text
+       transform="rotate(-90)"
+       id="text13147"
+       y="170.63786"
+       x="-83.612099"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2148736"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:2.82222223px;stroke-width:0.2148736"
+         y="170.63786"
+         x="-83.612099"
+         id="tspan13145"
+         sodipodi:role="line">cw</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2148736"
+       x="-104.92587"
+       y="149.44179"
+       id="text13151"
+       transform="rotate(-90)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan13149"
+         x="-104.92587"
+         y="149.44179"
+         style="font-size:2.82222223px;stroke-width:0.2148736">cw</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.13929217;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96078431;marker-start:;marker-end:url(#marker13163)"
+       id="path13153"
+       sodipodi:type="arc"
+       sodipodi:cx="146.25389"
+       sodipodi:cy="53.487736"
+       sodipodi:rx="3.0828652"
+       sodipodi:ry="3.0828652"
+       sodipodi:start="2.6179939"
+       sodipodi:end="0.52359878"
+       d="m 143.58405,55.029168 a 3.0828652,3.0828652 0 0 1 0.68821,-3.903044 3.0828652,3.0828652 0 0 1 3.96326,0 3.0828652,3.0828652 0 0 1 0.68821,3.903044"
+       sodipodi:open="true"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text15067"
+       y="47.791317"
+       x="146.0916"
+       style="font-style:normal;font-weight:normal;font-size:2.86645198px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke:none;stroke-width:0.15355992"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:2.0474658px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.15355992"
+         y="47.791317"
+         x="146.0916"
+         id="tspan15065"
+         sodipodi:role="line">10</tspan><tspan
+         style="font-size:1.63797271px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.15355992"
+         y="49.797832"
+         x="146.0916"
+         sodipodi:role="line"
+         id="tspan15069">ERR</tspan></text>
+    <path
+       sodipodi:open="true"
+       d="m 79.11386,-173.33369 a 3.3326271,3.3326271 0 0 1 0.743969,-4.21925 3.3326271,3.3326271 0 0 1 4.284342,0 3.3326271,3.3326271 0 0 1 0.743969,4.21925"
+       sodipodi:end="0.52359878"
+       sodipodi:start="2.6179939"
+       sodipodi:ry="3.3326271"
+       sodipodi:rx="3.3326271"
+       sodipodi:cy="-175"
+       sodipodi:cx="82"
+       sodipodi:type="arc"
+       id="path15203"
+       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.15057707;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96078431;marker-start:;marker-end:url(#marker20307)"
+       transform="rotate(90)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.09868073px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke:none;stroke-width:0.16600075"
+       x="180.43924"
+       y="81.736282"
+       id="text15209"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan15205"
+         x="180.43924"
+         y="81.736282"
+         style="font-size:2.21334338px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.16600075">00</tspan><tspan
+         id="tspan15207"
+         sodipodi:role="line"
+         x="180.43924"
+         y="83.905357"
+         style="font-size:1.77067482px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.16600075">ERR</tspan></text>
+    <path
+       transform="scale(-1)"
+       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.1649853;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96078431;marker-start:;marker-end:url(#marker16145)"
+       id="path15945"
+       sodipodi:type="arc"
+       sodipodi:cx="-146.43352"
+       sodipodi:cy="-110.76626"
+       sodipodi:rx="3.6515152"
+       sodipodi:ry="3.6515152"
+       sodipodi:start="2.6179939"
+       sodipodi:end="0.52359878"
+       d="m -149.59582,-108.9405 a 3.6515152,3.6515152 0 0 1 0.81515,-4.62298 3.6515152,3.6515152 0 0 1 4.6943,0 3.6515152,3.6515152 0 0 1 0.81516,4.62298"
+       sodipodi:open="true"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text15951"
+       y="116.8279"
+       x="103.29559"
+       style="font-style:normal;font-weight:normal;font-size:3.39518332px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke:none;stroke-width:0.18188483"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:2.42513108px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.18188483"
+         y="116.8279"
+         x="103.29559"
+         id="tspan15947"
+         sodipodi:role="line">01</tspan><tspan
+         style="font-size:1.94010484px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.18188483"
+         y="119.20453"
+         x="103.29559"
+         sodipodi:role="line"
+         id="tspan15949">ERR</tspan></text>
+    <path
+       sodipodi:open="true"
+       d="m 100.82889,55.029168 a 3.0828652,3.0828652 0 0 1 0.68822,-3.903044 3.0828652,3.0828652 0 0 1 3.96325,0 3.0828652,3.0828652 0 0 1 0.68821,3.903044"
+       sodipodi:end="0.52359878"
+       sodipodi:start="2.6179939"
+       sodipodi:ry="3.0828652"
+       sodipodi:rx="3.0828652"
+       sodipodi:cy="53.487736"
+       sodipodi:cx="103.49873"
+       sodipodi:type="arc"
+       id="path16999"
+       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.13929217;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96078431;marker-start:;marker-end:url(#marker17211)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.86645198px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke:none;stroke-width:0.15355992"
+       x="103.33643"
+       y="47.791317"
+       id="text17005"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan17001"
+         x="103.33643"
+         y="47.791317"
+         style="font-size:2.0474658px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.15355992">10</tspan><tspan
+         id="tspan17003"
+         sodipodi:role="line"
+         x="103.33643"
+         y="49.797832"
+         style="font-size:1.63797271px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.15355992">ERR</tspan></text>
+    <path
+       transform="matrix(0,1,1,0,0,0)"
+       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.151;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96078431;marker-start:url(#marker17643);marker-end:"
+       id="path17633"
+       sodipodi:type="arc"
+       sodipodi:cx="82.076881"
+       sodipodi:cy="75.337593"
+       sodipodi:rx="3.3326271"
+       sodipodi:ry="3.3326271"
+       sodipodi:start="2.6179939"
+       sodipodi:end="0.52359878"
+       d="m 79.190742,77.003907 a 3.3326271,3.3326271 0 0 1 0.743968,-4.219254 3.3326271,3.3326271 0 0 1 4.284343,0 3.3326271,3.3326271 0 0 1 0.743968,4.219254"
+       sodipodi:open="true"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       id="text17639"
+       y="81.736282"
+       x="69.976227"
+       style="font-style:normal;font-weight:normal;font-size:3.09868073px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke:none;stroke-width:0.16600075"
+       xml:space="preserve"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         style="font-size:2.21334338px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.16600075"
+         y="81.736282"
+         x="69.976227"
+         id="tspan17635"
+         sodipodi:role="line">00</tspan><tspan
+         style="font-size:1.77067482px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.16600075"
+         y="83.905357"
+         x="69.976227"
+         sodipodi:role="line"
+         id="tspan17637">ERR</tspan></text>
+    <path
+       sodipodi:open="true"
+       d="m -106.99483,-108.9405 a 3.6515152,3.6515152 0 0 1 0.81515,-4.62298 3.6515152,3.6515152 0 0 1 4.6943,0 3.6515152,3.6515152 0 0 1 0.81516,4.62298"
+       sodipodi:end="0.52359878"
+       sodipodi:start="2.6179939"
+       sodipodi:ry="3.6515152"
+       sodipodi:rx="3.6515152"
+       sodipodi:cy="-110.76626"
+       sodipodi:cx="-103.83253"
+       sodipodi:type="arc"
+       id="path18819"
+       style="fill:none;fill-opacity:1;stroke:#ff0000;stroke-width:0.1649853;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96078431;marker-start:;marker-end:url(#marker19055)"
+       transform="scale(-1)"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.39518332px;line-height:0.69999999;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke:none;stroke-width:0.18188483"
+       x="146.22087"
+       y="116.8279"
+       id="text18825"
+       inkscape:export-filename="./statemachine_quarter.png"
+       inkscape:export-xdpi="249.90401"
+       inkscape:export-ydpi="249.90401"><tspan
+         sodipodi:role="line"
+         id="tspan18821"
+         x="146.22087"
+         y="116.8279"
+         style="font-size:2.42513108px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.18188483">01</tspan><tspan
+         id="tspan18823"
+         sodipodi:role="line"
+         x="146.22087"
+         y="119.20453"
+         style="font-size:1.94010484px;line-height:0.69999999;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:0.96078431;stroke-width:0.18188483">ERR</tspan></text>
+  </g>
+</svg>
