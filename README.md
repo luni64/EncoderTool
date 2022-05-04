@@ -5,6 +5,28 @@
 
 <br>
 
+---
+
+[<kbd> <br> Examples <br> </kbd>][Examples]
+[<kbd> <br> Schematics <br> </kbd>][Schematics]
+[<kbd> <br> Documentation <br> </kbd>][Documentation]
+
+---
+
+<br>
+
+## Features
+
+- Class structure allows for easy extension of other multiplexer
+
+- Schematics and Eagle files available for multiplexed encoders
+
+- Fully bounce free without additional hardware
+
+- Provides hard and cyclic count limits
+
+<br>
+
 ## Supports
 
 - Direct / Multiplexed Encoders
@@ -30,20 +52,12 @@
     - `4067`
     
     - `4051`
+    
+    
+<!----------------------------------------------------------------------------->
 
-<br>
+[Documentation]: https://github.com/luni64/EncoderTool/wiki
+[Schematics]: extras/Boards
+[Examples]: examples
 
-## Features
-
-- Class structure allows for easy extension of other multiplexer
-
-- Schematics and Eagle files available for multiplexed encoders
-
-- Fully bounce free without additional hardware
-
-- Provides hard and cyclic count limits
-
-
-
-### -> [Documentation](https://github.com/luni64/EncoderTool/wiki)
 
