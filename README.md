@@ -15,8 +15,27 @@
 
 ---
 
+
+<br>
+
+*The library targets manually operated, mechanical encoders, <br>
+but also works with motor-driven, optical / magnetic encoders.*
+
+<br>
+
 </div>
 
+## Boards
+
+*This library targets ARM-based **PJRC Teensy** boards.*
+
+- [`Teensy - LC`][Teensy]
+
+- [`Teensy 3.0`][Teensy]
+
+- [`Teensy 4.1`][Teensy]
+
+<br>
 <br>
 
 ## Features
@@ -50,6 +69,9 @@
     
     *+ Some variants of those*
     
+    ***For high speed encoders, specialized libraries <br>
+    like [QUAD - Encoder], might be a better choice.***
+    
 <br>
 
 - Encoder Push Buttons
@@ -73,6 +95,8 @@
 [Badge License]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
 
 [PlatformIO]: https://registry.platformio.org/libraries/luni64/TeensyEncoderTool/
+[Teensy]: https://www.pjrc.com/teensy/
+[QUAD - Encoder]: https://github.com/mjs513/Teensy-4.x-Quad-Encoder-Library
 
 [Documentation]: https://github.com/luni64/EncoderTool/wiki
 [Schematics]: extras/Boards
