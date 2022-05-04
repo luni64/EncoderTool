@@ -1,4 +1,6 @@
 
+![Banner]
+
 # Installation
 
 *This library can be installed on multiple platforms in* <br>
@@ -68,3 +70,6 @@ git clone https://github.com/luni64/EncoderTool.git
 <!----------------------------------------------------------------------------->
 
 [Release]: https://github.com/luni64/EncoderTool/releases
+[Banner]: ../Resources/Image/encoder.png
+
+
