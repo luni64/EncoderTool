@@ -58,7 +58,7 @@
     
 <br>
     
-- Mutliplexed Encoders:
+- Multiplexed Encoders:
 
     - `74165`
     
