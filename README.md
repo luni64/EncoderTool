@@ -1,9 +1,11 @@
 
-# EncoderTool
+# EncoderTool [![Badge License]][License]
 
 *Rotary Encoder + Teensy ARM readout / management library*
 
 <br>
+
+<div align = center>
 
 ---
 
@@ -12,6 +14,8 @@
 [<kbd> <br> Documentation <br> </kbd>][Documentation]
 
 ---
+
+</div>
 
 <br>
 
@@ -56,8 +60,11 @@
     
 <!----------------------------------------------------------------------------->
 
+[Badge License]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
+
 [Documentation]: https://github.com/luni64/EncoderTool/wiki
 [Schematics]: extras/Boards
 [Examples]: examples
+[License]: LICENSE
 
 
