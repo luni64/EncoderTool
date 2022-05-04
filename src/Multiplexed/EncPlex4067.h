@@ -1,7 +1,9 @@
 #pragma once
 
 #include "EncPlexBase.h"
-#include "core_pins.h"
+#include "Arduino.h"
+#include "HAL/directReadWrite.h"
+
 
 namespace EncoderTool
 {
@@ -14,7 +16,7 @@ namespace EncoderTool
       inline void begin(CountMode mode); // optional, call in setup if other code grabed the pins after construction
 
    protected:
-      const unsigned S0, S1, S2, S3, A, B;
+      const HAL::pinRegInfo_t S0, S1, S2, S3, A, B;
    };
 
    // IMPLEMENTATION =====================================================================================================
@@ -29,26 +31,26 @@ namespace EncoderTool
    void EncPlex4067::begin(CountMode mode = CountMode::quarter)
    {
       EncPlexBase::begin(mode);
-      pinMode(S0, OUTPUT);
-      pinMode(S1, OUTPUT);
-      pinMode(S2, OUTPUT);
-      pinMode(S3, OUTPUT);
+      pinMode(S0.pin, OUTPUT);
+      pinMode(S1.pin, OUTPUT);
+      pinMode(S2.pin, OUTPUT);
+      pinMode(S3.pin, OUTPUT);
 
-      pinMode(A, INPUT);
-      pinMode(B, INPUT);
+      pinMode(A.pin, INPUT);
+      pinMode(B.pin, INPUT);
    }
 
    void EncPlex4067::tick()
    {
       for (unsigned i = 0; i < encoderCount; i++)
       {
-         digitalWriteFast(S0, i & 0b0001);
-         digitalWriteFast(S1, i & 0b0010);
-         digitalWriteFast(S2, i & 0b0100);
-         digitalWriteFast(S3, i & 0b1000);
+         HAL::dwFast(S0, i & 0b0001);
+         HAL::dwFast(S1, i & 0b0010);
+         HAL::dwFast(S2, i & 0b0100);
+         HAL::dwFast(S3, i & 0b1000);
          delayMicroseconds(1);
 
-         int delta = encoders[i].update(digitalReadFast(A), digitalReadFast(B));
+         int delta = encoders[i].update(HAL::drFast(A), HAL::drFast(B));
          if (delta != 0 && callback != nullptr)
          {
             callback(i, encoders[i].getValue(), delta);

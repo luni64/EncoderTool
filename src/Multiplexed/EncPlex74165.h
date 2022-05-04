@@ -3,14 +3,15 @@
 #include "../delay.h"
 #include "Bounce2.h"
 #include "EncPlexBase.h"
-#include "core_pins.h"
+#include "Arduino.h"
+#include "HAL/directReadWrite.h"
 
 namespace EncoderTool
 {
     class EncPlex74165 : public EncPlexBase
     {
      public:
-        inline EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB, unsigned pinBtn = UINT32_MAX);
+        inline EncPlex74165(unsigned nrOfEncoders, unsigned pinLD, unsigned pinCLK, unsigned pinA, unsigned pinB, unsigned pinBtn = -1);
         inline ~EncPlex74165();
 
         inline void begin(CountMode mode = CountMode::quarter);
@@ -18,7 +19,8 @@ namespace EncoderTool
         inline void tick(); // call as often as possible
 
      protected:
-        const unsigned A, B, Btn, LD, CLK;
+        //const unsigned A, B, Btn, LD, CLK;
+        HAL::pinRegInfo_t A, B, Btn, LD, CLK;
     };
 
     // IMPLEMENTATION ============================================
@@ -30,10 +32,10 @@ namespace EncoderTool
 
     EncPlex74165::~EncPlex74165()
     {
-        for (unsigned pin : {A, B, Btn, LD, CLK})
-        {
-            pinMode(pin, INPUT_DISABLE);
-        };
+        // for (unsigned pin : {A, B, Btn, LD, CLK})
+        // {
+        //     pinMode(pin, INPUT_DISABLE);
+        // };
     }
 
     void EncPlex74165::begin(allCallback_t cb, CountMode mode)
@@ -46,28 +48,34 @@ namespace EncoderTool
     {
         EncPlexBase::begin(mode);
 
-        for (uint8_t pin : {A, B, Btn}) { pinMode(pin, INPUT); }
-        for (uint8_t pin : {LD, CLK}) { pinMode(pin, OUTPUT); }
+        pinMode(A.pin, INPUT);
+        pinMode(B.pin, INPUT);
+        pinMode(Btn.pin, INPUT);
+        pinMode(LD.pin, OUTPUT);
+        pinMode(CLK.pin, OUTPUT);
 
-        digitalWriteFast(LD, HIGH); // active low
+        // for (uint8_t pin : {A, B, Btn}) { pinMode(pin, INPUT); }
+        // for (uint8_t pin : {LD, CLK}) { pinMode(pin, OUTPUT); }
+
+        HAL::dwFast(LD, HIGH); // active low
         delayMicroseconds(1);
 
         // load current values to shift register
-        digitalWriteFast(LD, LOW);
+        HAL::dwFast(LD, LOW);
         delay50ns();
         delay50ns();
         delay50ns();
-        digitalWriteFast(LD, HIGH);
+        HAL::dwFast(LD, HIGH);
 
         // first values are available directly after loading
-        encoders[0].begin(digitalReadFast(A), digitalReadFast(B));
+        encoders[0].begin(HAL::drFast(A), HAL::drFast(B));
 
         for (unsigned i = 1; i < encoderCount; i++) // shift in the the rest of the encoders
         {
-            digitalWriteFast(CLK, HIGH);
+            HAL::dwFast(CLK, HIGH);
             delay50ns();
-            encoders[i].begin(digitalReadFast(A), digitalReadFast(B));
-            digitalWriteFast(CLK, LOW);
+            encoders[i].begin(HAL::drFast(A), HAL::drFast(B));
+            HAL::dwFast(CLK, LOW);
             delay50ns();
         }
     }
@@ -75,17 +83,17 @@ namespace EncoderTool
     void EncPlex74165::tick()
     {
         // load current values to shift register
-        digitalWriteFast(LD, LOW);
+        HAL::dwFast(LD, LOW);
         delay50ns();
         delay50ns();
         delay50ns();
-        digitalWriteFast(LD, HIGH);
+        HAL::dwFast(LD, HIGH);
 
         // first values are available directly after loading
 
-        int a = digitalReadFast(A);
-        int b = digitalReadFast(B);
-        int btn = Btn != UINT32_MAX ? digitalReadFast(Btn) : LOW;
+        int a = HAL::drFast(A);
+        int b = HAL::drFast(B);
+        int btn = Btn.pin != UINT32_MAX ? HAL::drFast(Btn) : LOW;
 
         int delta = encoders[0].update(a, b, btn);
 
@@ -95,14 +103,14 @@ namespace EncoderTool
         }
         for (unsigned i = 1; i < encoderCount; i++) // shift in the the rest of the encoders
         {
-            digitalWriteFast(CLK, HIGH);
+            HAL::dwFast(CLK, HIGH);
             delay50ns();
-            int delta = encoders[i].update(digitalReadFast(A), digitalReadFast(B), Btn != UINT32_MAX ? digitalReadFast(Btn) : LOW);
+            int delta = encoders[i].update(HAL::drFast(A), HAL::drFast(B), Btn.pin != UINT32_MAX ? HAL::drFast(Btn) : LOW);
             if (delta != 0 && callback != nullptr)
             {
                 callback(i, encoders[i].getValue(), delta);
             }
-            digitalWriteFast(CLK, LOW);
+            HAL::dwFast(CLK, LOW);
             delay50ns();
         }
     }

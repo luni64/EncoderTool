@@ -2,7 +2,8 @@
 
 #include "../EncoderBase.h"
 #include "Bounce2.h"
-#include "core_pins.h"
+#include "Arduino.h"
+#include "../HAL/directReadWrite.h"
 
 namespace EncoderTool
 {
@@ -16,36 +17,38 @@ namespace EncoderTool
         inline void tick(); //call tick() as often as possible. For mechanical encoders a call frequency of > 5kHz should be sufficient
 
      protected:
-        int pinA, pinB, pinBtn = UINT32_MAX;
+        bool hasButton = false;
+        HAL::pinRegInfo_t piA, piB, piBtn;
     };
 
     // Inline implementation ===============================================
 
     void PolledEncoder::tick()
     {
-        int A = digitalReadFast(pinA);
-        int B = digitalReadFast(pinB);
-        int btn = pinBtn < NUM_DIGITAL_PINS ? digitalReadFast(pinBtn) : LOW;
+        int A =  HAL::drFast(piA);
+        int B = HAL::drFast(piB);
+        int btn = hasButton ? HAL::drFast(piBtn) : LOW;
 
         update(A, B, btn);
     }
 
-    void PolledEncoder::begin(int pinA, int pinB, int pinBtn, CountMode countMode, int inputMode)
+    void PolledEncoder::begin(int _pinA, int _pinB, int pinBtn, CountMode countMode, int inputMode)
     {
-        this->pinBtn = pinBtn;
-        begin(pinA, pinB, countMode, inputMode);
+        hasButton = true;
+        pinMode(pinBtn, inputMode);
+        piBtn = HAL::getPinRegInfo(pinBtn);
+        begin(_pinA, _pinB, countMode, inputMode);
     }
 
     void PolledEncoder::begin(int pinA, int pinB, CountMode countMode, int inputMode)
     {
-        this->pinA = pinA;
-        this->pinB = pinB;
-        for (uint8_t pin : {this->pinA, this->pinB, this->pinBtn})
-        {
-            pinMode(pin, inputMode);
-        }
+        pinMode(pinA, inputMode);
+        pinMode(pinB, inputMode);
+
+        piA = HAL::getPinRegInfo(pinA); // store pin infos for fast I/O
+        piB = HAL::getPinRegInfo(pinB);
 
         setCountMode(countMode);
-        EncoderBase::begin(digitalReadFast(pinA), digitalReadFast(pinB)); // set start state
+        EncoderBase::begin(HAL::drFast(piA), HAL::drFast(piB)); // set start state
     }
 } // namespace EncoderTool
