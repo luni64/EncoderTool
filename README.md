@@ -1,5 +1,5 @@
 
-# EncoderTool [![Badge License]][License]
+# EncoderTool [![Badge License]][License] [![Badge PlatformIO]][PlatformIO]
 
 *Rotary Encoder + Teensy ARM readout / management library*
 
@@ -9,8 +9,8 @@
 
 ---
 
-[<kbd> <br> Examples <br> </kbd>][Examples]
-[<kbd> <br> Schematics <br> </kbd>][Schematics]
+[<kbd> <br> Examples <br> </kbd>][Examples] 
+[<kbd> <br> Schematics <br> </kbd>][Schematics] 
 [<kbd> <br> Documentation <br> </kbd>][Documentation]
 
 ---
@@ -60,7 +60,10 @@
     
 <!----------------------------------------------------------------------------->
 
+[Badge PlatformIO]: https://img.shields.io/badge/PlatformIO-luni64/TeensyEncoderTool-ff7e00.svg?style=for-the-badge
 [Badge License]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
+
+[PlatformIO]: https://registry.platformio.org/libraries/luni64/TeensyEncoderTool/
 
 [Documentation]: https://github.com/luni64/EncoderTool/wiki
 [Schematics]: extras/Boards
