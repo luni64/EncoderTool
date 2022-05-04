@@ -1,7 +1,7 @@
 
 # EncoderTool [![Badge License]][License] [![Badge PlatformIO]][PlatformIO]
 
-*Rotary Encoder + Teensy ARM readout / management library*
+*Rotary Encoder + Teensy ARM Readout / Management Library*
 
 <br>
 
@@ -30,10 +30,15 @@
 - Provides hard and cyclic count limits
 
 <br>
+<br>
 
 ## Supports
 
-- Direct / Multiplexed Encoders
+<br>
+
+- Direct / Multiplexed Encoders
+
+<br>
 
 - All Common Encoders:
 
@@ -43,11 +48,15 @@
     | ***Half***    | ` 2 ` | ` 2 `
     | ***Quarter*** | ` 1 ` | ` 1 `
     
-    *+ Some variants of those*
+    *+ Some variants of those*
+    
+<br>
 
 - Encoder Push Buttons
 
-    *Auto-debounces & makes callbacks available*
+    *Auto - debounces & makes callbacks available*
+    
+<br>
     
 - Mutliplexed Encoders:
 
