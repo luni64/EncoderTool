@@ -1,8 +1,7 @@
-## Installation
 
-The library is listed in the Arduino library manager and can be downloaded from there. Alternatively, you can clone it directly to your library folder or use the zip files provided at the [releases section of the repository](https://github.com/luni64/EncoderTool/releases).
+# Quick Starter Guide
 
-**Make sure you have a current version of Bounce2 installed (v2.53 or newer). The one shipping with the current Teensyduino 1.53 is too old.** 
+- [Install The Library]
 
 ## First test
 
@@ -79,6 +78,9 @@ The EncoderTool will invoke the callback on any change of the current value. For
 * [[Details about the implemented callback system|Callbacks]]
 
 
+<!----------------------------------------------------------------------------->
+
+[Install The Library]: Installation.md
 
 
 
