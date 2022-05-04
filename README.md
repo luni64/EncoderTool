@@ -98,9 +98,9 @@ but also works with motor-driven, optical / magnetic encoders.*
 [Teensy]: https://www.pjrc.com/teensy/
 [QUAD - Encoder]: https://github.com/mjs513/Teensy-4.x-Quad-Encoder-Library
 
-[Documentation]: https://github.com/luni64/EncoderTool/wiki
-[Schematics]: extras/Boards
-[Examples]: examples
+[Documentation]: Documentation/Overview.md
+[Schematics]: Resources/Extras/Boards
+[Examples]: Resources/Examples
 [License]: LICENSE
 
 
