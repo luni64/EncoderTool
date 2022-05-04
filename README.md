@@ -1,15 +1,82 @@
-# EncoderTool
-EncoderTool is a library to manage and read out rotary encoders with Teensy ARM boards.
 
-## Key features
-* Supports directly connected and multiplexed encoders
-* Supports all common types of encoders, i.e., **full** (no detents, 4 counts per period), **half** (two detents and two counts per period)  and **quarter** (1 detent and one count per period) and some variants of those. 
-* A callback mechanism allows for easy event based menu systems. Callbacks use std::function and can call non static member functions.
-* Fully bounce free without additional hardware
-* Provides hard and cyclic count limits
-* Supports and debounces encoder push buttons. Callback for notification of button events available
-* Currently 74165, 4067 and 4051 based multiplexers are supported but the class structure allows for easy extension to any other multiplexer.
-* Schematics and Eagle files for multiplexed encoders available in the Extras folder
+# EncoderTool [![Badge License]][License] [![Badge PlatformIO]][PlatformIO]
 
-### -> [Documentation](https://github.com/luni64/EncoderTool/wiki)
+*Rotary Encoder + Teensy ARM Readout / Management Library*
+
+<br>
+
+<div align = center>
+
+---
+
+[<kbd> <br> Examples <br> </kbd>][Examples] 
+[<kbd> <br> Schematics <br> </kbd>][Schematics] 
+[<kbd> <br> Documentation <br> </kbd>][Documentation]
+
+---
+
+</div>
+
+<br>
+
+## Features
+
+- Class structure allows for easy extension of other multiplexer
+
+- Schematics and Eagle files available for multiplexed encoders
+
+- Fully bounce free without additional hardware
+
+- Provides hard and cyclic count limits
+
+<br>
+<br>
+
+## Supports
+
+<br>
+
+- Direct / Multiplexed Encoders
+
+<br>
+
+- All Common Encoders:
+
+    | Type | Detents | Counts per Period
+    |:----:|:-------:|:----------------:
+    | ***Full***    | ` 0 ` | ` 4 `
+    | ***Half***    | ` 2 ` | ` 2 `
+    | ***Quarter*** | ` 1 ` | ` 1 `
+    
+    *+ Some variants of those*
+    
+<br>
+
+- Encoder Push Buttons
+
+    *Auto - debounces & makes callbacks available*
+    
+<br>
+    
+- Multiplexed Encoders:
+
+    - `74165`
+    
+    - `4067`
+    
+    - `4051`
+    
+    
+<!----------------------------------------------------------------------------->
+
+[Badge PlatformIO]: https://img.shields.io/badge/PlatformIO-luni64/TeensyEncoderTool-ff7e00.svg?style=for-the-badge
+[Badge License]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
+
+[PlatformIO]: https://registry.platformio.org/libraries/luni64/TeensyEncoderTool/
+
+[Documentation]: https://github.com/luni64/EncoderTool/wiki
+[Schematics]: extras/Boards
+[Examples]: examples
+[License]: LICENSE
+
 
