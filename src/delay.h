@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core_pins.h"
+#include "Arduino.h"
 
 namespace EncoderTool
 {

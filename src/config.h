@@ -1,11 +1,11 @@
 #pragma once
 
 // un-comment the following line if you prefer plain function pointers for callbacks
-// #define PLAIN_ENC_CALLBACK
+#define PLAIN_ENC_CALLBACK
 
 //================================================================================================================
 
-#include <cstdint>
+#include <stdint.h>
 
 #if not defined(PLAIN_ENC_CALLBACK)
   #include <functional>

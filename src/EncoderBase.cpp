@@ -1,7 +1,4 @@
 #include "EncoderBase.h"
-#include "Arduino.h"
-#include "core_pins.h"
-#include <algorithm>
 
 namespace EncoderTool
 {
