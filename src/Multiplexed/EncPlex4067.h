@@ -42,19 +42,21 @@ namespace EncoderTool
 
    void EncPlex4067::tick()
    {
-      for (unsigned i = 0; i < encoderCount; i++)
-      {
-         HAL::dwFast(S0, i & 0b0001);
-         HAL::dwFast(S1, i & 0b0010);
-         HAL::dwFast(S2, i & 0b0100);
-         HAL::dwFast(S3, i & 0b1000);
-         delayMicroseconds(1);
+       using HAL::directWrite;
 
-         int delta = encoders[i].update(HAL::drFast(A), HAL::drFast(B));
-         if (delta != 0 && callback != nullptr)
-         {
-            callback(i, encoders[i].getValue(), delta);
-         }
+       for (unsigned i = 0; i < encoderCount; i++)
+       {
+           directWrite(S0, i & 0b0001);
+           directWrite(S1, i & 0b0010);
+           directWrite(S2, i & 0b0100);
+           directWrite(S3, i & 0b1000);
+           delayMicroseconds(1);
+
+           int delta = encoders[i].update(directRead(A), directRead(B));
+           if (delta != 0 && callback != nullptr)
+           {
+               callback(i, encoders[i].getValue(), delta);
+           }
       }
    }
 

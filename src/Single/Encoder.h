@@ -1,52 +1,68 @@
 #pragma once
 
 #include "../EncoderBase.h"
-#include "attachInterruptEx.h"
+#include "../HAL/iPin_t.h"
+#include "../HAL/directReadWrite.h"
 
 namespace EncoderTool
 {
-    // Simple encoder implementation which reads phase A and B from two digital pins
-    // It uses attachInterruptEx to attach callbacks with type void(*)(Encoder*).
-    // We don't use std::function<> here to reduce memory footprint for small MCUs like the T-LC
-
+    /***********************************************************************
+     *  Simple interupt based encoder implementation which reads
+     *  phase A and B from two interupt capable pins
+     ************************************************************************/
     class Encoder : public EncoderBase
     {
      public:
-        Encoder() = default;
+        Encoder();
         inline ~Encoder();
 
-        inline void begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
-        inline void begin(int pinA, int pinB, encCallback_t cb, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
+        inline bool begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
+        inline bool begin(int pinA, int pinB, encCallback_t cb, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
+
+        void doUpdate() { update(HAL::directRead(A), HAL::directRead(B)); }
 
      protected:
-        int pinA, pinB;
+        HAL::pinRegInfo_t A, B;
+        // using Pin = iPin_t<Encoder>;
     };
 
     // Inline implementation ===============================================
 
-    void Encoder::begin(int pinA, int pinB, encCallback_t cb, CountMode countMode, int inputMode)
+    Encoder::Encoder()
     {
-        begin(pinA, pinB, countMode, inputMode);
-        attachCallback(cb);
+        //Pin::setCallbackMember(&Encoder::doUpdate);
     }
 
-    void Encoder::begin(int _pinA, int _pinB, CountMode countMode, int inputMode)
+    bool Encoder::begin(int pinA, int pinB, encCallback_t cb, CountMode countMode, int inputMode)
     {
-        pinA = _pinA;
-        pinB = _pinB;
-        pinMode(pinA, inputMode);
-        pinMode(pinB, inputMode);
+        bool ret = begin(pinA, pinB, countMode, inputMode);
+        attachCallback(cb);
+        return ret;
+    }
 
-        attachInterruptEx(pinA,[](Encoder* THIS){THIS->update(digitalReadFast(THIS->pinA), digitalReadFast(THIS->pinB));}, this, CHANGE);
-        attachInterruptEx(pinB,[](Encoder* THIS){THIS->update(digitalReadFast(THIS->pinA), digitalReadFast(THIS->pinB));}, this, CHANGE);
+    bool Encoder::begin(int pinA, int pinB, CountMode countMode, int inputMode)
+    {
+        A = HAL::pinRegInfo_t(pinA);
+        B = HAL::pinRegInfo_t(pinB);
+
+
+        // if (!A.hasInterrupt() || !B.hasInterrupt()) return false;
+
+        pinMode(A.pin,inputMode);
+        pinMode(B.pin, inputMode);
+        // B.pinMode(inputMode);
+        // A.attachInterrupt(this, CHANGE);
+        // B.attachInterrupt(this, CHANGE);
 
         setCountMode(countMode);
-        EncoderBase::begin(digitalReadFast(pinA), digitalReadFast(pinB)); // set start state
+        EncoderBase::begin(HAL::directRead(A), HAL::directRead(B)); // set start state
+
+        return true;
     }
 
     Encoder::~Encoder()
     {
-        detachInterrupt(pinA);
-        detachInterrupt(pinB);
+        // A.detachInterrupt();
+        // B.detachInterrupt();
     }
 } // namespace EncoderTool

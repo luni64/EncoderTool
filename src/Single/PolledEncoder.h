@@ -25,9 +25,9 @@ namespace EncoderTool
 
     void PolledEncoder::tick()
     {
-        int A =  HAL::drFast(piA);
-        int B = HAL::drFast(piB);
-        int btn = hasButton ? HAL::drFast(piBtn) : LOW;
+        int A =  HAL::directRead(piA);
+        int B = HAL::directRead(piB);
+        int btn = hasButton ? HAL::directRead(piBtn) : LOW;
 
         update(A, B, btn);
     }
@@ -49,6 +49,6 @@ namespace EncoderTool
         piB = HAL::getPinRegInfo(pinB);
 
         setCountMode(countMode);
-        EncoderBase::begin(HAL::drFast(piA), HAL::drFast(piB)); // set start state
+        EncoderBase::begin(HAL::directRead(piA), HAL::directRead(piB)); // set start state
     }
 } // namespace EncoderTool

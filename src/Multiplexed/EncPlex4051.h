@@ -1,22 +1,20 @@
 #pragma once
-
 #include "EncPlexBase.h"
 #include "Arduino.h"
 #include "HAL/directReadWrite.h"
 
-
 namespace EncoderTool
 {
-   class EncPlex4051 : public EncPlexBase
-   {
-   public:
-      inline EncPlex4051(unsigned encoderCount, unsigned pinS0, unsigned pinS1, unsigned pinS2, unsigned pinA, unsigned pinB);
+    class EncPlex4051 : public EncPlexBase
+    {
+     public:
+        inline EncPlex4051(unsigned encoderCount, unsigned pinS0, unsigned pinS1, unsigned pinS2, unsigned pinA, unsigned pinB);
 
-      inline void tick();                // call as often as possible
-      inline void begin(CountMode mode); // optional, call in setup if other code grabed the pins after construction
+        inline void tick();                // call as often as possible
+        inline void begin(CountMode mode); // optional, call in setup if other code grabed the pins after construction
 
-   protected:
-      const HAL::pinRegInfo_t S0, S1, S2, A, B;
+     protected:
+        const HAL::pinRegInfo_t S0, S1, S2, A, B;
    };
 
    // IMPLEMENTATION =====================================================================================================
@@ -40,13 +38,15 @@ namespace EncoderTool
 
    void EncPlex4051::tick()
    {
+      using HAL::directWrite;
+
       for (unsigned i = 0; i < encoderCount; i++) {
-         HAL::dwFast(S0, i & 0b0001);
-         HAL::dwFast(S1, i & 0b0010);
-         HAL::dwFast(S2, i & 0b0100);
+         directWrite(S0, i & 0b0001);
+         directWrite(S1, i & 0b0010);
+         directWrite(S2, i & 0b0100);
          delayMicroseconds(1);
 
-         int delta = encoders[i].update(HAL::drFast(A), HAL::drFast(B));
+         int delta = encoders[i].update(directRead(A), directRead(B));
          if (delta != 0 && callback != nullptr)
          {
             callback(i, encoders[i].getValue(), delta);

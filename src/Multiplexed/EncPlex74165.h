@@ -1,10 +1,10 @@
 #pragma once
 
+#include "../HAL/directReadWrite.h"
 #include "../delay.h"
+#include "Arduino.h"
 #include "Bounce2.h"
 #include "EncPlexBase.h"
-#include "Arduino.h"
-#include "HAL/directReadWrite.h"
 
 namespace EncoderTool
 {
@@ -19,7 +19,6 @@ namespace EncoderTool
         inline void tick(); // call as often as possible
 
      protected:
-        //const unsigned A, B, Btn, LD, CLK;
         HAL::pinRegInfo_t A, B, Btn, LD, CLK;
     };
 
@@ -46,6 +45,9 @@ namespace EncoderTool
 
     void EncPlex74165::begin(CountMode mode)
     {
+        using HAL::directRead;
+        using HAL::directWrite;
+
         EncPlexBase::begin(mode);
 
         pinMode(A.pin, INPUT);
@@ -54,46 +56,46 @@ namespace EncoderTool
         pinMode(LD.pin, OUTPUT);
         pinMode(CLK.pin, OUTPUT);
 
-        // for (uint8_t pin : {A, B, Btn}) { pinMode(pin, INPUT); }
-        // for (uint8_t pin : {LD, CLK}) { pinMode(pin, OUTPUT); }
-
-        HAL::dwFast(LD, HIGH); // active low
+        directWrite(LD, HIGH); // active low
         delayMicroseconds(1);
 
         // load current values to shift register
-        HAL::dwFast(LD, LOW);
+        directWrite(LD, LOW);
         delay50ns();
         delay50ns();
         delay50ns();
-        HAL::dwFast(LD, HIGH);
+        directWrite(LD, HIGH);
 
         // first values are available directly after loading
-        encoders[0].begin(HAL::drFast(A), HAL::drFast(B));
+        encoders[0].begin(directRead(A), directRead(B));
 
         for (unsigned i = 1; i < encoderCount; i++) // shift in the the rest of the encoders
         {
-            HAL::dwFast(CLK, HIGH);
+            directWrite(CLK, HIGH);
             delay50ns();
-            encoders[i].begin(HAL::drFast(A), HAL::drFast(B));
-            HAL::dwFast(CLK, LOW);
+            encoders[i].begin(directRead(A), directRead(B));
+            directWrite(CLK, LOW);
             delay50ns();
         }
     }
 
     void EncPlex74165::tick()
     {
+        using HAL::directRead;
+        using HAL::directWrite;
+
         // load current values to shift register
-        HAL::dwFast(LD, LOW);
+        directWrite(LD, LOW);
         delay50ns();
         delay50ns();
         delay50ns();
-        HAL::dwFast(LD, HIGH);
+        directWrite(LD, HIGH);
 
         // first values are available directly after loading
 
-        int a = HAL::drFast(A);
-        int b = HAL::drFast(B);
-        int btn = Btn.pin != UINT32_MAX ? HAL::drFast(Btn) : LOW;
+        int a   = directRead(A);
+        int b   = directRead(B);
+        int btn = Btn.pin != UINT32_MAX ? directRead(Btn) : LOW;
 
         int delta = encoders[0].update(a, b, btn);
 
@@ -103,14 +105,14 @@ namespace EncoderTool
         }
         for (unsigned i = 1; i < encoderCount; i++) // shift in the the rest of the encoders
         {
-            HAL::dwFast(CLK, HIGH);
+            directWrite(CLK, HIGH);
             delay50ns();
-            int delta = encoders[i].update(HAL::drFast(A), HAL::drFast(B), Btn.pin != UINT32_MAX ? HAL::drFast(Btn) : LOW);
+            int delta = encoders[i].update(directRead(A), directRead(B), Btn.pin != UINT32_MAX ? directRead(Btn) : LOW);
             if (delta != 0 && callback != nullptr)
             {
                 callback(i, encoders[i].getValue(), delta);
             }
-            HAL::dwFast(CLK, LOW);
+            directWrite(CLK, LOW);
             delay50ns();
         }
     }
