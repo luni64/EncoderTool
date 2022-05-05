@@ -1,16 +1,17 @@
 #pragma once
 
+#include "cores.h"
 #include "Arduino.h"
 
 namespace HAL
 {
     struct pinRegInfo_t;
     extern pinRegInfo_t getPinRegInfo(uint8_t pin);
-    extern uint8_t drFast(const pinRegInfo_t& info);
-    extern void dwFast(const pinRegInfo_t& info, uint8_t value);
+    extern uint8_t directRead(const pinRegInfo_t& info);
+    extern void directWrite(const pinRegInfo_t& info, uint8_t value);
 
-#if defined(__AVR__) //----------------------------------------------------------------------------
 
+#if defined(CORE_AVR_ARDUINO) //----------------------------------------------------------------------------
 #    include "util/atomic.h"
 
     struct pinRegInfo_t
@@ -36,12 +37,12 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline uint8_t drFast(const pinRegInfo_t& info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return *info.in & info.mask;
     }
 
-    inline void dwFast(const pinRegInfo_t& info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
         ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
         {
@@ -49,7 +50,7 @@ namespace HAL
         }
     }
 
-#elif defined(TEENSYDUINO) && (defined(KINETISK) || defined(KINETISL)) //--------------------------
+#elif defined(CORE_TEENSY__TEENSY3) //--------------------------
     struct pinRegInfo_t
     {
         uint8_t pin;
@@ -73,17 +74,17 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline void dwFast(const pinRegInfo_t& info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
         value ? * info.set = 1 : * info.clr = 1; // is atomic
     }
 
-    inline uint8_t drFast(const pinRegInfo_t& info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return *info.in;
     }
 
-#elif defined(TEENSYDUINO) && defined(__IMXRT1062__) //--------------------------------------------
+#elif defined(CORE_TEENSY__TEENSY4) //--------------------------------------------
 
     struct pinRegInfo_t
     {
@@ -113,17 +114,17 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline void dwFast(const pinRegInfo_t& info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
         value ? * info.set = info.mask : * info.clr = info.mask; // atomic
     }
 
-    inline uint8_t drFast(const pinRegInfo_t& info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return (*info.in & info.mask) ? 1 : 0;
     }
 
-#elif defined(__SAMD51__) || defined(__SAMD21__) //------------------------------------------------
+#elif defined(CORE_SAMD_SEED__ARDUINO) || defined(ARDUINO_SAMD__ARDUINO) //------------------------------------------------
 
     struct pinRegInfo_t
     {
@@ -150,16 +151,16 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline void dwFast(const pinRegInfo_t& info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
         value ? * info.set = info.mask : * info.clr = info.mask;
     }
-    inline uint8_t drFast(const pinRegInfo_t& info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return (*info.in & info.mask) ? 1 : 0;
     }
 
-#elif defined(ESP32) // ESP ----------------------------------------------------------------------------------
+#else // Generic ----------------------------------------------------------------------------------
 
     struct pinRegInfo_t
     {
@@ -175,11 +176,11 @@ namespace HAL
     {
         return pinRegInfo_t(pin);
     }
-    inline void dwFast(const pinRegInfo_t& pin, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& pin, uint8_t value)
     {
         digitalWrite(pin.pin, value);
     }
-    inline uint8_t drFast(const pinRegInfo_t& pin)
+    inline uint8_t directRead(const pinRegInfo_t& pin)
     {
         return digitalRead(pin.pin);
     }
