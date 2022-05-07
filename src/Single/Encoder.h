@@ -1,8 +1,9 @@
 #pragma once
 
 #include "../EncoderBase.h"
-#include "../HAL/iPin_t.h"
+//#include "../HAL/iPin_t.h"
 #include "../HAL/directReadWrite.h"
+#include "../HAL/pinInterruptHelper.h"
 
 namespace EncoderTool
 {
@@ -23,14 +24,15 @@ namespace EncoderTool
 
      protected:
         HAL::pinRegInfo_t A, B;
-        // using Pin = iPin_t<Encoder>;
+
+        using iHelper = HAL::PinInterruptHelper<Encoder, &Encoder::doUpdate>;
     };
 
     // Inline implementation ===============================================
 
     Encoder::Encoder()
     {
-        //Pin::setCallbackMember(&Encoder::doUpdate);
+        // Pin::setCallbackMember(&Encoder::doUpdate);
     }
 
     bool Encoder::begin(int pinA, int pinB, encCallback_t cb, CountMode countMode, int inputMode)
@@ -42,27 +44,28 @@ namespace EncoderTool
 
     bool Encoder::begin(int pinA, int pinB, CountMode countMode, int inputMode)
     {
-        A = HAL::pinRegInfo_t(pinA);
-        B = HAL::pinRegInfo_t(pinB);
+        using namespace HAL;
 
+        if (!iHelper::hasInterrupt(pinA) || !iHelper::hasInterrupt(pinB))
+            return false;
 
-        // if (!A.hasInterrupt() || !B.hasInterrupt()) return false;
+        A = pinRegInfo_t(pinA);
+        B = pinRegInfo_t(pinB);
 
-        pinMode(A.pin,inputMode);
+        pinMode(A.pin, inputMode);
         pinMode(B.pin, inputMode);
-        // B.pinMode(inputMode);
-        // A.attachInterrupt(this, CHANGE);
-        // B.attachInterrupt(this, CHANGE);
 
         setCountMode(countMode);
-        EncoderBase::begin(HAL::directRead(A), HAL::directRead(B)); // set start state
+        EncoderBase::begin(directRead(A), directRead(B)); // set start state
 
+        iHelper::attachInterrupt(A.pin, this, CHANGE);
+        iHelper::attachInterrupt(B.pin, this, CHANGE);
         return true;
     }
 
     Encoder::~Encoder()
     {
-        // A.detachInterrupt();
-        // B.detachInterrupt();
+        iHelper::detachInterrupt(A.pin);
+        iHelper::detachInterrupt(B.pin);
     }
 } // namespace EncoderTool

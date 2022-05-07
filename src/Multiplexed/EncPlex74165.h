@@ -31,10 +31,8 @@ namespace EncoderTool
 
     EncPlex74165::~EncPlex74165()
     {
-        // for (unsigned pin : {A, B, Btn, LD, CLK})
-        // {
-        //     pinMode(pin, INPUT_DISABLE);
-        // };
+        pinMode(LD.pin, INPUT);
+        pinMode(CLK.pin, INPUT);
     }
 
     void EncPlex74165::begin(allCallback_t cb, CountMode mode)
@@ -47,12 +45,13 @@ namespace EncoderTool
     {
         using HAL::directRead;
         using HAL::directWrite;
+        // Serial.printf("%d %d %d %d %d\n", A.pin, B.pin, Btn.pin, LD.pin, CLK.pin);
 
         EncPlexBase::begin(mode);
 
         pinMode(A.pin, INPUT);
         pinMode(B.pin, INPUT);
-        pinMode(Btn.pin, INPUT);
+        if (Btn.pin < NUM_DIGITAL_PINS) pinMode(Btn.pin, INPUT);
         pinMode(LD.pin, OUTPUT);
         pinMode(CLK.pin, OUTPUT);
 
@@ -91,11 +90,11 @@ namespace EncoderTool
         delay50ns();
         directWrite(LD, HIGH);
 
-        // first values are available directly after loading
 
+        // first values are available directly after loading
         int a   = directRead(A);
         int b   = directRead(B);
-        int btn = Btn.pin != UINT32_MAX ? directRead(Btn) : LOW;
+        int btn = Btn.pin < NUM_DIGITAL_PINS ? directRead(Btn) : LOW;
 
         int delta = encoders[0].update(a, b, btn);
 
@@ -107,7 +106,7 @@ namespace EncoderTool
         {
             directWrite(CLK, HIGH);
             delay50ns();
-            int delta = encoders[i].update(directRead(A), directRead(B), Btn.pin != UINT32_MAX ? directRead(Btn) : LOW);
+            int delta = encoders[i].update(directRead(A), directRead(B), Btn.pin < NUM_DIGITAL_PINS ? directRead(Btn) : LOW);
             if (delta != 0 && callback != nullptr)
             {
                 callback(i, encoders[i].getValue(), delta);
@@ -116,5 +115,4 @@ namespace EncoderTool
             delay50ns();
         }
     }
-
 } // namespace EncoderTool

@@ -1,9 +1,9 @@
 #pragma once
 
 #include "../EncoderBase.h"
-#include "Bounce2.h"
-#include "Arduino.h"
 #include "../HAL/directReadWrite.h"
+#include "Arduino.h"
+#include "Bounce2.h"
 
 namespace EncoderTool
 {
@@ -14,7 +14,7 @@ namespace EncoderTool
         inline void begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
         inline void begin(int pinA, int pinB, int pinBtn, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
 
-        inline void tick(); //call tick() as often as possible. For mechanical encoders a call frequency of > 5kHz should be sufficient
+        inline void tick(); // call tick() as often as possible. For mechanical encoders a call frequency of > 5kHz should be sufficient
 
      protected:
         bool hasButton = false;
@@ -25,9 +25,11 @@ namespace EncoderTool
 
     void PolledEncoder::tick()
     {
-        int A =  HAL::directRead(piA);
-        int B = HAL::directRead(piB);
-        int btn = hasButton ? HAL::directRead(piBtn) : LOW;
+        using namespace HAL;
+
+        int A   = directRead(piA);
+        int B   = directRead(piB);
+        int btn = hasButton ? directRead(piBtn) : LOW;
 
         update(A, B, btn);
     }
@@ -42,13 +44,19 @@ namespace EncoderTool
 
     void PolledEncoder::begin(int pinA, int pinB, CountMode countMode, int inputMode)
     {
+        using namespace HAL;
+
         pinMode(pinA, inputMode);
         pinMode(pinB, inputMode);
 
         piA = HAL::getPinRegInfo(pinA); // store pin infos for fast I/O
         piB = HAL::getPinRegInfo(pinB);
 
+        // char buf[100];
+        // snprintf(buf, 100, "a:%d b:%d\n", piA.pin, piB.pin);
+        // Serial.print(buf);
+
         setCountMode(countMode);
-        EncoderBase::begin(HAL::directRead(piA), HAL::directRead(piB)); // set start state
+        EncoderBase::begin(directRead(piA), directRead(piB)); // set start state
     }
 } // namespace EncoderTool

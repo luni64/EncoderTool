@@ -1,8 +1,7 @@
 #pragma once
 
 #include "EncPlexBase.h"
-#include "Arduino.h"
-#include "HAL/directReadWrite.h"
+#include "../HAL/directReadWrite.h"
 
 
 namespace EncoderTool
@@ -42,6 +41,7 @@ namespace EncoderTool
 
    void EncPlex4067::tick()
    {
+       using HAL::directRead;
        using HAL::directWrite;
 
        for (unsigned i = 0; i < encoderCount; i++)
