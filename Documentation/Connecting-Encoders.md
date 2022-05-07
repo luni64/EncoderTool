@@ -1,8 +1,47 @@
-Encoders can be connected as shown in the image above. I.e., you connect the two phases A and B to some digital input and the common encoder pin to either GND or VCC. Make sure to use VCC = 3.3V for T-3.6 and T4.x. The T3.2 and T3.5 can tolerate up to 5V.
 
-Usually, you don't need the external pull up/down resistors. You can use the built in ones instead.
-<br><br>
+# Connecting Encoders
 
-<img src="image/connection.png" alt="connecting encoders" width="600">
+*Encoders can be connected as shown in the diagram below.*
+
+<br>
+
+<div align = center>
+
+<img
+    width = 600
+    title = 'Encoder Connection Examples'
+    src = '../Resources/Image/Connections.png'
+/>
+
+</div>
+
+<br>
+
+## Connections
+
+➜ Connect the two phases **A** & **B** to a digital input.
+
+➜ Connect the encoder pin to either **GND** or **VCC**.
+
+<br>
+
+## Tolerances
+
+Make sure your **VCC** isn't too high.
+
+| Model | Range 
+|:-----:|:-----:
+| Teensy 3.2 | `3.3 - 5V`
+| Teensy 3.5 | `3.3 - 5V`
+| Teensy 3.6 | `3.3V`
+| Teensy 4.x | `3.3V`
+
+<br>
+
+## Note
+
+*Usually, you don't need the external pull up / down* <br>
+*resistors and can simply use the built-in ones instead.*
+
 
 
