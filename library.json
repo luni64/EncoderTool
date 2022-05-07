@@ -15,7 +15,7 @@
     "maintainer": true
   },
   "homepage": "https://github.com/luni64/EncoderTool",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "frameworks": "arduino",
   "platforms": "Teensy"
 }
