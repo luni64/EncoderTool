@@ -11,8 +11,16 @@ void setup()
 
 void loop()
 {
-    enc.tick();
+    enc.tick();                         // call tick() as often as possible
 
-    if (enc.valueChanged())  { Serial.printf("value:  %d\n", enc.getValue()); }
-    if (enc.buttonChanged()) { Serial.printf("button: %s\n", enc.getButton() == LOW ? "pressed" : "released"); }
+    if (enc.valueChanged())             // do we have a new encoder value?
+    {
+        Serial.print("new value: ");
+        Serial.println(enc.getValue());
+    }
+    if (enc.buttonChanged())            // do we have a new button state?
+    {
+        Serial.print("button state: ");
+        Serial.println(enc.getButton() == LOW ? "pressed" : "released");
+    }
 }

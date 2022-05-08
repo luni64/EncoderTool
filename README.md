@@ -6,25 +6,36 @@
 
 <br>
 
-<div align = center>
 
 ---
+<div style = " display: flex;  justify-content: space-between;">
+  <div >
+  <details style = "" >
+  <summary >Examples</summary>
 
-<br>
-<details>
-  <summary><kbd>Examples</kbd></summary>
-  <ul>
-    <li> [Hello Encoder (most simple usage)](examples/01_HelloEncoder/01_HelloEncoder.ino) </li>
-    <li> [Using a 74HC165 Multiplexer](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino) </li>
-  </ul>
-</details>
-</br>
+  - [Basic usage](examples/01_HelloEncoder/01_HelloEncoder.ino)
+  - [Polled Encoders](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
+  - [Using the encoder push button](examples/05_EncoderButton/05_EncoderButton.ino)
 
-[<kbd> <br> Documentation <br> </kbd>][Documentation]
-[<kbd> <br> Schematics <br> </kbd>][Schematics] 
+  - Multiplexing
+    - [Using a 74HC165 shift register as multiplexer](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
+    
+    - [Using a 40HC67 analog switch as multiplexer](examples/03_Multiplexed_4067/03_Multiplexed_4067.ino)
+    - [Using a 40HC51 analog switch as multiplexer](examples/06_Multiplexed_4051/06_Multiplexed_4051.ino)
+  </details>
+  </div>
+  <div >
 
----
+  [Documentation][Documentation]
+  </div>
+
+  <div>
+
+  [Schematics][Schematics] 
+  </div>
 </div>
+
+---
 
 <br>
 
@@ -46,7 +57,7 @@
 
     - Easy to adapt for your preferred multiplexer
 
-- Interupt based or polled readout strategies
+- Interrupt based or polled readout strategies
 
 <br>
 
@@ -101,5 +112,7 @@
 [MPLEX74165]:extras/Boards/MPX_74165
 [MPLEX4067]:extras/Boards/MPX_4067
 [MPLEX4051]:extras/Boards/MPX_4051
+
+[EX1]:examples/01_HelloEncoder/01_HelloEncoder.ino
 
 
