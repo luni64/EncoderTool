@@ -1,7 +1,7 @@
 
 # Interrupts vs Polling
 
-There are two quadrature decoding strategies.
+*There are two quadrature decoding strategies.*
 
 <br>
 
@@ -13,7 +13,7 @@ keep track of the final position.
 
 <br>
 
-### Disadvantages
+### Cons
 
 - Many calls have to be processed during a bounce period.
 
@@ -23,7 +23,7 @@ keep track of the final position.
 
 <br>
 
-### Advantages
+### Pros
 
 - No Load is generated if the encoder isn't operated.
 
@@ -82,7 +82,7 @@ polling, under the condition that:
 
 <br>
 
-### Disadvantages
+### Cons
 
 - Always generate a processor load.
 
@@ -90,7 +90,7 @@ polling, under the condition that:
 
 <br>
 
-### Advantages
+### Pros
 
 - The load is predictable as it doesn't change <br>
   during the operation of the encoder.

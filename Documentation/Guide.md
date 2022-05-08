@@ -7,7 +7,7 @@
 
 Let's see how to use the library with a standard mechanical encoder connected directly to digital pins. For the test we simply connect the encoder phases A and B to pins 0 and 1 and ground the common encoder pin as shown in the following schematic.
 
-![Simple Encoder 1](image/SimpleEnc1.png)
+![Simple Encoder 1](../Resources/Image/SimpleEnc1.png)
 
 ### Construction and read out
 
