@@ -1,41 +1,42 @@
-
 [![Badge License]][License] [![Badge Arduino]][Arduino] [![Badge PlatformIO]][PlatformIO]
- # EncoderTool
+# EncoderTool
 
 *+ Bounce-Free Rotary Encoder Library + Push Button Support + Standard or Multiplexed Wiring + Callback System*
 
-<br>
-
-
----
-<div style = " display: flex;  justify-content: space-between;">
-  <div >
-  <details style = "" >
+<svg width="100%" fill="none" >
+<foreignObject width="100%" height = 200%>
+<div xmlns="http://www.w3.org/1999/xhtml">
+<style>
+ .container {
+   display: flex;
+   justify-content: space-between;
+   margin: 0;
+ }
+</style>
+ <div class="container" style="justify-content: space-between; " >
+  <details>
   <summary >Examples</summary>
 
-  - [Basic usage](examples/01_HelloEncoder/01_HelloEncoder.ino)
-  - [Polled Encoders](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
-  - [Using the encoder push button](examples/05_EncoderButton/05_EncoderButton.ino)
+   - [Basic usage](examples/01_HelloEncoder/01_HelloEncoder.ino)
+   - [Polled Encoders](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
+   - [Using the encoder push button](examples/05_EncoderButton/05_EncoderButton.ino)
+   - Multiplexing
+     - [Using a 74HC165 shift register as multiplexer](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
+     - [Using a 40HC67 analog switch as multiplexer](examples/03_Multiplexed_4067/03_Multiplexed_4067.ino)
+     - [Using a 40HC51 analog switch as multiplexer](examples/06_Multiplexed_4051/06_Multiplexed_4051.ino)
+ </details>
 
-  - Multiplexing
-    - [Using a 74HC165 shift register as multiplexer](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
-    
-    - [Using a 40HC67 analog switch as multiplexer](examples/03_Multiplexed_4067/03_Multiplexed_4067.ino)
-    - [Using a 40HC51 analog switch as multiplexer](examples/06_Multiplexed_4051/06_Multiplexed_4051.ino)
-  </details>
-  </div>
-  <div >
+ [Documentation][Documentation]
 
-  [Documentation][Documentation]
-  </div>
-
-  <div>
-
-  [Schematics][Schematics] 
-  </div>
+ [Schematics][Schematics] 
 </div>
+</div>
+</foreignObject>
+</svg>
 
 ---
+
+
 
 <br>
 
