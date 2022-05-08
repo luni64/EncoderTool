@@ -41,7 +41,7 @@ namespace EncoderTool
         return *this;
     }
 
-    EncoderBase& EncoderBase::setLimits(int32_t min, int32_t max, bool periodic)
+    EncoderBase& EncoderBase::setLimits(int min, int max, bool periodic)
     {
         if (min < max)
         {
@@ -50,10 +50,12 @@ namespace EncoderTool
             this->periodic = periodic;
         } else
         {
-            this->minVal = INT32_MIN;
-            this->maxVal = INT32_MAX;
+            this->minVal = INT_MIN;
+            this->maxVal = INT_MAX;
         }
-        return *this;
+
+            return *this;
+
     }
 
     enum states : uint8_t {
@@ -70,13 +72,15 @@ namespace EncoderTool
         ERR = 0x30,
     };
 
-    void EncoderBase::begin(uint32_t phaseA, uint32_t phaseB)
+    void EncoderBase::begin(uint_fast8_t phaseA, uint_fast8_t phaseB)
     {
         curState = (phaseA << 1 | phaseB) ^ invert;
     }
 
-    int EncoderBase::update(uint32_t phaseA, uint32_t phaseB, uint32_t btn)
+    int EncoderBase::update(uint_fast8_t phaseA, uint_fast8_t phaseB, uint_fast8_t btn)
     {
+
+
         if (button.update(btn))
         {
             btnChanged = true;
