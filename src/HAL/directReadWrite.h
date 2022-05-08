@@ -2,6 +2,8 @@
 
 #include "Arduino.h"
 #include "cores.h"
+#include "SimplyAtomic.h"
+
 
 namespace HAL
 {
@@ -13,7 +15,6 @@ namespace HAL
     extern void directWrite(const pinRegInfo_t &info, uint8_t value);
 
 #if defined(CORE_AVR_ARDUINO) //----------------------------------------------------------------------------
-    #include "util/atomic.h"
 
     struct pinRegInfo_t
     {
@@ -47,7 +48,7 @@ namespace HAL
 
     inline void directWrite(const pinRegInfo_t &info, uint8_t value)
     {
-        ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+        ATOMIC()
         {
             value ? *info.out |= info.mask : *info.out &= ~info.mask;
         }
@@ -73,7 +74,7 @@ namespace HAL
         set = portSetRegister(pin);
     }
 
-    pinRegInfo_t getPinRegInfo(uint8_t pin)
+    inline pinRegInfo_t getPinRegInfo(uint8_t pin)
     {
         return pinRegInfo_t(pin);
     }
@@ -116,7 +117,7 @@ namespace HAL
         mask               = p->mask;
     };
 
-    pinRegInfo_t getPinRegInfo(uint8_t pin)
+    inline pinRegInfo_t getPinRegInfo(uint8_t pin)
     {
         return pinRegInfo_t(pin);
     }
@@ -175,7 +176,7 @@ namespace HAL
 
     struct pinRegInfo_t
     {
-        uint8_t pin=-1;
+        uint8_t pin           = -1;
         inline pinRegInfo_t() = default;
         inline pinRegInfo_t(uint8_t _pin) { pin = _pin; }
     };
