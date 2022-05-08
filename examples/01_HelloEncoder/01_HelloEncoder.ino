@@ -1,21 +1,17 @@
 #include "EncoderTool.h"
 using namespace EncoderTool;
 
-Encoder encoder;
+Encoder encoder;          // interrupt based encoder
 
 void setup()
 {
-    pinMode(LED_BUILTIN, OUTPUT);
-    encoder.begin(0, 1);
+    encoder.begin(2, 3); // using pins 2 and 3 to connect encoder; make sure they are interrupt capable
 }
-
-elapsedMillis stopwatch;
 
 void loop()
 {
-    if (stopwatch > 50)
+    if (encoder.valueChanged()) // do we have a new value?
     {
         Serial.println(encoder.getValue());
-        stopwatch = 0;
     }
 }

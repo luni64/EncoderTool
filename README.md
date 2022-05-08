@@ -2,7 +2,7 @@
 [![Badge License]][License] [![Badge Arduino]][Arduino] [![Badge PlatformIO]][PlatformIO]
  # EncoderTool
 
-*+ Bounce-Free Rotary Encoder Library asdf + Push Button Support + Standard or Multiplexed Wiring + callback system*
+*+ Bounce-Free Rotary Encoder Library + Push Button Support + Standard or Multiplexed Wiring + Callback System*
 
 <br>
 
@@ -10,7 +10,16 @@
 
 ---
 
-[<kbd> <br> Examples <br> </kbd>][Examples] 
+<br>
+<details>
+  <summary><kbd>Examples</kbd></summary>
+  <ul>
+    <li> [Hello Encoder (most simple usage)](examples/01_HelloEncoder/01_HelloEncoder.ino) </li>
+    <li> [Using a 74HC165 Multiplexer](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino) </li>
+  </ul>
+</details>
+</br>
+
 [<kbd> <br> Documentation <br> </kbd>][Documentation]
 [<kbd> <br> Schematics <br> </kbd>][Schematics] 
 
@@ -29,11 +38,11 @@
 
 - Multiplexed encoders using
 
-    - [74HC165 (up to 32 encoders) ][MPLEX74165]
+    - [`74HC165 (up to 32 encoders)`][MPLEX74165]
 
-    - [40HC67 (up to 16 encoders)][MPLEX4067]
+    - [`40HC67  (up to 16 encoders)`][MPLEX4067]
 
-    - [`40HC51` (up to 8 encoders)][MPLEX4051]
+    - [`40HC51  (up to 8 encoders)`][MPLEX4051]
 
     - Easy to adapt for your preferred multiplexer
 
