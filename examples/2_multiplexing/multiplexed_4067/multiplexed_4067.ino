@@ -16,7 +16,6 @@ EncPlex4067 encoders(encoderCount, S0, S1, S2, S3, SIG_A, SIG_B);
 
 void setup()
 {
-    pinMode(LED_BUILTIN, OUTPUT);
     encoders.begin();
 }
 

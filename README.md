@@ -3,42 +3,21 @@
 
 *+ Bounce-Free Rotary Encoder Library + Push Button Support + Standard or Multiplexed Wiring + Callback System*
 
-<svg width="100%" fill="none" >
-<foreignObject width="100%" height = 200%>
-<div xmlns="http://www.w3.org/1999/xhtml">
-<style>
- .container {
-   display: flex;
-   justify-content: space-between;
-   margin: 0;
- }
-</style>
- <div class="container" style="justify-content: space-between; " >
-  <details>
-  <summary >Examples</summary>
-
-   - [Basic usage](examples/01_HelloEncoder/01_HelloEncoder.ino)
-   - [Polled Encoders](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
-   - [Using the encoder push button](examples/05_EncoderButton/05_EncoderButton.ino)
-   - Multiplexing
-     - [Using a 74HC165 shift register as multiplexer](examples/02_Multiplexed_74165/02_Multiplexed_74165.ino)
-     - [Using a 40HC67 analog switch as multiplexer](examples/03_Multiplexed_4067/03_Multiplexed_4067.ino)
-     - [Using a 40HC51 analog switch as multiplexer](examples/06_Multiplexed_4051/06_Multiplexed_4051.ino)
- </details>
-
- [Documentation][Documentation]
-
- [Schematics][Schematics] 
-</div>
-</div>
-</foreignObject>
-</svg>
+ <br>
+<div align = center>
 
 ---
 
+[<kbd> <br> Examples <br> </kbd>][Examples]
+[<kbd> <br> Schematics <br> </kbd>][Schematics] 
+[<kbd> <br> Documentation <br> </kbd>][Documentation]
 
-
+---
+</div>
 <br>
+
+
+
 
 ## Supports
 
@@ -108,12 +87,12 @@
 
 [Documentation]: https://github.com/luni64/EncoderTool/wiki
 [Schematics]: extras
-[Examples]: examples
+[Examples]: examples/README.md
 [License]: LICENSE
 [MPLEX74165]:extras/Boards/MPX_74165
 [MPLEX4067]:extras/Boards/MPX_4067
 [MPLEX4051]:extras/Boards/MPX_4051
 
-[EX1]:examples/01_HelloEncoder/01_HelloEncoder.ino
+
 
 
