@@ -21,7 +21,7 @@ namespace EncoderTool
         delete[] encoders;
     }
 
-    EncoderBase &EncPlexBase::operator[](std::size_t idx)
+    EncoderBase &EncPlexBase::operator[](size_t idx)
     {
         return idx < encoderCount ? encoders[idx] : encoders[encoderCount - 1];
     }

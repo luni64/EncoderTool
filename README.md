@@ -1,15 +1,98 @@
+[![Badge License]][License] [![Badge Arduino]][Arduino] [![Badge PlatformIO]][PlatformIO]
 # EncoderTool
-EncoderTool is a library to manage and read out rotary encoders with Teensy ARM boards.
 
-## Key features
-* Supports directly connected and multiplexed encoders
-* Supports all common types of encoders, i.e., **full** (no detents, 4 counts per period), **half** (two detents and two counts per period)  and **quarter** (1 detent and one count per period) and some variants of those. 
-* A callback mechanism allows for easy event based menu systems. Callbacks use std::function and can call non static member functions.
-* Fully bounce free without additional hardware
-* Provides hard and cyclic count limits
-* Supports and debounces encoder push buttons. Callback for notification of button events available
-* Currently 74165, 4067 and 4051 based multiplexers are supported but the class structure allows for easy extension to any other multiplexer.
-* Schematics and Eagle files for multiplexed encoders available in the Extras folder
+*+ Bounce-Free Rotary Encoder Library + Push Button Support + Standard or Multiplexed Wiring + Callback System*
 
-### -> [Documentation](https://github.com/luni64/EncoderTool/wiki)
+ <br>
+<div align = center>
+
+---
+
+[<kbd> <br> Examples <br> </kbd>][Examples]
+[<kbd> <br> Schematics <br> </kbd>][Schematics] 
+[<kbd> <br> Documentation <br> </kbd>][Documentation]
+
+---
+</div>
+<br>
+
+
+
+
+## Supports
+
+<br>
+
+- All common encoders with and without push buttons
+
+- Directly connected encoders (A+B+Button to pins)
+
+- Multiplexed encoders using
+
+    - [`74HC165 (up to 32 encoders)`][MPLEX74165]
+
+    - [`40HC67  (up to 16 encoders)`][MPLEX4067]
+
+    - [`40HC51  (up to 8 encoders)`][MPLEX4051]
+
+    - Easy to adapt for your preferred multiplexer
+
+- Interrupt based or polled readout strategies
+
+<br>
+
+## Board Compatibility
+
+<br>
+
+- PJRC Teensy (Teensy-LC, Teensy 3.x, Teensy 4.x, MicroMod)
+
+- SAMD (SEEED XIAO, Nano33 ...)
+
+- 8bit Arduino AVR (UNO, Nano, Mega...)
+
+- ESP32
+
+- Fallback solution for other boards (using slow digitalRead/Write)
+
+
+<br>
+
+## Features
+
+- Fully bounce free readout without additional hardware
+
+- Provides hard and cyclic count limits
+
+- Supports and debounces encoder push buttons
+
+- Modern callback system for event driven applications
+
+- Encoders can be connected directly (A / B / Btn connected to pins)
+
+- Encoder connection using various multiplexers (up to 32 encoders on only 4 control pins)
+
+- Schematics and Gerbers available for multiplexed encoder boards (Eagle/KiCad).
+
+
+<!----------------------------------------------------------------------------->
+
+<!-- [Badge Arduino]: https://img.shields.io/badge/Arduino-EncoderTool-00979D.svg?logo=arduino -->
+[Badge Arduino]: https://www.ardu-badge.com/badge/EncoderTool.svg
+[Badge PlatformIO]: https://badges.registry.platformio.org/packages/luni64/library/EncoderTool.svg
+[Badge License]: https://img.shields.io/github/license/luni64/EncoderTool
+
+[Arduino]: https://www.ardu-badge.com/EncoderTool
+[PlatformIO]: https://registry.platformio.org/libraries/luni64/EncoderTool/
+
+[Documentation]: https://github.com/luni64/EncoderTool/wiki
+[Schematics]: extras
+[Examples]: examples/README.md
+[License]: LICENSE
+[MPLEX74165]:extras/Boards/MPX_74165
+[MPLEX4067]:extras/Boards/MPX_4067
+[MPLEX4051]:extras/Boards/MPX_4051
+
+
+
 

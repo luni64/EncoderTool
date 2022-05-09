@@ -1,7 +1,7 @@
 {
   "name": "EncoderTool",
-  "keywords": "teensy, pjrc, encoder, multiplexed, polling, 74165, shift register",
-  "description": "The EncoderTool is a library to manage and read out rotary encoders connected either directly or via multiplexers. It supports the common types of encoders (full / quad / half) and some variants. It provides periodic and limit modes and can invoke callbacks on value changes.",
+  "keywords": "encoder, multiplexed, polling, 74165, 4067, 4051",
+  "description": "The EncoderTool is a library to manage and read out rotary encoders with or without buttons, connected either directly or via multiplexers. It supports the common types of encoders (full / quad / half) and some variants. It provides periodic and limit modes and can invoke callbacks on value changes.",
   "repository":
   {
     "type": "git",
@@ -9,13 +9,20 @@
   },
   "authors":
   {
-    "name": "Lutz Niggl",
-    "email": "lutz.niggl@lunoptics.com",
+    "name": "luni64",
     "url": "https://github.com/luni64",
     "maintainer": true
   },
   "homepage": "https://github.com/luni64/EncoderTool",
-  "version": "2.3.1",
+
+  "version": "3.0.0",
   "frameworks": "arduino",
-  "platforms": "Teensy"
+  "dependencies":[
+    {
+        "owner": "thomasfredericks",
+        "name": "Bounce2",
+        "version": ">2.5.0"
+    }
+  ],
+  "headers": "EncoderTool.h"
 }

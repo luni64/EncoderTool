@@ -9,7 +9,7 @@ namespace EncoderTool
     {
      public:
         void attachCallback(allCallback_t callback);
-        EncoderBase& operator[](std::size_t idx);
+        EncoderBase& operator[](size_t idx);
 
      protected:
         EncPlexBase(unsigned EncoderCount);
