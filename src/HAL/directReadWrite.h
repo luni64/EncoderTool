@@ -2,7 +2,7 @@
 
 #include "Arduino.h"
 #include "cores.h"
-#include "SimplyAtomic.h"
+#include "SimplyAtomic/SimplyAtomic.h"
 
 
 namespace HAL

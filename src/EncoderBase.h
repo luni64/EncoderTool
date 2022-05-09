@@ -1,7 +1,7 @@
 #pragma once
 #include "EncoderButton.h"
 #include "HAL/directReadWrite.h"
-#include "SimplyAtomic.h"
+#include "HAL/SimplyAtomic/SimplyAtomic.h"
 #include "config.h"
 #include <limits.h>
 

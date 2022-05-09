@@ -21,10 +21,6 @@
         "owner": "thomasfredericks",
         "name": "Bounce2",
         "version": ">2.5.0"
-    },
-    {
-      "name": "SimplyAtomic",
-      "version": "https://github.com/wizard97/SimplyAtomic.git"
     }
   ],
   "headers": "EncoderTool.h"
