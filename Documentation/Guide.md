@@ -1,4 +1,6 @@
 
+[![Banner]][Overview]
+
 # Quick Starter Guide
 
 - [Install The Library]
@@ -81,6 +83,6 @@ The EncoderTool will invoke the callback on any change of the current value. For
 <!----------------------------------------------------------------------------->
 
 [Install The Library]: Installation.md
-
-
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png
 

@@ -1,5 +1,5 @@
 
-![Banner]
+[![Banner]][Overview]
 
 # Installation
 
@@ -70,6 +70,7 @@ git clone https://github.com/luni64/EncoderTool.git
 <!----------------------------------------------------------------------------->
 
 [Release]: https://github.com/luni64/EncoderTool/releases
-[Banner]: ../Resources/Image/encoder.png
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png
 
 

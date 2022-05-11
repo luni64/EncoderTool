@@ -1,3 +1,6 @@
+
+[![Banner]][Overview]
+
 # Content
 * **Directly connected encoders**
   * [Construction](#construction)
@@ -214,7 +217,10 @@ Encoder encoder;
 
 
  
+<!----------------------------------------------------------------------------->
 
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png
 
 
 

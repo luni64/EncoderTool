@@ -1,4 +1,6 @@
 
+[![Banner]][Overview]
+
 # Quadrature Signals
 
 Manually operated encoders typically generate a <br>
@@ -65,7 +67,7 @@ at the transition while the other has a stable state.
 
 Because of this, the counter automatically interprets <br>
 the bouncing as rapid up / down counts but after the <br>
-bouncing stops it will always end up at the correct position.
+bouncing stops it will end up at the correct position.
 
 <br>
 
@@ -89,3 +91,5 @@ you'd still end up with the same result as before.
 <!---------------------------------------------------------------->
 
 [Encoder Library]: https://github.com/PaulStoffregen/Encoder
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png

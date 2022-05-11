@@ -1,4 +1,6 @@
 
+[![Banner]][Overview]
+
 # Interrupts vs Polling
 
 *There are two quadrature decoding strategies.*
@@ -141,4 +143,6 @@ void loop(){
 
 <!----------------------------------------------------------------------------->
 
-[Bouncing]: ./Bouncing.md
+[Bouncing]: Bouncing.md
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png

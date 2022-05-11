@@ -1,4 +1,6 @@
 
+[![Banner]][Overview]
+
 # Connecting Encoders
 
 *Encoders can be connected as shown in the diagram below.*
@@ -45,3 +47,7 @@ Make sure your **VCC** isn't too high.
 
 
 
+<!----------------------------------------------------------------------------->
+
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png

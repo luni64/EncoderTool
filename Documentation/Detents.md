@@ -1,3 +1,6 @@
+
+[![Banner]][Overview]
+
 Manually operated encoders often have mechanical detents to give a tactile feedback to the user. Commonly the detents are placed to be synchronized with one period of the quadrature signal. 
 
 ## x4 Type encoders
@@ -30,4 +33,10 @@ Here a cut out of the ALPS EC11 datasheet showing the different detent types:
 <br><br>
 
 The encoders in the left column are x2 type encoders with their detents at stable positions of phase A and phase B. The encoders in the middle column are x2 types where the detents sit on the edge of the phase B. The datasheet explicitly mentions that at the detent position the stability for the B signal can not be guaranteed. 
+
+
+<!----------------------------------------------------------------------------->
+
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png
 

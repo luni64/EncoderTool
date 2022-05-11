@@ -1,3 +1,6 @@
+
+[![Banner]][Overview]
+
 ## Flavours
 Rotary encoders come in a lot of flavours. 
 
@@ -10,3 +13,8 @@ There are also encoders for high end panel or setpoint applications based on opt
 2) **High resolution encoders**\
 Those always use optical or magnetic sensors and are typically used for positioning applications, in CNC machines, to measure rotational speed of motors or scientific applications. Versions with 500'000'000 positions per revolutions are readily available. (e.g. https://www.heidenhain.de/de_EN/products/angle-encoders/modular-angle-encoders-with-optical-scanning/eca-4000/). Due to the high pulse frequency such encoders are typically read out by specialized hardware counters. 
 
+
+<!----------------------------------------------------------------------------->
+
+[Overview]: Overview.md
+[Banner]: ../Resources/Image/Banner.png
