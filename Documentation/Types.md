@@ -1,14 +1,23 @@
 
 [![Banner]][Overview]
 
+<br>
+
+<div align = center>
+
 # Encoder Types
 
 *Rotary encoders come in a lot of flavors.*
 
 <br>
 <br>
+<br>
+<br>
+
 
 ## Manual + Mechanical
+   
+</div>
 
 <br>
 
@@ -29,13 +38,16 @@
 They come with or without mechanical detents. 
 
 <br>
-
----
-
 <br>
+<br>
+<br>
+
+<div align = center>
 
 ## Manual + Optical / Magnetic
 
+</div>
+   
 <br>
 
 ### Applications
@@ -56,15 +68,18 @@ They come with or without mechanical detents.
 [![Button Megatron]][Megatron]
 
 <br>
-
----
-
 <br>
+<br>
+<br>
+
+<div align = center>
 
 ## High Resolution
 
 This encoder type always uses optical / magnetic sensors.
 
+</div>
+   
 <br>
 
 ### Applications
