@@ -10,9 +10,12 @@
 [![Button Guide]][Guide]
 
 <br>
-
+<br>
+  
 ## How To
 
+<br>
+  
 [![Button Installation]][Installation] 
 [![Button Connecting]][Connecting] 
 [![Button Limiting]][Limiting]
@@ -22,8 +25,11 @@
 [![Button Reference]][Reference]
 
 <br>
+<br>
 
 ## Details
+
+<br>
 
 [![Button Types]][Types] 
 [![Button Detents]][Detents] 
