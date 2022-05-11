@@ -1,88 +1,175 @@
 
 [![Banner]][Overview]
 
+<br>
+
+<div align = center>
+
 # Quick Starter Guide
 
-- [Install The Library]
+</div>
 
-## First test
+<br>
 
-Let's see how to use the library with a standard mechanical encoder connected directly to digital pins. For the test we simply connect the encoder phases A and B to pins 0 and 1 and ground the common encoder pin as shown in the following schematic.
+## Installation
 
-![Simple Encoder 1](../Resources/Image/SimpleEnc1.png)
+Simply follow  the **[Installation Instructions]**.
 
-### Construction and read out
+<br>
 
-To construct an encoder on pins 0/1 and periodically print its value to Serial you can use the following code:
-```c++
+
+## Testing
+
+As a first introductory test of the library, here is an <br>
+example of how to connect a standard mechanical <br>
+encoder directly to digital pins.
+
+<br>
+
+![Simple Encoder]
+
+<br>
+
+Simply connect the pins in the following manner:
+
+<kbd>      A      </kbd>  **⟼**  <kbd>  0  </kbd> <br>
+<kbd>      B      </kbd>  **⟼**  <kbd>  1  </kbd> <br>
+<kbd> Encoder Pin </kbd>  **⟼**  <kbd> GND </kbd>
+
+<br>
+
+### Setup
+
+Check out the following example code <br>
+for how to initialize a basic encoder.
+
+```C++
 #include "EncoderTool.h"
+
 using namespace EncoderTool;
 
-Encoder encoder;                     // single, directly connected encoder
 
-void setup()
-{
-    encoder.begin(0,1);              // A=0, B=1
-}
+//  Single, directly connected encoder
+
+Encoder encoder;
+
+//  Time since last reading
 
 elapsedMillis stopwatch = 0;
 
-void loop()
-{
-    if(stopwatch > 250)             // print value every 250ms
-    {
-        int p = encoder.getValue(); // get current value
-        Serial.println(p);
-        stopwatch = 0;
-    }
-  }
-```
 
-Please note: If you observe strange counting behavior (jumps, not counting at all etc.), this is most probably related to the encoder type your are using. See [[here|Encoder types]] for more information about common encoder types and how to setup the EncoderTool to support them.
-
-### Limiting encoder output
-
-You can limit the encoder output to an arbitrary interval or make the encoder output periodic.
-![limits](image/limits.png)
-See [[here|Limiting Encoder Output]] for details.
-
-### Callbacks
-You can also attach callbacks to your encoders:
-```c++
-#include "EncoderTool.h"
-using namespace EncoderTool;
-
-Encoder encoder;            // simple directly connected encoder
-
-void showValue(int value, int delta)
-{
-    Serial.printf("value: %d delta:%d \n" value, delta);
+void setup(){
+    
+    /*
+     *  Standard Configuration
+     *  A = 0
+     *  B = 1
+     */
+    
+    encoder.begin(0,1);
 }
 
-void setup()
-{
-    encoder.begin(0,1);     // Pins 0 and 1, use standard configuration
+
+void loop(){
+    
+    if(stopwatch < 250)
+        return;
+    
+    //  Reads the current encoder value
+    
+    int value encoder.getValue();
+    
+    Serial.println(value);
+    
+    stopwatch = 0;
+}
+```
+
+<br>
+
+#### Problems
+
+If you observe the counter jumping or not <br>
+counting at all, it is most likely the related <br>
+to the type of encoder you are using.
+
+Please refer to the **[Reference]** section.
+
+<br>
+
+### Limited Output
+
+If you want to limit the interval in which your <br>
+encoder outputs, please check the **[Example][Limiting]**.
+
+<br>
+
+### Callbacks
+
+You can also attach callbacks to your encoders:
+
+<br>
+
+*The EncoderTool will invoke the callback* <br>
+*on any change of the current value.* <br>
+
+*For your convenience it will pass in the current* <br>
+*value and the difference to the last value.*
+
+<br>
+
+```c++
+#include "EncoderTool.h"
+
+using namespace EncoderTool;
+
+
+//  Single, directly connected encoder
+
+Encoder encoder;
+
+//  Time since last reading
+
+elapsedMillis stopwatch = 0;
+
+
+void showValue(int value,int delta){
+    Serial.printf("Value: %d Delta:%d \n",value,delta);
+}
+
+void setup(){
+    
+    /*
+     *  Standard Configuration
+     *  A = 0
+     *  B = 1
+     */
+     
+    encoder.begin(0,1);
+
+    //  Attaches the callback function to the encoder
+    
     encoder.attachCallback(showValue);
 }
 
-elapsedMillis stopwatch = 0;
 
-void loop()
-{   
-}
+void loop(){}
 ```
-The EncoderTool will invoke the callback on any change of the current value. For your convenience it will pass in the current value and the difference to the last value.
 
-### Further reading
-* [[Information about common types of encoders and how to use them with the Encoder tool|Encoder Types]]
-* [[Used algorithms for counting and debouncing|Algorithms]]
-* [[How to use various multiplexers to connect your encoders|Multiplexed Encoders]]
-* [[Details about the implemented callback system|Callbacks]]
+<br>
+
+### Further Reading
+
+For more information please refer to the **[Reference]** documentation.
 
 
 <!----------------------------------------------------------------------------->
 
-[Install The Library]: Installation.md
+[Installation Instructions]: Installation.md
+[Reference]: Reference.md
 [Overview]: Overview.md
+[Limiting]: Limiting.md
+
+[Simple Encoder]: ../Resources/Image/Simple.png
 [Banner]: ../Resources/Image/Banner.png
 
