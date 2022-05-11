@@ -10,11 +10,13 @@
 </div>
 
 <br>
+<br>
 
 ## Installation
 
 Simply follow  the **[Installation Instructions]**.
 
+<br>
 <br>
 
 
@@ -157,10 +159,13 @@ void loop(){}
 ```
 
 <br>
+<br>
 
 ### Further Reading
 
 For more information please refer to the **[Reference]** documentation.
+
+<br>
 
 
 <!----------------------------------------------------------------------------->
