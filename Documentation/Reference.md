@@ -1,11 +1,16 @@
 
 [![Banner]][Overview]
 
+<br>
+
+<div align = center>
 
 # Direct Encoders
 
 *Directly connected encoders.*
 
+</div>
+    
 <br>
 
 ## Basic Examples
@@ -161,6 +166,8 @@ void setup(){
 }
 ```
 
+<br>
+
 Embedded an encoder in a user class:
 
 ```c++
@@ -207,10 +214,18 @@ void loop(){}
 
 <br>
 <br>
+<br>
+<br>
+
+<div align = center>
 
 # Multiplexed Encoders
 
-See here https://github.com/luni64/EncoderTool/tree/master/extras for schematics and boards.
+You may want to check the **[Boards & Schematics]**.
+
+</div>
+
+<br>
 
 ## Basic Examples
 
@@ -318,8 +333,16 @@ void setup(){
 
 <br>
 <br>
+<br>
+<br>
+
+<div align = center>
 
 # Miscellaneous
+
+</div>
+
+<br>
 
 ## Namespace
 
@@ -349,7 +372,10 @@ Encoder encoder;
 <!----------------------------------------------------------------------------->
 
 [Overview]: Overview.md
+
+[Boards & Schematics]: ../Resources/Extras
 [Banner]: ../Resources/Image/Banner/Current.png
+
 
 
 
