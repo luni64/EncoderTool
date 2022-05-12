@@ -58,7 +58,7 @@
 [Reference]: Reference.md
 [Bouncing]: Bouncing.md
 [Limiting]: Limiting.md
-[Detents]: Guide.md
+[Detents]: Detents.md
 [Types]: Types.md
 [Guide]: Guide.md
 
