@@ -1,19 +1,25 @@
-[![Badge License]][License] [![Badge Arduino]][Arduino] [![Badge PlatformIO]][PlatformIO]
-# EncoderTool
 
-*+ Bounce-Free Rotary Encoder Library + Push Button Support + Standard or Multiplexed Wiring + Callback System*
+# EncoderTool  [![Badge License]][License]  [![Badge Arduino]][Arduino]  [![Badge PlatformIO]][PlatformIO]
 
- <br>
+*Bounce-Free Rotary Encoder Library* <br>
+ **+** *Standard or Multiplexed Wiring* <br>
+ **+** *Push Button Support* <br>
+ **+** *Callback System*
+
+<br>
+
 <div align = center>
 
 ---
 
-[<kbd> <br> Examples <br> </kbd>][Examples]
+[<kbd> <br> Examples <br> </kbd>][Examples] 
 [<kbd> <br> Schematics <br> </kbd>][Schematics] 
 [<kbd> <br> Documentation <br> </kbd>][Documentation]
 
 ---
+
 </div>
+
 <br>
 
 
@@ -77,22 +83,22 @@
 
 <!----------------------------------------------------------------------------->
 
-<!-- [Badge Arduino]: https://img.shields.io/badge/Arduino-EncoderTool-00979D.svg?logo=arduino -->
-[Badge Arduino]: https://www.ardu-badge.com/badge/EncoderTool.svg
-[Badge PlatformIO]: https://badges.registry.platformio.org/packages/luni64/library/EncoderTool.svg
-[Badge License]: https://img.shields.io/github/license/luni64/EncoderTool
-
-[Arduino]: https://www.ardu-badge.com/EncoderTool
 [PlatformIO]: https://registry.platformio.org/libraries/luni64/EncoderTool/
-
-[Documentation]: https://github.com/luni64/EncoderTool/wiki
-[Schematics]: extras
-[Examples]: examples/README.md
+[Arduino]: https://www.arduino.cc/reference/en/libraries/encodertool/
 [License]: LICENSE
-[MPLEX74165]:extras/Boards/MPX_74165
-[MPLEX4067]:extras/Boards/MPX_4067
-[MPLEX4051]:extras/Boards/MPX_4051
+
+[Documentation]: Documentation/Overview.md
+[Schematics]: Resources/Extras
+[Examples]: examples
+
+[MPLEX74165]: Resources/Extras/Boards/MPX_74165
+[MPLEX4067]: Resources/Extras/Boards/MPX_4067
+[MPLEX4051]: Resources/Extras/Boards/MPX_4051
 
 
+<!--------------------------------{ Badges }----------------------------------->
 
+[Badge PlatformIO]: https://img.shields.io/badge/PlatformIO-EncoderTool-fd7e14.svg?style=for-the-badge
+[Badge Arduino]: https://img.shields.io/badge/EncoderTool-00979D.svg?style=for-the-badge&logo=Arduino&logoColor=white&labelColor=gray
+[Badge License]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
 
