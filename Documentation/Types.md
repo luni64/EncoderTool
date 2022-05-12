@@ -107,7 +107,7 @@ typically read out by specialized hardware counters.
 <!----------------------------------------------------------------------------->
 
 [Overview]: Overview.md
-[Banner]: ../Resources/Image/Banner.png
+[Banner]: ../Resources/Image/Banner/Current.png
 
 
 <!---------------------------------{ Suppliers }------------------------------->

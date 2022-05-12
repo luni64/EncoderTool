@@ -60,5 +60,5 @@ menu items, in which case you could use a range of `0 - n`.
 
 [Overview]: Overview.md
 
-[Banner]: ../Resources/Image/Banner.png
+[Banner]: ../Resources/Image/Banner/Current.png
 [Limits]: ../Resources/Image/Limits.png

@@ -92,4 +92,4 @@ you'd still end up with the same result as before.
 
 [Encoder Library]: https://github.com/PaulStoffregen/Encoder
 [Overview]: Overview.md
-[Banner]: ../Resources/Image/Banner.png
+[Banner]: ../Resources/Image/Banner/Current.png

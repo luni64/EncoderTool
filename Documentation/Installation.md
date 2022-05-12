@@ -71,6 +71,6 @@ git clone https://github.com/luni64/EncoderTool.git
 
 [Release]: https://github.com/luni64/EncoderTool/releases
 [Overview]: Overview.md
-[Banner]: ../Resources/Image/Banner.png
+[Banner]: ../Resources/Image/Banner/Current.png
 
 

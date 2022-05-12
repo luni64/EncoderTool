@@ -176,5 +176,5 @@ For more information please refer to the **[Reference]** documentation.
 [Limiting]: Limiting.md
 
 [Simple Encoder]: ../Resources/Image/Simple.png
-[Banner]: ../Resources/Image/Banner.png
+[Banner]: ../Resources/Image/Banner/Current.png
 
