@@ -1,6 +1,9 @@
 #pragma once
 #include "EncoderButton.h"
+#include "HAL/directReadWrite.h"
+#include "HAL/SimplyAtomic/SimplyAtomic.h"
 #include "config.h"
+#include <limits.h>
 
 namespace EncoderTool
 {
@@ -15,47 +18,60 @@ namespace EncoderTool
     class EncoderBase
     {
      public:
-        void begin(uint32_t phaseA, uint32_t phaseB);
+        void begin(uint_fast8_t phaseA, uint_fast8_t phaseB);
 
-        EncoderBase& setCountMode(CountMode);
-        EncoderBase& attachCallback(encCallback_t);
-        EncoderBase& attachButtonCallback(encBtnCallback_t);
-        EncoderBase& setLimits(int32_t min, int32_t max, bool periodic = false);
+        EncoderBase &setCountMode(CountMode);
+        EncoderBase &attachCallback(encCallback_t);
+        EncoderBase &attachButtonCallback(encBtnCallback_t);
+        EncoderBase &setLimits(int min, int max, bool periodic = false);
 
-        void setValue(int32_t val) { value = val; }
+        void setValue(int val) { value = val; }
 
-        int32_t getValue() const { return value; }
+        int getValue() const
+        {
+            if (sizeof(__SIG_ATOMIC_TYPE__) == sizeof(int)) // compile time evaluation
+                return value;
+            else
+            {
+                ATOMIC()
+                {
+                    return value;
+                }
+            }
+            return value; // make the compiler happy
+        }
+
         bool valueChanged()
         {
-            bool ret = valChanged;
+            bool ret   = valChanged;
             valChanged = false;
             return ret;
         }
 
-        int32_t getButton() { return button.read(); }
+        uint8_t getButton() { return button.read(); }
         bool buttonChanged()
         {
-            bool ret = btnChanged;
+            bool ret   = btnChanged;
             btnChanged = false;
             return ret;
         }
 
-        int update(uint32_t phaseA, uint32_t phaseB, uint32_t btn = 0);
+        int update(uint_fast8_t phaseA, uint_fast8_t phaseB, uint_fast8_t btn = 0);
 
      protected:
-        EncoderBase() = default;
-        int32_t value = 0;
+        EncoderBase()   = default;
+        int value       = 0;
         bool valChanged = false;
 
         EncoderButton button;
         bool btnChanged = false;
 
-        int32_t minVal = INT32_MIN, maxVal = INT32_MAX;
-        bool periodic = false;
-        unsigned invert = 0x00;
+        int minVal = INT_MIN, maxVal = INT_MAX;
+        bool periodic    = false;
+        unsigned invert  = 0x00;
         uint8_t curState = 0;
 
-        encCallback_t callback = nullptr;
+        encCallback_t callback       = nullptr;
         encBtnCallback_t btnCallback = nullptr;
 
         static const uint8_t stateMachineQtr[7][4];
@@ -63,8 +79,8 @@ namespace EncoderTool
         static const uint8_t stateMachineFull[7][4];
         const uint8_t (*stateMachine)[7][4] = &stateMachineFull;
 
-        EncoderBase& operator=(EncoderBase const&) = delete;
-        EncoderBase(EncoderBase const&) = delete;
+        EncoderBase &operator=(EncoderBase const &) = delete;
+        EncoderBase(EncoderBase const &)            = delete;
 
         friend class EncPlexBase;
 

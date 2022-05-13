@@ -12,19 +12,15 @@
 
 ---
 
-[<kbd> <br> Examples <br> </kbd>][Examples] 
+[<kbd> <br> Examples <br> </kbd>][Examples]
 [<kbd> <br> Schematics <br> </kbd>][Schematics] 
 [<kbd> <br> Documentation <br> </kbd>][Documentation] 
 [<kbd> <br> Contributors <br> </kbd>][Contributors]
 
 ---
-
 </div>
 
 <br>
-
-
-
 
 ## Supports
 
@@ -62,7 +58,6 @@
 
 - Fallback solution for other boards (using slow digitalRead/Write)
 
-
 <br>
 
 ## Features
@@ -86,7 +81,13 @@
 
 [PlatformIO]: https://registry.platformio.org/libraries/luni64/EncoderTool/
 [Arduino]: https://www.arduino.cc/reference/en/libraries/encodertool/
+
 [License]: LICENSE
+[MPLEX74165]:extras/Boards/MPX_74165
+[MPLEX4067]:extras/Boards/MPX_4067
+[MPLEX4051]:extras/Boards/MPX_4051
+
+
 
 [Documentation]: Documentation/Overview.md
 [Contributors]: Documentation/Contributors.md

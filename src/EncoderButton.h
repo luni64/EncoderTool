@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Bounce2.h"
+#include <Bounce2.h>
 
 namespace EncoderTool
 {
