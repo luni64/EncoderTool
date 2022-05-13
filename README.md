@@ -12,10 +12,10 @@
 
 ---
 
-[<kbd> <br> Examples <br> </kbd>][Examples] 
+[<kbd> <br> Examples <br> </kbd>][Examples] 
 [<kbd> <br> Schematics <br> </kbd>][Schematics] 
 [<kbd> <br> Documentation <br> </kbd>][Documentation] 
-[<kbd> <br> Contributors <br> </kbd>][Contributors] 
+[<kbd> <br> Contributors <br> </kbd>][Contributors]
 
 ---
 </div>
