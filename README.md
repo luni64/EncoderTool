@@ -14,7 +14,8 @@
 
 [<kbd> <br> Examples <br> </kbd>][Examples] 
 [<kbd> <br> Schematics <br> </kbd>][Schematics] 
-[<kbd> <br> Documentation <br> </kbd>][Documentation]
+[<kbd> <br> Documentation <br> </kbd>][Documentation] 
+[<kbd> <br> Contributors <br> </kbd>][Contributors]
 
 ---
 
@@ -88,6 +89,7 @@
 [License]: LICENSE
 
 [Documentation]: Documentation/Overview.md
+[Contributors]: Documentation/Contributors.md
 [Schematics]: Resources/Extras
 [Examples]: examples
 
