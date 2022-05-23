@@ -79,8 +79,6 @@ namespace EncoderTool
 
     int EncoderBase::update(uint_fast8_t phaseA, uint_fast8_t phaseB, uint_fast8_t btn)
     {
-
-
         if (button.update(btn))
         {
             btnChanged = true;

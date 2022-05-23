@@ -4,6 +4,12 @@
 # Prerequisites
 *.d
 
+# KICAD
+fp-info-cache
+*_prl
+*_pcb
+**/*-backups/**
+
 # Compiled Object files
 *.slo
 *.lo
@@ -33,3 +39,4 @@
 *.exe
 *.out
 *.app
+

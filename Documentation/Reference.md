@@ -10,7 +10,7 @@
 *Directly connected encoders.*
 
 </div>
-    
+
 <br>
 
 ## Basic Examples
@@ -21,7 +21,7 @@
 using namespace EncoderTool;
 
 
-// Interrupt Based Encoders 
+// Interrupt Based Encoders
 
 Encoder
     encoderA,
@@ -31,61 +31,55 @@ Encoder
 /*
  *  Polling Based Encoder
  *
- *  Call the tick() function as often 
+ *  Call the tick() function as often
  *  as possible -> In a loop
- */ 
+ */
 
 
 PollEncoder
     encoderD,
-    encoderE;    
+    encoderE;
 
 
 void setup(){
-    
+
     /*
-     *  Count Mode : Default ( 4 Counts / Detent )
+     *  Count Mode : Default (quarter, 1 Detent / Signal Period )
      *  A = 0
      *  B = 1
      */
-
     encoderA.begin(0,1);
 
     /*
-     *  Count Mode = Half ( 2 Counts / Detent )
+     *  Count Mode = Half ( 2 Detents / SignalPeriod )
      *  A = 2
      *  B = 3
      */
-
     encoderB.begin(2,3,CountMode::half);
 
     /*
-     *  Count Mode : Default
+     *  Count Mode : Default = quarter
      *  A = 4
      *  B = 5
      *  Callback = posDisp
      */
-
     encoderC.begin(4,5,posDisp);
-    
+
     /*
      *  Count Mode : quarterInv
      *  A = 6
      *  B = 7
      *  Callback = posDisp
-     *
-     *  Common VCC instead of common GND
      */
-    
     encoderD.begin(6,7,posDisp,CountMode::quarterInv);
-    
+
     /*
      *  Count Mode : quarterInv
      *  A = 7
      *  B = 8
      *  PinMode = INPUT_PULLDOWN
+     *  Common VCC instead of common GND
      */
-    
     encoderE.begin(8,9,CountMode::quarter,INPUT_PULLUP);
 }
 ```
@@ -95,9 +89,15 @@ void setup(){
 ## Get
 
 *Read the current position counter.*
-
 ```C++
 int value = encoder.getValue();
+```
+
+<br>
+
+*Read the current button state.*
+```C++
+int state = encoder.getButton();
 ```
 
 <br>
@@ -105,9 +105,28 @@ int value = encoder.getValue();
 ## Set
 
 *Set the counter to a position.*
-
 ```C++
 encoder.setValue(0);
+```
+
+<br>
+
+## Check
+
+*Check if the counter changed*
+```C++
+if(encoder.valueChanged()){
+    // do something
+}
+```
+
+<br>
+
+*Check if the button state changed*
+```C++
+if(encoder.buttonChanged()){
+    Serial.println(encoder.getButton() == 0 ? "pressed" : "released");
+}
 ```
 
 <br>
@@ -129,7 +148,7 @@ encoder.setLimits(3,13);
 *Cyclic count range from ` 0 → 12 `*
 
 ```C++
-encoder.setLimits(0,12,true); 
+encoder.setLimits(0,12,true);
 ```
 
 <br>
@@ -153,13 +172,13 @@ void myCallback(int position,int delta){
 }
 
 void setup(){
-    
+
     //  Attach a callback which takes the current position and the delta to the last position
-    
+
     encoderA.attachCallback(myCallback);
-    
+
     // Lambda expression callback
-    
+
     encoderB.attachCallback([](int position,int delta){
         Serial.println(position);
     });
@@ -172,13 +191,13 @@ Embedded an encoder in a user class:
 
 ```c++
 class Menu {
-    
+
     protected:
-        
+
         Encoder encoder;
 
     public:
-        
+
         void begin(){
             encoder.begin(0,1);
             encoder.setLimits(0,2,true);
@@ -189,10 +208,10 @@ class Menu {
 
         void displayText(int value){
             switch(value){
-            case 0 : 
+            case 0 :
                 Serial.println("First");
                 return;
-            case 1 : 
+            case 1 :
                 Serial.println("Second");
                 return;
             case 2 :
@@ -284,15 +303,15 @@ void setup(){
 
 ```C++
 void setup(){
-    
+
     encoders.begin();
 
     //  Access first multiplexed encoder
-    
+
     encoders[0].setLimits(0,10);
-    
+
     //  Access second multiplexed encoder
-    
+
     encoders[1].setLimits(0,24,true);
 
     //  Same with fluent interface
@@ -324,9 +343,9 @@ void callback(unsigned int encoderIndex,int value,int delta){
 void setup(){
 
     encoders.begin();
-    
+
     // This attaches the callback to all encoders
-    
+
     encoders.attachCallback(callback);
 }
 ```
@@ -351,7 +370,7 @@ clashes with commonly used symbol names like `Encoder`.
 
 <br>
 
-Thus, you can either use fully qualified names: 
+Thus, you can either use fully qualified names:
 
 ```C++
 EncoderTool::Encoder encoder;
@@ -365,10 +384,10 @@ or alternatively you can import all symbols from the namespace.
 using namespace EncoderTool;
 ```
 ```C++
-Encoder encoder;  
+Encoder encoder;
 ```
 
- 
+
 <!----------------------------------------------------------------------------->
 
 [Overview]: Overview.md
