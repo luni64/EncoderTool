@@ -9,6 +9,7 @@ This folder contains proposals and information how to use a 74HC165 shift regist
 * [Multiplexing with 74HC165](#Multiplexerwith74HC165)
 * [Multiplexing with CD74HC4067](#MultiplexerwithCD74HC4067)
 * [Multiplexing with CD74HC4051](#MultiplexerwithCD74HC4051)
+* [Using a directly connected Encoder Matrix](#EncoderMatrix)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -103,3 +104,29 @@ The recommended through-hole component is the CD74HC4051. There's an older CD405
 The schematic below shows how to connect your encoders and multiplexers ([full PDF](Boards/MPX_4051/MPX_4051_Schematic.pdf)). 3.3V from the Teensy is used to supply VCC.
 
 ![Schematic](Boards/MPX_4051/Schematic_part.png)
+
+## <a name='EncoderMatrix'></a>Using a directly connected Encoder Matrix
+
+Instead of using external multiplexers one can use a Teensy to read out\
+a matrix of encoders.
+
+Here a schematic and 3d views of a corresponding prototype board
+([full PDF](Boards/MATRIX/documentation/schematic.pdf)).\
+The controller sets one column pin at a time to HIGH and queries\
+the A/B/S pins of the individual rows.
+
+![Schematic](Boards/MATRIX/documentation/schematic.jpg)
+
+The board can be used for prototypes as well as finished products.\
+To accommodate the final, mechanical setup the rows and columns\
+can be broken apart. Wiring of the singled encoder boards is easy using\
+the provided pads. The layout of the board allows to use a Teensy or\
+similar board as controller.
+
+Front
+![Schematic](Boards/MATRIX/documentation/front.jpg)
+
+Back
+![Schematic](Boards/MATRIX/documentation/back.jpg)
+
+Production files (gerbers, drill files) can be found in the extras folder.
