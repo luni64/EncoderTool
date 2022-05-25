@@ -1,3 +1,7 @@
+/**
+ * PLEASE NOTE: Due to some dependencies this example currently compiles for Teensy boards only
+ **/
+
 #include "EncoderTool.h"
 #include "FreqGen.h"
 using namespace EncoderTool;

@@ -1,3 +1,9 @@
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * PLEASE NOTE: Due to some dependencies this example currently compiles for Teensy boards only
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+#include "Arduino.h"
+
 constexpr size_t bufSize = 10;
 
 struct
@@ -37,7 +43,6 @@ void setup()
         }
     }
 
-
     float time = 0;
 
     for (unsigned i = 1; i < bufSize; i++)
@@ -53,12 +58,8 @@ int olda, oldb;
 
 void loop()
 {
-    // digitalWriteFast(LED_BUILTIN, !digitalReadFast(LED_BUILTIN));
-    // delay(200);
-
-    int a = digitalReadFast(0);
-    int b = digitalReadFast(1);
-    //int val = a & (b << 1);
+    int a = digitalRead(0);
+    int b = digitalRead(1);
 
     if(a != olda || b!= oldb)
     {

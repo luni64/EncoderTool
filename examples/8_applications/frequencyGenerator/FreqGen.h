@@ -1,6 +1,7 @@
 #pragma once
 #pragma once
 
+#include "Arduino.h"
 #include "Channel.h"
 
 class FreqGen_t
@@ -70,7 +71,7 @@ class FreqGen_t
       pinMode(LED_BUILTIN, OUTPUT);
       while (true)
       {
-        digitalWriteFast(LED_BUILTIN, !digitalReadFast(LED_BUILTIN));
+        digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
         delay(50);
       }
     }

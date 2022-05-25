@@ -19,19 +19,19 @@ void setup()
     encoders.begin();
 }
 
-elapsedMillis stopwatch;
+unsigned t0 = 0;
 
 void loop()
 {
     encoders.tick();
-  
-    if (stopwatch > 100)  // display encoder values every 100 ms
+
+    if (millis() - t0 > 100)  // display encoder values every 100 ms
     {
         for (unsigned i = 0; i < encoderCount; i++)
         {
             Serial.printf("E%u:%3d ", i, encoders[i].getValue());
         }
         Serial.println();
-        stopwatch = 0;
-    } 
+        t0 = millis();
+    }
 }

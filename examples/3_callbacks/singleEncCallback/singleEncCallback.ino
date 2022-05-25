@@ -5,7 +5,7 @@ using namespace EncoderTool;
 constexpr uint8_t A = 2, B = 3, Btn = 4; // pins
 PolledEncoder enc;
 
-void onValueChanged(int32_t value, int32_t delta)
+void onValueChanged(int value, int delta)
 {
     Serial.print("New value: ");
     Serial.println(value);
@@ -13,7 +13,7 @@ void onValueChanged(int32_t value, int32_t delta)
     Serial.print(delta);
 }
 
-void onButtonChanged(int32_t state)
+void onButtonChanged(int state)
 {
     Serial.print("Current button state: ");
     Serial.println(state == LOW ? "pressed" : "released");
