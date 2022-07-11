@@ -1,9 +1,8 @@
 #pragma once
 
 #include "Arduino.h"
-#include "cores.h"
 #include "SimplyAtomic/SimplyAtomic.h"
-
+#include "cores.h"
 
 namespace HAL
 {
@@ -11,17 +10,17 @@ namespace HAL
 
     struct pinRegInfo_t;
     extern pinRegInfo_t getPinRegInfo(uint8_t pin);
-    extern uint8_t directRead(const pinRegInfo_t &info);
-    extern void directWrite(const pinRegInfo_t &info, uint8_t value);
+    extern uint8_t directRead(const pinRegInfo_t& info);
+    extern void directWrite(const pinRegInfo_t& info, uint8_t value);
 
 #if defined(CORE_AVR_ARDUINO) //----------------------------------------------------------------------------
 
     struct pinRegInfo_t
     {
-        uint8_t pin           = -1;
-        volatile uint8_t *in  = nullptr;
-        volatile uint8_t *out = nullptr;
-        uint8_t mask          = 0;
+        uint8_t pin = -1;
+        volatile uint8_t* in = nullptr;
+        volatile uint8_t* out = nullptr;
+        uint8_t mask = 0;
 
         pinRegInfo_t() = default;
         inline pinRegInfo_t(uint8_t pin);
@@ -30,9 +29,9 @@ namespace HAL
     pinRegInfo_t::pinRegInfo_t(uint8_t _pin)
     {
         if (_pin >= NUM_DIGITAL_PINS) return;
-        pin  = _pin;
-        in   = portInputRegister(digitalPinToPort(pin));
-        out  = portOutputRegister(digitalPinToPort(pin));
+        pin = _pin;
+        in = portInputRegister(digitalPinToPort(pin));
+        out = portOutputRegister(digitalPinToPort(pin));
         mask = digitalPinToBitMask(pin);
     };
 
@@ -41,16 +40,16 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline uint8_t directRead(const pinRegInfo_t &info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return *info.in & info.mask ? 1 : 0;
     }
 
-    inline void directWrite(const pinRegInfo_t &info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
         ATOMIC()
         {
-            value ? *info.out |= info.mask : *info.out &= ~info.mask;
+            value ? * info.out |= info.mask : * info.out &= ~info.mask;
         }
     }
 
@@ -58,9 +57,12 @@ namespace HAL
     struct pinRegInfo_t
     {
         uint8_t pin           = -1;
-        volatile uint8_t *in  = nullptr;
-        volatile uint8_t *clr = nullptr;
-        volatile uint8_t *set = nullptr;
+        volatile uint8_t* in  = nullptr;
+        volatile uint8_t* clr = nullptr;
+        volatile uint8_t* set = nullptr;
+#    if defined(KINETISL)
+        uint32_t mask         = 0;
+#    endif
 
         pinRegInfo_t() = default;
         inline pinRegInfo_t(uint8_t pin);
@@ -68,10 +70,13 @@ namespace HAL
 
     pinRegInfo_t::pinRegInfo_t(uint8_t _pin)
     {
-        pin = _pin;
-        in  = portInputRegister(pin);
-        clr = portClearRegister(pin);
-        set = portSetRegister(pin);
+        pin  = _pin;
+        in   = portInputRegister(pin);
+        clr  = portClearRegister(pin);
+        set  = portSetRegister(pin);
+        #if defined(KINETISL) // Teensy LC
+        mask = digitalPinToBitMask(pin);
+        #endif
     }
 
     inline pinRegInfo_t getPinRegInfo(uint8_t pin)
@@ -79,25 +84,29 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline void directWrite(const pinRegInfo_t &info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
         value ? *info.set = 1 : *info.clr = 1; // is atomic
     }
 
-    inline uint8_t directRead(const pinRegInfo_t &info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
-        return *info.in;
+        #if defined(KINETISK) // Teensy 3.x
+            return *info.in;
+        #else  // Teensy LC
+            return (*info.in & info.mask) ? 1: 0;
+        #endif
     }
 
 #elif defined(CORE_TEENSY__TEENSY4) //--------------------------------------------
 
     struct pinRegInfo_t
     {
-        uint8_t pin            = -1;
-        volatile uint32_t *in  = nullptr;
-        volatile uint32_t *clr = nullptr;
-        volatile uint32_t *set = nullptr;
-        uint32_t mask          = 0;
+        uint8_t pin = -1;
+        volatile uint32_t* in = nullptr;
+        volatile uint32_t* clr = nullptr;
+        volatile uint32_t* set = nullptr;
+        uint32_t mask = 0;
 
         inline pinRegInfo_t() = default;
         inline pinRegInfo_t(uint8_t pin);
@@ -107,14 +116,14 @@ namespace HAL
     {
         if (_pin > NUM_DIGITAL_PINS) return;
 
-        const struct digital_pin_bitband_and_config_table_struct *p = digital_pin_to_info_PGM + _pin;
+        const struct digital_pin_bitband_and_config_table_struct* p = digital_pin_to_info_PGM + _pin;
 
-        IMXRT_GPIO_t *gpio = (IMXRT_GPIO_t *)p->reg;
-        pin                = _pin;
-        in                 = &gpio->DR;
-        clr                = &gpio->DR_CLEAR;
-        set                = &gpio->DR_SET;
-        mask               = p->mask;
+        IMXRT_GPIO_t* gpio = (IMXRT_GPIO_t*)p->reg;
+        pin = _pin;
+        in = &gpio->DR;
+        clr = &gpio->DR_CLEAR;
+        set = &gpio->DR_SET;
+        mask = p->mask;
     };
 
     inline pinRegInfo_t getPinRegInfo(uint8_t pin)
@@ -122,12 +131,12 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline void directWrite(const pinRegInfo_t &info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
-        value ? *info.set = info.mask : *info.clr = info.mask; // atomic
+        value ? * info.set = info.mask : * info.clr = info.mask; // atomic
     }
 
-    inline uint8_t directRead(const pinRegInfo_t &info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return (*info.in & info.mask) ? 1 : 0;
     }
@@ -136,11 +145,11 @@ namespace HAL
 
     struct pinRegInfo_t
     {
-        uint8_t pin            = UINT8_MAX;
-        volatile uint32_t *in  = nullptr;
-        volatile uint32_t *clr = nullptr;
-        volatile uint32_t *set = nullptr;
-        uint32_t mask          = 0;
+        uint8_t pin = UINT8_MAX;
+        volatile uint32_t* in = nullptr;
+        volatile uint32_t* clr = nullptr;
+        volatile uint32_t* set = nullptr;
+        uint32_t mask = 0;
 
         pinRegInfo_t() = default;
         inline pinRegInfo_t(uint8_t pin);
@@ -149,12 +158,12 @@ namespace HAL
     pinRegInfo_t::pinRegInfo_t(uint8_t _pin)
     {
         if (_pin >= NUM_DIGITAL_PINS) return;
-        pin       = _pin;
+        pin = _pin;
         auto port = g_APinDescription[pin].ulPort;
-        in        = &PORT->Group[port].IN.reg;
-        clr       = &PORT->Group[port].OUTCLR.reg;
-        set       = &PORT->Group[port].OUTSET.reg;
-        mask      = (uint32_t)1 << g_APinDescription[pin].ulPin;
+        in = &PORT->Group[port].IN.reg;
+        clr = &PORT->Group[port].OUTCLR.reg;
+        set = &PORT->Group[port].OUTSET.reg;
+        mask = (uint32_t)1 << g_APinDescription[pin].ulPin;
         // Serial.printf("pin: %d %p %p %p\n", pin, in, clr, set);
     }
 
@@ -163,11 +172,11 @@ namespace HAL
         return pinRegInfo_t(pin);
     }
 
-    inline void directWrite(const pinRegInfo_t &info, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
-        value ? *info.set = info.mask : *info.clr = info.mask;
+        value ? * info.set = info.mask : * info.clr = info.mask;
     }
-    inline uint8_t directRead(const pinRegInfo_t &info)
+    inline uint8_t directRead(const pinRegInfo_t& info)
     {
         return (*info.in & info.mask) ? 1 : 0;
     }
@@ -176,7 +185,7 @@ namespace HAL
 
     struct pinRegInfo_t
     {
-        uint8_t pin           = -1;
+        uint8_t pin = -1;
         inline pinRegInfo_t() = default;
         inline pinRegInfo_t(uint8_t _pin) { pin = _pin; }
     };
@@ -185,11 +194,11 @@ namespace HAL
     {
         return pinRegInfo_t(pin);
     }
-    inline void directWrite(const pinRegInfo_t &pin, uint8_t value)
+    inline void directWrite(const pinRegInfo_t& pin, uint8_t value)
     {
         digitalWrite(pin.pin, value);
     }
-    inline uint8_t directRead(const pinRegInfo_t &pin)
+    inline uint8_t directRead(const pinRegInfo_t& pin)
     {
         return digitalRead(pin.pin);
     }
