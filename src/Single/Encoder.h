@@ -14,7 +14,7 @@ namespace EncoderTool
     class Encoder : public EncoderBase
     {
      public:
-        Encoder();
+        inline Encoder();
         inline ~Encoder();
 
         inline bool begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
