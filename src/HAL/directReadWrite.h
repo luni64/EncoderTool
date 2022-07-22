@@ -86,7 +86,11 @@ namespace HAL
 
     inline void directWrite(const pinRegInfo_t& info, uint8_t value)
     {
-        value ? *info.set = 1 : *info.clr = 1; // is atomic
+        #if defined(KINETISK) // Teensy 3.x
+            value ? *info.set = 1 : *info.clr = 1; // is atomic
+        #else  // Teensy LC
+            value ? *info.set = info.mask : *info.clr = info.mask; // is atomic
+        #endif
     }
 
     inline uint8_t directRead(const pinRegInfo_t& info)
