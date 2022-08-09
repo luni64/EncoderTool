@@ -14,6 +14,8 @@
 
     - [Using a 40HC51 analog switch as multiplexer](2_multiplexing/multiplexed_4051/multiplexed_4051.ino)
 
+    - [Using a directly connected encoder matrix](2_multiplexing/multiplexed_matrix/multiplexed_matrix.ino)
+
 - Callback system
     - [Callbacks for directly connected encoders](3_callbacks/singleEncCallback/singleEncCallback.ino)
 
