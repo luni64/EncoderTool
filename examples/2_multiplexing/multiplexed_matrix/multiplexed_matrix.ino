@@ -2,6 +2,8 @@
  * This example uses a directly connected encoder matrix.
  * The matrix is described in the Resources/Extras folder. This folder
  * also contains KiCad files and Gerbers for a test board.
+ *
+ * !!! NEEDS ADAPTIONS FOR NON TEENSY BOARDS !!!
  ***********************************************************************/
 
 

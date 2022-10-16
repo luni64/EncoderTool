@@ -6,18 +6,18 @@
 namespace EncoderTool
 {
     template <size_t rows, size_t cols>
-    class DirectMux : public EncPlexBase
+    class DirectMux : public EncPlexBase<int>
     {
         // some typedefs for less verbose code
         using cArr_t = std::array<uint_fast8_t, cols>;
         using rArr_t = std::array<uint_fast8_t, rows>;
 
      public:
-        DirectMux() : EncPlexBase(rows * cols) {}
+        DirectMux() : EncPlexBase<int>(rows * cols) {}
 
         void begin(rArr_t arPins, rArr_t brPins, rArr_t srPins, cArr_t cPins, CountMode mode = CountMode::quarter)
         {
-            EncPlexBase::begin(mode); // setup the base class
+            EncPlexBase<int>::begin(mode); // setup the base class
             this->arPins = arPins;    // copy passed in pin numbers
             this->brPins = brPins;
             this->srPins = srPins;
@@ -29,7 +29,7 @@ namespace EncoderTool
             for (auto pin : cPins)
             {
                 pinMode(pin, OUTPUT);
-                digitalWriteFast(pin, HIGH);  // board is implemented as active LOW 
+                digitalWriteFast(pin, HIGH);  // board is implemented as active LOW
             }
         }
 
@@ -38,14 +38,14 @@ namespace EncoderTool
             unsigned curEnc = 0;
             for (auto cPin : cPins)
             {
-                digitalWriteFast(cPin, LOW);
+                digitalWrite(cPin, LOW);
                 delayNanoseconds(500);
 
                 for (unsigned row = 0; row < rows; row++)
                 {
-                    uint_fast8_t A = digitalReadFast(arPins[row]);
-                    uint_fast8_t B = digitalReadFast(brPins[row]);
-                    uint_fast8_t S = digitalReadFast(srPins[row]);
+                    uint_fast8_t A = digitalRead(arPins[row]);
+                    uint_fast8_t B = digitalRead(brPins[row]);
+                    uint_fast8_t S = digitalRead(srPins[row]);
 
                     int delta = encoders[curEnc].update(A, B, S);
                     if (delta != 0 && callback != nullptr)
@@ -54,7 +54,7 @@ namespace EncoderTool
                     }
                     curEnc++;
                 }
-                digitalWriteFast(cPin, HIGH);
+                digitalWrite(cPin, HIGH);
             }
         }
 

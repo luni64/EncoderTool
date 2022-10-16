@@ -5,13 +5,14 @@
 
 namespace EncoderTool
 {
-    class EncPlex4051 : public EncPlexBase
+    template <typename counter_t>
+    class EncPlex4051_tpl : public EncPlexBase<counter_t>
     {
      public:
-        inline EncPlex4051(unsigned encoderCount, unsigned pinS0, unsigned pinS1, unsigned pinS2, unsigned pinA, unsigned pinB);
+        inline EncPlex4051_tpl(unsigned encoderCount, unsigned pinS0, unsigned pinS1, unsigned pinS2, unsigned pinA, unsigned pinB);
 
-        inline void tick();                // call as often as possible
-        inline void begin(CountMode mode); // optional, call in setup if other code grabed the pins after construction
+        inline void tick(); // call as often as possible
+        inline void begin(CountMode mode = CountMode::quarter);
 
      protected:
         const HAL::pinRegInfo_t S0, S1, S2, A, B;
@@ -19,16 +20,18 @@ namespace EncoderTool
 
     // IMPLEMENTATION =====================================================================================================
 
-    EncPlex4051::EncPlex4051(unsigned encoderCount, unsigned pinS0, unsigned pinS1, unsigned pinS2, unsigned pinA, unsigned pinB)
-        : EncPlexBase(encoderCount),
+    template <typename counter_t>
+    EncPlex4051_tpl<counter_t>::EncPlex4051_tpl(unsigned encoderCount, unsigned pinS0, unsigned pinS1, unsigned pinS2, unsigned pinA, unsigned pinB)
+        : EncPlexBase<counter_t>(encoderCount),
           S0(pinS0), S1(pinS1), S2(pinS2),
           A(pinA), B(pinB)
     {
     }
 
-    void EncPlex4051::begin(CountMode mode = CountMode::quarter)
+    template <typename counter_t>
+    void EncPlex4051_tpl<counter_t>::begin(CountMode mode)
     {
-        EncPlexBase::begin(mode);
+        EncPlexBase<counter_t>::begin(mode);
         pinMode(S0.pin, OUTPUT);
         pinMode(S1.pin, OUTPUT);
         pinMode(S2.pin, OUTPUT);
@@ -36,24 +39,27 @@ namespace EncoderTool
         pinMode(B.pin, INPUT);
     }
 
-    void EncPlex4051::tick()
+    template <typename counter_t>
+    void EncPlex4051_tpl<counter_t>::tick()
     {
         using HAL::directRead;
         using HAL::directWrite;
 
-        for (unsigned i = 0; i < encoderCount; i++)
+        for (unsigned i = 0; i < EncPlexBase<counter_t>::encoderCount; i++)
         {
             directWrite(S0, i & 0b0001);
             directWrite(S1, i & 0b0010);
             directWrite(S2, i & 0b0100);
             delayMicroseconds(1);
 
-            int delta = encoders[i].update(directRead(A), directRead(B));
-            if (delta != 0 && callback != nullptr)
+            int delta = EncPlexBase<counter_t>::encoders[i].update(directRead(A), directRead(B));
+            if (delta != 0 && EncPlexBase<counter_t>::callback != nullptr)
             {
-                callback(i, encoders[i].getValue(), delta);
+                EncPlexBase<counter_t>::callback(i, EncPlexBase<counter_t>::encoders[i].getValue(), delta);
             }
         }
     }
+
+    using EncPlex4051 = EncPlex4051_tpl<int>;
 
 } // namespace EncoderTool

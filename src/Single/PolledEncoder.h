@@ -8,7 +8,8 @@
 namespace EncoderTool
 {
     // Simple encoder implementation which reads phase A and B from two digital pins
-    class PolledEncoder : public EncoderBase
+    template <typename counter_t>
+    class PolledEncoder_tpl : public EncoderBase<counter_t>
     {
      public:
         inline void begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
@@ -23,18 +24,20 @@ namespace EncoderTool
 
     // Inline implementation ===============================================
 
-    void PolledEncoder::tick()
+    template <typename counter_t>
+    void PolledEncoder_tpl<counter_t>::tick()
     {
         using namespace HAL;
 
-        int A   = directRead(piA);
-        int B   = directRead(piB);
+        int A = directRead(piA);
+        int B = directRead(piB);
         int btn = hasButton ? directRead(piBtn) : LOW;
 
-        update(A, B, btn);
+        EncoderBase<counter_t>::update(A, B, btn);
     }
 
-    void PolledEncoder::begin(int _pinA, int _pinB, int pinBtn, CountMode countMode, int inputMode)
+    template <typename counter_t>
+    void PolledEncoder_tpl<counter_t>::begin(int _pinA, int _pinB, int pinBtn, CountMode countMode, int inputMode)
     {
         hasButton = true;
         pinMode(pinBtn, inputMode);
@@ -42,7 +45,8 @@ namespace EncoderTool
         begin(_pinA, _pinB, countMode, inputMode);
     }
 
-    void PolledEncoder::begin(int pinA, int pinB, CountMode countMode, int inputMode)
+    template <typename counter_t>
+    void PolledEncoder_tpl<counter_t>::begin(int pinA, int pinB, CountMode countMode, int inputMode)
     {
         using namespace HAL;
 
@@ -52,11 +56,9 @@ namespace EncoderTool
         piA = HAL::getPinRegInfo(pinA); // store pin infos for fast I/O
         piB = HAL::getPinRegInfo(pinB);
 
-        // char buf[100];
-        // snprintf(buf, 100, "a:%d b:%d\n", piA.pin, piB.pin);
-        // Serial.print(buf);
-
-        setCountMode(countMode);
-        EncoderBase::begin(directRead(piA), directRead(piB)); // set start state
+        EncoderBase<counter_t>::setCountMode(countMode);
+        EncoderBase<counter_t>::begin(directRead(piA), directRead(piB)); // set start state
     }
+
+    using PolledEncoder = PolledEncoder_tpl<int>; // by default use the standard integer type of the processor as counter type
 } // namespace EncoderTool
