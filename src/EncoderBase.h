@@ -21,6 +21,15 @@ namespace EncoderTool
     class EncoderBase
     {
      public:
+#if defined(PLAIN_ENC_CALLBACK)
+        using encCallback_t = void (*)(counter_t value, counter_t delta);
+        using encBtnCallback_t = void (*)(int_fast8_t state);
+        //using allBtnCallback_t = void (*)(uint_fast8_t channel, int_fast8_t state);
+#else
+        using encCallback_t = std::function<void(counter_t value, counter_t delta)>;
+        using encBtnCallback_t = std::function<void(int_fast8_t state)>;
+#endif
+
         void begin(uint_fast8_t phaseA, uint_fast8_t phaseB);
 
         EncoderBase& setCountMode(CountMode);
@@ -76,7 +85,8 @@ namespace EncoderTool
             ERR = 0x30,
         };
 
-        template <typename T> friend class EncPlexBase;
+        template <typename T>
+        friend class EncPlexBase;
 
 #if defined(USE_ERROR_CALLBACKS)
      protected:
@@ -86,7 +96,7 @@ namespace EncoderTool
         void attachErrorCallback(encCallback_t cb) { errCallback = cb; }
 #endif
 
-        static_assert(std::is_integral<counter_t>(), "Only integral types allowed");
+        static_assert(std::is_integral<counter_t>() && std::is_signed<counter_t>(), "Only signed integral types allowed");
     };
 
     // INLINE IMPLEMENTATION ==========================================================================
