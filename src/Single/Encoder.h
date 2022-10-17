@@ -17,11 +17,8 @@ namespace EncoderTool
      public:
         inline Encoder_tpl();
         inline ~Encoder_tpl();
-
         inline bool begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
-        inline bool begin(int pinA, int pinB, encCallback_t cb, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
-
-        void doUpdate() {EncoderBase<counter_t>::update(HAL::directRead(A), HAL::directRead(B)); }
+        void doUpdate() { EncoderBase<counter_t>::update(HAL::directRead(A), HAL::directRead(B)); }
 
      protected:
         HAL::pinRegInfo_t A, B;
@@ -35,14 +32,6 @@ namespace EncoderTool
     Encoder_tpl<counter_t>::Encoder_tpl()
     {
         // Pin::setCallbackMember(&Encoder_tpl::doUpdate);
-    }
-
-    template <typename counter_t>
-    bool Encoder_tpl<counter_t>::begin(int pinA, int pinB, encCallback_t cb, CountMode countMode, int inputMode)
-    {
-        bool ret = begin(pinA, pinB, countMode, inputMode);
-        EncoderBase<counter_t>::attachCallback(cb);
-        return ret;
     }
 
     template <typename counter_t>

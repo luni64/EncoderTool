@@ -16,12 +16,12 @@ namespace EncoderTool
         inline ~EncPlex74165_tpl();
 
         inline void begin(CountMode mode = CountMode::quarter);
-        inline void begin(allCallback_t callback, CountMode m = CountMode::quarter);
         inline void tick(); // call as often as possible
 
      protected:
         HAL::pinRegInfo_t A, B, Btn, LD, CLK;
     };
+    
 
     // IMPLEMENTATION ============================================
 
@@ -39,18 +39,10 @@ namespace EncoderTool
     }
 
     template <typename counter_t>
-    void EncPlex74165_tpl<counter_t>::begin(allCallback_t cb, CountMode mode)
-    {
-        begin(mode);
-        EncPlexBase<counter_t>::attachCallback(cb);
-    }
-
-    template <typename counter_t>
     void EncPlex74165_tpl<counter_t>::begin(CountMode mode)
     {
         using HAL::directRead;
         using HAL::directWrite;
-        // Serial.printf("%d %d %d %d %d\n", A.pin, B.pin, Btn.pin, LD.pin, CLK.pin);
 
         EncPlexBase<counter_t>::begin(mode);
 
