@@ -4,8 +4,6 @@
 #include "HAL/SimplyAtomic/SimplyAtomic.h"
 #include "HAL/directReadWrite.h"
 #include "config.h"
-#include <limits>
-#include <type_traits>
 
 namespace EncoderTool
 {
@@ -24,7 +22,6 @@ namespace EncoderTool
 #if defined(PLAIN_ENC_CALLBACK)
         using encCallback_t = void (*)(counter_t value, counter_t delta);
         using encBtnCallback_t = void (*)(int_fast8_t state);
-        //using allBtnCallback_t = void (*)(uint_fast8_t channel, int_fast8_t state);
 #else
         using encCallback_t = std::function<void(counter_t value, counter_t delta)>;
         using encBtnCallback_t = std::function<void(int_fast8_t state)>;
@@ -96,7 +93,7 @@ namespace EncoderTool
         void attachErrorCallback(encCallback_t cb) { errCallback = cb; }
 #endif
 
-        static_assert(std::is_integral<counter_t>() && std::is_signed<counter_t>(), "Only signed integral types allowed");
+        static_assert(is_integral<counter_t>::value && is_signed<counter_t>::value, "Only signed integral types allowed");
     };
 
     // INLINE IMPLEMENTATION ==========================================================================
@@ -200,7 +197,6 @@ namespace EncoderTool
             this->maxVal = std::numeric_limits<counter_t>::max();
             this->periodic = true;
         }
-
         return *this;
     }
 
@@ -208,7 +204,6 @@ namespace EncoderTool
     void EncoderBase<counter_t>::begin(uint_fast8_t phaseA, uint_fast8_t phaseB)
     {
         curState = (phaseA << 1 | phaseB) ^ invert;
-        Serial.println(minVal);
     }
 
     template <typename counter_t>

@@ -5,9 +5,20 @@
 
 //================================================================================================================
 
-#include <stdint.h>
+#if defined(__AVR__)
+   #include "HAL/avr_c++/limits"
+   #include "HAL/avr_c++/type_traits"
 
-#if not defined(PLAIN_ENC_CALLBACK)
-  #include <functional>
+   using std::tr1::is_integral;
+   using std::tr1::is_signed;
+#else
+   #include <limits>
+   #include <type_traits>
+
+   using std::is_integral;
+   using std::is_signed;
 #endif
 
+#if not defined(PLAIN_ENC_CALLBACK)
+#    include <functional>
+#endif
