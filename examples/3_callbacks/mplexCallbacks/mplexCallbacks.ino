@@ -22,7 +22,7 @@ void onFirstEncoder(int value, int delta)
     digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
 }
 
-void onAnyEncoder(uint8_t channel, int value, int delta)
+void onAnyEncoder(uint_fast8_t channel, int value, int delta)
 {
     Serial.print("Encoder: ");
     Serial.print(channel);
