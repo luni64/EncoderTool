@@ -15,17 +15,18 @@ namespace EncoderTool
         full               //          4          |       n.a.       | standard for optical encoders w/o detents
     };
 
-    template <typename counter_t>
+    template <typename ct>
     class EncoderBase
     {
      public:
-// #if defined(PLAIN_ENC_CALLBACK)
-//         using encCallback_t = void (*)(counter_t value, counter_t delta);
-//         using encBtnCallback_t = void (*)(int_fast8_t state);
-// #else
-//         using encCallback_t = std::function<void(counter_t value, counter_t delta)>;
-//         using encBtnCallback_t = std::function<void(int_fast8_t state)>;
-// #endif
+        using counter_t = ct;
+#if defined(USE_MODERN_CALLBACKS)
+        using encCallback_t    = stdext::inplace_function<void(counter_t value, counter_t delta)>;
+        using encBtnCallback_t = stdext::inplace_function<void(int_fast8_t state)>;
+#else
+        using encCallback_t    = void (*)(counter_t value, counter_t delta);
+        using encBtnCallback_t = void (*)(int_fast8_t state);
+#endif
 
         void begin(uint_fast8_t phaseA, uint_fast8_t phaseB);
 
@@ -44,42 +45,42 @@ namespace EncoderTool
         counter_t update(uint_fast8_t phaseA, uint_fast8_t phaseB, uint_fast8_t btn = 0);
 
      protected:
-        EncoderBase() = default;
+        EncoderBase()                              = default;
         EncoderBase& operator=(EncoderBase const&) = delete;
-        EncoderBase(EncoderBase const&) = delete;
+        EncoderBase(EncoderBase const&)            = delete;
 
-        counter_t value = 0;
+        counter_t value  = 0;
         counter_t minVal = std::numeric_limits<counter_t>::min();
         counter_t maxVal = std::numeric_limits<counter_t>::max();
-        bool valChanged = false;
+        bool valChanged  = false;
 
         EncoderButton button;
         bool btnChanged = false;
 
-        bool periodic = true;
+        bool periodic   = true;
         unsigned invert = 0x00;
 
-        encCallback_t callback = nullptr;
+        encCallback_t callback       = nullptr;
         encBtnCallback_t btnCallback = nullptr;
 
         static const uint8_t stateMachineQtr[7][4];
         static const uint8_t stateMachineHalf[7][4];
         static const uint8_t stateMachineFull[7][4];
         const uint8_t (*stateMachine)[7][4] = &stateMachineFull;
-        uint8_t curState = 0;
+        uint8_t curState                    = 0;
 
         enum states : uint8_t {
-            A = 0x00,
-            B_cw = 0x01,
-            C_cw = 0x03,
-            D_cw = 0x02,
+            A     = 0x00,
+            B_cw  = 0x01,
+            C_cw  = 0x03,
+            D_cw  = 0x02,
             B_ccw = 0x04,
             C_ccw = 0x06,
             D_ccw = 0x05,
 
-            UP = 0x10,
+            UP   = 0x10,
             DOWN = 0x20,
-            ERR = 0x30,
+            ERR  = 0x30,
         };
 
         template <typename T>
@@ -101,7 +102,7 @@ namespace EncoderTool
     template <typename counter_t>
     bool EncoderBase<counter_t>::valueChanged()
     {
-        bool ret = valChanged;
+        bool ret   = valChanged;
         valChanged = false;
         return ret;
     }
@@ -130,7 +131,7 @@ namespace EncoderTool
     template <typename counter_t>
     bool EncoderBase<counter_t>::buttonChanged()
     {
-        bool ret = btnChanged;
+        bool ret   = btnChanged;
         btnChanged = false;
         return ret;
     }
@@ -148,23 +149,23 @@ namespace EncoderTool
         {
             case CountMode::quarter:
                 stateMachine = &stateMachineQtr;
-                invert = 0b11;
+                invert       = 0b11;
                 break;
             case CountMode::quarterInv:
                 stateMachine = &stateMachineQtr;
-                invert = 0b00;
+                invert       = 0b00;
                 break;
             case CountMode::half:
                 stateMachine = &stateMachineHalf;
-                invert = 0b00;
+                invert       = 0b00;
                 break;
             case CountMode::halfAlt:
                 stateMachine = &stateMachineHalf;
-                invert = 0b01;
+                invert       = 0b01;
                 break;
             default:
                 stateMachine = &stateMachineFull;
-                invert = 0b00;
+                invert       = 0b00;
         }
         return *this;
     }
@@ -188,13 +189,13 @@ namespace EncoderTool
     {
         if (min < max)
         {
-            this->minVal = min;
-            this->maxVal = max;
+            this->minVal   = min;
+            this->maxVal   = max;
             this->periodic = periodic;
         } else
         {
-            this->minVal = std::numeric_limits<counter_t>::min();
-            this->maxVal = std::numeric_limits<counter_t>::max();
+            this->minVal   = std::numeric_limits<counter_t>::min();
+            this->maxVal   = std::numeric_limits<counter_t>::max();
             this->periodic = true;
         }
         return *this;
@@ -218,9 +219,9 @@ namespace EncoderTool
         unsigned input = (phaseA << 1 | phaseB) ^ invert; // invert signals if necessary
         if (stateMachine == nullptr) return 0;            // tick might get called from yield before class is initialized
 
-        curState = (*stateMachine)[curState][input]; // get next state depending on new input
-        uint8_t direction = curState & 0xF0;         // direction is set if we need to count up / down or got an error
-        curState &= 0x0F;                            // remove the direction info from state
+        curState          = (*stateMachine)[curState][input]; // get next state depending on new input
+        uint8_t direction = curState & 0xF0;                  // direction is set if we need to count up / down or got an error
+        curState &= 0x0F;                                     // remove the direction info from state
 
         if (direction == UP)
         {
@@ -234,7 +235,7 @@ namespace EncoderTool
             }
             if (periodic) // if periodic, wrap to minVal, else stop counting
             {
-                value = minVal;
+                value      = minVal;
                 valChanged = true;
 
                 if (callback != nullptr)
@@ -258,7 +259,7 @@ namespace EncoderTool
             if (periodic) // if periodic, wrap to maxVal, else stop counting
             {
                 valChanged = true;
-                value = maxVal;
+                value      = maxVal;
                 if (callback != nullptr)
                     callback(value, -1);
                 return -1;

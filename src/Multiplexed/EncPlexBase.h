@@ -9,13 +9,13 @@ namespace EncoderTool
     class EncPlexBase
     {
      public:
-// #if defined(PLAIN_ENC_CALLBACK)
-//         using allCallback_t = void (*)(uint_fast8_t channel, counter_t value, counter_t delta);
-//         using allBtnCallback_t = void (*)(uint_fast8_t channel, int_fast8_t state);
-// #else
-//         using allCallback_t = std::function<void(uint_fast8_t channel, counter_t value, counter_t delta)>; // all encoder values
-//         using allBtnCallback_t = std::function<void(uint_fast8_t channel, int_fast8_t state)>;             // all encoder buttons
-// #endif
+#if defined(PLAIN_ENC_CALLBACK)
+        using allCallback_t    = stdext::inplace_function<void(uint_fast8_t channel, counter_t value, counter_t delta)>; // all encoder values
+        using allBtnCallback_t = stdext::inplace_function<void(uint_fast8_t channel, int_fast8_t state)>;                // all encoder buttons
+#else
+        using allCallback_t    = void (*)(uint_fast8_t channel, counter_t value, counter_t delta);
+        using allBtnCallback_t = void (*)(uint_fast8_t channel, int_fast8_t state);
+#endif
 
         void attachCallback(allCallback_t callback);
         EncoderBase<counter_t>& operator[](size_t idx);

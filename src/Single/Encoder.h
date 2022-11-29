@@ -21,6 +21,8 @@ namespace EncoderTool
         inline bool begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
         void doUpdate() { EncoderBase<counter_t>::update(HAL::directRead(A), HAL::directRead(B)); }
 
+
+
      protected:
         HAL::pinRegInfo_t A, B;
 
