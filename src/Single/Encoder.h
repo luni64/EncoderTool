@@ -1,9 +1,10 @@
 #pragma once
 
 #include "../EncoderBase.h"
-//#include "../HAL/iPin_t.h"
 #include "../HAL/directReadWrite.h"
 #include "../HAL/pinInterruptHelper.h"
+
+#if defined(CORE_NUM_INTERRUPT)
 
 namespace EncoderTool
 {
@@ -65,3 +66,6 @@ namespace EncoderTool
 
     using Encoder = Encoder_tpl<int>;
 } // namespace EncoderTool
+#else
+  #warning No pin interrupt information found, please use polled encoder
+#endif

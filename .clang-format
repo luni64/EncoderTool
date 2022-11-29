@@ -16,11 +16,12 @@ IndentCaseLabels: true
 PointerAlignment: Left
 
 AlignTrailingComments: true
+AlignConsecutiveAssignments: true
 
 NamespaceIndentation: All
 FixNamespaceComments: false
 
-IndentPPDirectives: AfterHash
+IndentPPDirectives: BeforeHash
 
 CompactNamespaces: true
 

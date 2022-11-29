@@ -19,13 +19,13 @@ namespace EncoderTool
     class EncoderBase
     {
      public:
-#if defined(PLAIN_ENC_CALLBACK)
-        using encCallback_t = void (*)(counter_t value, counter_t delta);
-        using encBtnCallback_t = void (*)(int_fast8_t state);
-#else
-        using encCallback_t = std::function<void(counter_t value, counter_t delta)>;
-        using encBtnCallback_t = std::function<void(int_fast8_t state)>;
-#endif
+// #if defined(PLAIN_ENC_CALLBACK)
+//         using encCallback_t = void (*)(counter_t value, counter_t delta);
+//         using encBtnCallback_t = void (*)(int_fast8_t state);
+// #else
+//         using encCallback_t = std::function<void(counter_t value, counter_t delta)>;
+//         using encBtnCallback_t = std::function<void(int_fast8_t state)>;
+// #endif
 
         void begin(uint_fast8_t phaseA, uint_fast8_t phaseB);
 
