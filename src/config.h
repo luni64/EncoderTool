@@ -9,10 +9,10 @@
     #include "HAL/avr_c++/limits"
     #include "HAL/avr_c++/type_traits"
 
-using std::tr1::is_integral;
-using std::tr1::is_signed;
+    using std::tr1::is_integral;
+    using std::tr1::is_signed;
     #if defined(WANT_MODERN_CALLBACKS)
-        #warning "can't use modern callbacks for AVR processors! Fallback to function pointer callbacks"
+        #warning "can't use modern callbacks for AVR processors! falling back to function pointer callbacks"
     #endif
 
 #else
