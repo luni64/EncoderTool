@@ -12,7 +12,7 @@
 
 namespace EncoderTool
 {
-    class EncPlex23S17 : public EncPlexBase
+    class EncPlex23S17 : public EncPlexBase<int>
     {
      public:
         inline EncPlex23S17(unsigned EncoderCount);

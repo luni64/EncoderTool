@@ -1,48 +1,44 @@
 #pragma once
 
 #include "../EncoderBase.h"
-//#include "../HAL/iPin_t.h"
 #include "../HAL/directReadWrite.h"
 #include "../HAL/pinInterruptHelper.h"
+
+#if defined(CORE_NUM_INTERRUPT)
 
 namespace EncoderTool
 {
     /***********************************************************************
-     *  Simple interupt based encoder implementation which reads
-     *  phase A and B from two interupt capable pins
+     *  Simple interrupt based encoder implementation which reads
+     *  phase A and B from two interrupt capable pins
      ************************************************************************/
-    class Encoder : public EncoderBase
+    template <typename counter_t>
+    class Encoder_tpl : public EncoderBase<counter_t>
     {
      public:
-        inline Encoder();
-        inline ~Encoder();
-
+        inline Encoder_tpl();
+        inline ~Encoder_tpl();
         inline bool begin(int pinA, int pinB, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
-        inline bool begin(int pinA, int pinB, encCallback_t cb, CountMode = CountMode::quarter, int inputMode = INPUT_PULLUP);
+        void doUpdate() { EncoderBase<counter_t>::update(HAL::directRead(A), HAL::directRead(B)); }
 
-        void doUpdate() { update(HAL::directRead(A), HAL::directRead(B)); }
+
 
      protected:
         HAL::pinRegInfo_t A, B;
 
-        using iHelper = HAL::PinInterruptHelper<Encoder, &Encoder::doUpdate>;
+        using iHelper = HAL::PinInterruptHelper<Encoder_tpl, &Encoder_tpl::doUpdate>;
     };
 
     // Inline implementation ===============================================
 
-    Encoder::Encoder()
+    template <typename counter_t>
+    Encoder_tpl<counter_t>::Encoder_tpl()
     {
-        // Pin::setCallbackMember(&Encoder::doUpdate);
+        // Pin::setCallbackMember(&Encoder_tpl::doUpdate);
     }
 
-    bool Encoder::begin(int pinA, int pinB, encCallback_t cb, CountMode countMode, int inputMode)
-    {
-        bool ret = begin(pinA, pinB, countMode, inputMode);
-        attachCallback(cb);
-        return ret;
-    }
-
-    bool Encoder::begin(int pinA, int pinB, CountMode countMode, int inputMode)
+    template <typename counter_t>
+    bool Encoder_tpl<counter_t>::begin(int pinA, int pinB, CountMode countMode, int inputMode)
     {
         using namespace HAL;
 
@@ -55,17 +51,23 @@ namespace EncoderTool
         pinMode(A.pin, inputMode);
         pinMode(B.pin, inputMode);
 
-        setCountMode(countMode);
-        EncoderBase::begin(directRead(A), directRead(B)); // set start state
+        EncoderBase<counter_t>::setCountMode(countMode);
+        EncoderBase<counter_t>::begin(directRead(A), directRead(B)); // set start state
 
         iHelper::attachInterrupt(A.pin, this, CHANGE);
         iHelper::attachInterrupt(B.pin, this, CHANGE);
         return true;
     }
 
-    Encoder::~Encoder()
+    template <typename counter_t>
+    Encoder_tpl<counter_t>::~Encoder_tpl()
     {
         iHelper::detachInterrupt(A.pin);
         iHelper::detachInterrupt(B.pin);
     }
+
+    using Encoder = Encoder_tpl<int>;
 } // namespace EncoderTool
+#else
+  #warning No pin interrupt information found, please use polled encoder
+#endif

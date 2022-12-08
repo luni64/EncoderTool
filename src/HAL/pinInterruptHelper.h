@@ -2,6 +2,8 @@
 
 #include "core_num_interrupt.h"
 
+#if defined CORE_NUM_INTERRUPT
+
 namespace HAL
 {
     template <typename TYPE, void (TYPE::*MEMBER)()>
@@ -410,3 +412,5 @@ namespace HAL
     template <typename TYPE, void (TYPE::*MEMBER)()>
     TYPE* PinInterruptHelper<TYPE, MEMBER>::objects[];
 }
+
+#endif

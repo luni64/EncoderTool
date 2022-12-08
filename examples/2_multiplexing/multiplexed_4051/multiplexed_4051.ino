@@ -29,7 +29,10 @@ void loop()
     {
         for (unsigned i = 0; i < encoderCount; i++)
         {
-            Serial.printf("E%u:%3d ", i, encoders[i].getValue());
+            Serial.print("E");
+            Serial.print(i);
+            Serial.print(": ");
+            Serial.println(encoders[i].getValue());
         }
         Serial.println();
         t0 = millis();

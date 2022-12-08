@@ -1,29 +1,30 @@
 #pragma once
 
-// un-comment the following line if you prefer plain function pointers for callbacks
-#define PLAIN_ENC_CALLBACK
+// comment the following line out if you prefer plain vanilla function pointers for callbacks
+#define WANT_MODERN_CALLBACKS
 
 //================================================================================================================
 
-#include <stdint.h>
+#if defined(__AVR__)
+    #include "HAL/avr_c++/limits"
+    #include "HAL/avr_c++/type_traits"
 
-#if not defined(PLAIN_ENC_CALLBACK)
-  #include <functional>
-#endif
+    using std::tr1::is_integral;
+    using std::tr1::is_signed;
+    #if defined(WANT_MODERN_CALLBACKS)
+        #warning "can't use modern callbacks for AVR processors! falling back to function pointer callbacks"
+    #endif
 
-namespace EncoderTool
-{
-#if defined(PLAIN_ENC_CALLBACK)
-    using encCallback_t = void (*)(int value, int delta);
-    using encBtnCallback_t = void (*)(int state);
-
-    using allCallback_t = void (*)(uint8_t channel, int value, int delta);
-   // using allBtnCallback_t = void (*)(int32_t state);
 #else
-    using encCallback_t = std::function<void(int32_t value, int32_t delta)>; // encoder value
-    using encBtnCallback_t = std::function<void(int32_t state)>;             // encoder button
+    #include <limits>
+    #include <type_traits>
+    using std::is_integral;
+    using std::is_signed;
 
-    using allCallback_t = std::function<void(uint32_t channel, int32_t value, int32_t delta)>; // all encoder values
-    using allBtnCallback_t = std::function<void(uint32_t channel, int32_t state)>;             // all encoder buttons
+    #if defined(WANT_MODERN_CALLBACKS)
+        #define USE_MODERN_CALLBACKS
+        #include "inplace_function.h"
+    #endif
 #endif
-}
+
+#undef WANT_MODERN_CALLBACKS
