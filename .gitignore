@@ -1,42 +1,19 @@
-# Misc
-*.?#*
+# build
+.vsteensy/**
+.vscode/**
+.pio/**
+makefile
 
-# Prerequisites
+# dependency files
 *.d
 
-# KICAD
-fp-info-cache
-*_prl
-*_pcb
-**/*-backups/**
-
-# Compiled Object files
+# output and binaries
 *.slo
 *.lo
 *.o
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
+*.hex
+*.lst
+*.elf
 *.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
 
