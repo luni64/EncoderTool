@@ -5,8 +5,8 @@
  * The A/B pins of the encoders go to the A/B inputs of the MCP
  *
  ************************************************************/
-
-#include "EncPlex23S17.h" //https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library
+#include <Adafruit_MCP23X17.h>
+#include "EncPlex23S17.h"
 #include "EncoderTool.h"
 
 using namespace EncoderTool;
@@ -16,12 +16,14 @@ EncPlex23S17 encoder(8); // use all 8 (A/B) inputs of the 23S17 to connect encod
 // this will be called whenever one of the connected encoders changes
 void onChange(byte ch, int value, int delta)
 {
-    Serial.printf("Encoder #: %d, value: %3d, delta: %2d\n", ch, value, delta);
+    char buf[50];
+    snprintf(buf,50,"Encoder #: %d, value: %3d, delta: %2d\n", ch, value, delta);
+    Serial.println(buf);
 }
 
 void setup()
 {
-    digitalWriteFast(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_BUILTIN, OUTPUT);
 
     encoder.begin();
     encoder.attachCallback(onChange); // attach a common callback for all encoders

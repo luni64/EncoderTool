@@ -6,6 +6,8 @@
  * !!! NEEDS ADAPTIONS FOR NON TEENSY BOARDS !!!
  ***********************************************************************/
 
+#if __has_include (<array>)
+
 
 #include "Arduino.h"
 #include "EncoderTool.h"
@@ -21,7 +23,7 @@ constexpr unsigned AR1 = 5, BR1 = 6, SR1 = 7;                   // row 1
 constexpr unsigned AR2 = 8, BR2 = 9, SR2 = 10;                  // row 2
 constexpr unsigned C0 = 23, C1 = 22, C2 = 21, C3 = 20, C4 = 19; // columns
 
-void onEncoderChanged(uint8_t channel, int value, int delta)
+void onEncoderChanged(uint_fast8_t channel, int value, int delta)
 {
     Serial.printf("CH%d: %d\n", channel, value);
 }
@@ -38,3 +40,9 @@ void loop()
 {
     matrix.tick();
 }
+
+#else
+    #warning Board not compatible
+    void setup(){} // don't want compile errors to pass CI runs
+    void loop(){}
+#endif

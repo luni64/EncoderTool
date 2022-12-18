@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Adafruit_MCP23X17.h"
+#include <Adafruit_MCP23X17.h> //https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library
 #include "EncoderTool.h"
 
 namespace EncoderTool
