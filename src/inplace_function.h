@@ -4,6 +4,9 @@
 #include <type_traits>
 #include <utility>
 
+namespace EncoderTool
+{
+
 // Added by luni64 ====================================================================================================================
 [[noreturn]] void panic();
 
@@ -51,6 +54,7 @@ namespace std
     // }
 }
 #endif
+}
 
 //======================================================================================================================================
 // Original code from here on
@@ -81,11 +85,16 @@ namespace std
  * DEALINGS IN THE SOFTWARE.
  */
 
+
+
 #pragma once
 
 #include <functional>
 #include <type_traits>
 #include <utility>
+
+namespace EncoderTool
+{
 
 #ifndef SG14_INPLACE_FUNCTION_THROW
     #define SG14_INPLACE_FUNCTION_THROW(x) throw(x)
@@ -438,3 +447,5 @@ class inplace_function<R(Args...), Capacity, Alignment>
 };
 
 } // namespace stdext
+
+}
