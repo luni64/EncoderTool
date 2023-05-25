@@ -37,6 +37,8 @@
     - [`40HC67  (up to 16 encoders)`][MPLEX4067]
 
     - [`40HC51  (up to 8 encoders)`][MPLEX4051]
+    
+    - [`Encoder Matrix`][MPLEX_Matrix]
 
     - Easy to adapt for your preferred multiplexer
 
@@ -83,9 +85,10 @@
 [Arduino]: https://www.arduino.cc/reference/en/libraries/encodertool/
 
 [License]: LICENSE
-[MPLEX74165]:Resources/extras/Boards/MPX_74165
-[MPLEX4067]:Resources/extras/Boards/MPX_4067
-[MPLEX4051]:Resources/extras/Boards/MPX_4051
+[MPLEX74165]:Resources/Extras#multiplexing-with-74hc165
+[MPLEX4067]:Resources/Extras#multiplexing-with-cd4067
+[MPLEX4051]:Resources/Extras#multiplexing-with-cd4051
+[MPLEX_Matrix]:Resources/Extras#using-a-directly-connected-encoder-matrix
 
 
 
