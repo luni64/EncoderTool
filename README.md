@@ -83,9 +83,9 @@
 [Arduino]: https://www.arduino.cc/reference/en/libraries/encodertool/
 
 [License]: LICENSE
-[MPLEX74165]:extras/Boards/MPX_74165
-[MPLEX4067]:extras/Boards/MPX_4067
-[MPLEX4051]:extras/Boards/MPX_4051
+[MPLEX74165]:Resources/extras/Boards/MPX_74165
+[MPLEX4067]:Resources/extras/Boards/MPX_4067
+[MPLEX4051]:Resources/extras/Boards/MPX_4051
 
 
 
