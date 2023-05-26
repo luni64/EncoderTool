@@ -18,6 +18,7 @@ namespace EncoderTool
 #endif
 
         void attachCallback(allCallback_t callback);
+        void attachButtonCallback(allBtnCallback_t btnCallback);
         EncoderBase<counter_t>& operator[](size_t idx);
 
      protected:
@@ -25,12 +26,13 @@ namespace EncoderTool
         ~EncPlexBase();
 
         void begin(CountMode mode = CountMode::quarter);
-        void begin(allCallback_t, CountMode mode = CountMode::quarter);
+        // void begin(allCallback_t, allBtnCallback_t, CountMode mode = CountMode::quarter);
 
         const size_t encoderCount;
         EncoderBase<counter_t>* encoders;
 
         allCallback_t callback = nullptr;
+        allBtnCallback_t btnCallback = nullptr;
         counter_t c;
     };
 
@@ -66,5 +68,11 @@ namespace EncoderTool
     void EncPlexBase<counter_t>::attachCallback(allCallback_t _callback)
     {
         callback = _callback;
+    }
+
+    template <typename counter_t>
+    void EncPlexBase<counter_t>::attachButtonCallback(allBtnCallback_t _btnCallback)
+    {
+        btnCallback = _btnCallback;
     }
 }
