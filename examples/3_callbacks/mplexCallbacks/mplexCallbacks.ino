@@ -9,8 +9,8 @@ using namespace EncoderTool;
 
 constexpr unsigned encoderCount = 8; // number of attached  (daisy chain shift regesters for more than 8)
 
-constexpr unsigned QH_A = 2;   // output pin QH of shift register B
-constexpr unsigned QH_B = 3;   // output pin QH of shift register A
+constexpr unsigned QH_A = 2;   // output pin QH of shift register A
+constexpr unsigned QH_B = 3;   // output pin QH of shift register B
 constexpr unsigned pinLD = 4;  // load pin for all shift registers)
 constexpr unsigned pinCLK = 5; // clock pin for all shift registers
                                // 74165 datasheet: http://www.ti.com/product/SN74HC165
