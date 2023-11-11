@@ -1,5 +1,5 @@
 {
-  "name": "EncoderTool",
+  "name": "EncoderTool_74165_switch",
   "keywords": "encoder, multiplexed, polling, 74165, 4067, 4051",
   "description": "The EncoderTool is a library to manage and read out rotary encoders with or without buttons, connected either directly or via multiplexers. It supports the common types of encoders (full / quad / half) and some variants. It provides periodic and limit modes and can invoke callbacks on value changes.",
   "repository":
@@ -24,5 +24,5 @@
         "version": ">2.5.0"
     }
   ],
-  "headers": "EncoderTool.h"
+  "headers": "EncoderTool_74165_switch.h"
 }
