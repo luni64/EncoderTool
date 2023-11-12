@@ -43,6 +43,7 @@ namespace EncoderTool
         bool buttonChanged();
 
         counter_t update(uint_fast8_t phaseA, uint_fast8_t phaseB, uint_fast8_t btn = 0);
+        counter_t updateBtn(uint_fast8_t btn);
 
      protected:
         EncoderBase()                              = default;
@@ -210,12 +211,6 @@ namespace EncoderTool
     template <typename counter_t>
     counter_t EncoderBase<counter_t>::update(uint_fast8_t phaseA, uint_fast8_t phaseB, uint_fast8_t btn)
     {
-        if (button.update(btn))
-        {
-            btnChanged = true;
-            if (btnCallback != nullptr) { btnCallback(button.read()); }
-        }
-
         unsigned input = (phaseA << 1 | phaseB) ^ invert; // invert signals if necessary
         if (stateMachine == nullptr) return 0;            // tick might get called from yield before class is initialized
 
@@ -276,6 +271,31 @@ namespace EncoderTool
         }
 #endif
         return false;
+    }
+
+    template <typename counter_t>
+    counter_t EncoderBase<counter_t>::updateBtn(uint_fast8_t btn)
+    {
+        if (button.update(btn)) //button changed
+        {
+            btnChanged = true;
+            if (btnCallback != nullptr)
+            { 
+              btnCallback(button.read());
+              return -1;
+            }
+            else{
+              return button.read();
+            }
+        }
+        else
+        {
+          return -1;
+        }
+
+    //#if defined(USE_ERROR_CALLBACKS)
+    // TODO: implement error callback for button
+    // #endif
     }
 
     template <typename counter_t>
