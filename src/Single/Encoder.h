@@ -50,6 +50,7 @@ namespace EncoderTool
 
         pinMode(A.pin, inputMode);
         pinMode(B.pin, inputMode);
+        delayMicroseconds(1);
 
         EncoderBase<counter_t>::setCountMode(countMode);
         EncoderBase<counter_t>::begin(directRead(A), directRead(B)); // set start state
