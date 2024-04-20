@@ -94,10 +94,15 @@ namespace EncoderTool
         int btn = Btn.pin < NUM_DIGITAL_PINS ? directRead(Btn) : LOW;
 
         int delta = EncPlexBase<counter_t>::encoders[0].update(a, b, btn);
+        int btnState = EncPlexBase<counter_t>::encoders[0].updateBtn(btn);
 
         if (delta != 0 && EncPlexBase<counter_t>::callback != nullptr)
         {
             EncPlexBase<counter_t>::callback(0, EncPlexBase<counter_t>::encoders[0].getValue(), delta);
+        }
+        if (btnState != -1 && EncPlexBase<counter_t>::btnCallback != nullptr)
+        {
+            EncPlexBase<counter_t>::btnCallback(0, btnState);
         }
         for (unsigned i = 1; i < EncPlexBase<counter_t>::encoderCount; i++) // shift in the the rest of the encoders
         {
@@ -107,6 +112,11 @@ namespace EncoderTool
             if (delta != 0 && EncPlexBase<counter_t>::callback != nullptr)
             {
                 EncPlexBase<counter_t>::callback(i, EncPlexBase<counter_t>::encoders[i].getValue(), delta);
+            }
+            int btnState = EncPlexBase<counter_t>::encoders[i].updateBtn(Btn.pin < NUM_DIGITAL_PINS ? directRead(Btn) : -1);
+            if (btnState != -1 && EncPlexBase<counter_t>::btnCallback != nullptr)
+            {
+                EncPlexBase<counter_t>::btnCallback(i, btnState);
             }
             directWrite(CLK, LOW);
             delay50ns();
