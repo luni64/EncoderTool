@@ -15,6 +15,13 @@ namespace EncoderTool
         full               //          4          |       n.a.       | standard for optical encoders w/o detents
     };
 
+    enum class AccelerationMode {
+        NONE,              // No acceleration (default)
+        SLOW,              // Gentle acceleration for fine control
+        MEDIUM,            // Moderate acceleration for general use
+        FAST               // Aggressive acceleration for large value ranges
+    };
+
     template <typename ct>
     class EncoderBase
     {
@@ -34,6 +41,7 @@ namespace EncoderTool
         EncoderBase& attachCallback(encCallback_t);
         EncoderBase& attachButtonCallback(encBtnCallback_t);
         EncoderBase& setLimits(counter_t min, counter_t max, bool periodic = false);
+        EncoderBase& setAcceleration(AccelerationMode mode);
 
         void setValue(counter_t val);
         counter_t getValue() const;
@@ -62,6 +70,13 @@ namespace EncoderTool
 
         encCallback_t callback       = nullptr;
         encBtnCallback_t btnCallback = nullptr;
+
+        // Acceleration support
+        AccelerationMode accelMode = AccelerationMode::NONE;
+        unsigned long lastUpdateTime = 0;
+
+        // Helper method for acceleration
+        counter_t getAcceleratedDelta(counter_t baseDelta);
 
         static const uint8_t stateMachineQtr[7][4];
         static const uint8_t stateMachineHalf[7][4];
@@ -202,9 +217,74 @@ namespace EncoderTool
     }
 
     template <typename counter_t>
+    EncoderBase<counter_t>& EncoderBase<counter_t>::setAcceleration(AccelerationMode mode)
+    {
+        this->accelMode = mode;
+        return *this;
+    }
+
+    template <typename counter_t>
     void EncoderBase<counter_t>::begin(uint_fast8_t phaseA, uint_fast8_t phaseB)
     {
         curState = (phaseA << 1 | phaseB) ^ invert;
+    }
+
+    template <typename counter_t>
+    counter_t EncoderBase<counter_t>::getAcceleratedDelta(counter_t baseDelta)
+    {
+        if (accelMode == AccelerationMode::NONE) {
+            return baseDelta;
+        }
+
+        unsigned long currentTime = millis();
+        unsigned long timeDelta = currentTime - lastUpdateTime;
+        lastUpdateTime = currentTime;
+
+        // Apply different acceleration curves based on mode
+        counter_t multiplier = 1;
+        
+        switch (accelMode) {
+            case AccelerationMode::SLOW:
+                // Gentle acceleration: starts at 100ms
+                if (timeDelta < 20) {
+                    multiplier = 5;
+                } else if (timeDelta < 50) {
+                    multiplier = 3;
+                } else if (timeDelta < 100) {
+                    multiplier = 2;
+                }
+                break;
+                
+            case AccelerationMode::MEDIUM:
+                // Moderate acceleration: starts at 150ms
+                if (timeDelta < 30) {
+                    multiplier = 12;
+                } else if (timeDelta < 60) {
+                    multiplier = 6;
+                } else if (timeDelta < 120) {
+                    multiplier = 3;
+                } else if (timeDelta < 250) {
+                    multiplier = 2;
+                }
+                break;
+                
+            case AccelerationMode::FAST:
+                // Aggressive acceleration: starts at 250ms
+                if (timeDelta < 30) {
+                    multiplier = 20;
+                } else if (timeDelta < 60) {
+                    multiplier = 12;
+                } else if (timeDelta < 120) {
+                    multiplier = 6;
+                } else if (timeDelta < 250) {
+                    multiplier = 3;
+                }
+                break;
+                
+            default:
+                break;
+        }        
+        return baseDelta * multiplier;
     }
 
     template <typename counter_t>
@@ -225,44 +305,65 @@ namespace EncoderTool
 
         if (direction == UP)
         {
-            if (value < maxVal) // maxVal = INT_MAX if no limits set
+            counter_t delta = getAcceleratedDelta(1);
+            
+            if (value + delta <= maxVal) // Check if we can add the full delta
             {
-                value++;
+                value += delta;
                 valChanged = true;
                 if (callback != nullptr)
-                    callback(value, +1);
-                return +1;
+                    callback(value, delta);
+                return delta;
             }
-            if (periodic) // if periodic, wrap to minVal, else stop counting
+            else if (value < maxVal) // Partial increment to reach maxVal
             {
-                value      = minVal;
+                counter_t actualDelta = maxVal - value;
+                value = maxVal;
                 valChanged = true;
-
                 if (callback != nullptr)
-                    callback(value, +1);
-                return +1;
+                    callback(value, actualDelta);
+                return actualDelta;
+            }
+            else if (periodic) // if periodic, wrap to minVal
+            {
+                value = minVal;
+                valChanged = true;
+                if (callback != nullptr)
+                    callback(value, delta);
+                return delta;
             }
             value = maxVal;
-            return false;
+            return 0;
         }
 
         if (direction == DOWN)
         {
-            if (value > minVal) // minVal = "counter_t min" if no limits set
+            counter_t delta = getAcceleratedDelta(-1);
+            
+            if (value + delta >= minVal) // Check if we can subtract the full delta
             {
-                value--;
+                value += delta; // delta is negative
                 valChanged = true;
                 if (callback != nullptr)
-                    callback(value, -1);
-                return -1;
+                    callback(value, delta);
+                return delta;
             }
-            if (periodic) // if periodic, wrap to maxVal, else stop counting
+            else if (value > minVal) // Partial decrement to reach minVal
             {
+                counter_t actualDelta = minVal - value; // negative
+                value = minVal;
                 valChanged = true;
-                value      = maxVal;
                 if (callback != nullptr)
-                    callback(value, -1);
-                return -1;
+                    callback(value, actualDelta);
+                return actualDelta;
+            }
+            else if (periodic) // if periodic, wrap to maxVal
+            {
+                value = maxVal;
+                valChanged = true;
+                if (callback != nullptr)
+                    callback(value, delta);
+                return delta;
             }
             value = minVal;
             return 0;
