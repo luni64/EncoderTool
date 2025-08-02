@@ -2,6 +2,7 @@
 
 // comment the following line out if you prefer plain vanilla function pointers for callbacks
 #define WANT_MODERN_CALLBACKS
+#define USE_ERROR_CALLBACKS
 
 //================================================================================================================
 

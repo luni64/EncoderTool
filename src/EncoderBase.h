@@ -272,7 +272,7 @@ namespace EncoderTool
         if (direction == ERR)
         {
             if (errCallback != nullptr)
-                errCallback(value);
+                errCallback(value,999);
         }
 #endif
         return false;
